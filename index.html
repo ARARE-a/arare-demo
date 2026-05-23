@@ -2353,12 +2353,12 @@
 
     .arare-hero-wave__glow {
       position: absolute;
-      width: min(760px, 74vw);
-      height: min(520px, 52vw);
+      width: min(920px, 82vw);
+      height: min(620px, 58vw);
       border-radius: 999px;
-      filter: blur(74px);
-      opacity: 0.48;
-      animation: arareWaveGlow 13s ease-in-out infinite alternate;
+      filter: blur(82px);
+      opacity: 0.58;
+      animation: arareWaveGlow 6s ease-in-out infinite alternate;
     }
 
     .arare-hero-wave__glow--cyan {
@@ -2371,15 +2371,25 @@
       right: -10%;
       bottom: 6%;
       background: rgba(255, 43, 214, 0.34);
-      animation-delay: -4s;
+      animation-delay: -2.5s;
+    }
+
+    .arare-hero-wave__glow--violet {
+      left: 30%;
+      bottom: -18%;
+      width: min(980px, 92vw);
+      height: min(420px, 44vw);
+      background: rgba(108, 99, 255, 0.28);
+      animation-duration: 9s;
+      animation-delay: -5s;
     }
 
     .arare-hero-wave__svg {
       position: absolute;
       left: 50%;
-      bottom: -15%;
-      width: min(1760px, 148%);
-      height: 76%;
+      bottom: -18%;
+      width: min(1940px, 172%);
+      height: 84%;
       min-width: 960px;
       transform: translateX(-50%);
       overflow: visible;
@@ -2388,23 +2398,31 @@
 
     .arare-wave-layer {
       transform-origin: 50% 56%;
-      animation: arareWaveDrift 16s ease-in-out infinite alternate;
+      animation: arareWaveLayerOne 12s ease-in-out infinite alternate;
+      will-change: transform, opacity;
     }
 
     .arare-wave-layer--back {
-      opacity: 0.52;
-      animation-duration: 18s;
+      opacity: 0.62;
+      animation: arareWaveLayerThree 16s ease-in-out infinite alternate;
     }
 
     .arare-wave-layer--main {
-      animation-duration: 14s;
+      animation: arareWaveLayerOne 12s ease-in-out infinite alternate;
       animation-delay: -3s;
     }
 
     .arare-wave-layer--front {
       opacity: 0.82;
-      animation-duration: 12s;
+      animation: arareWaveLayerTwo 9s ease-in-out infinite alternate-reverse;
       animation-delay: -6s;
+    }
+
+    .arare-wave-layer--magenta {
+      opacity: 0.76;
+      animation: arareWaveLayerFour 8s ease-in-out infinite alternate;
+      animation-delay: -2s;
+      transform-origin: 54% 68%;
     }
 
     .arare-wave-glow,
@@ -2473,15 +2491,48 @@
       stroke-width: 5;
       opacity: 0.72;
       stroke-dasharray: 340 980;
-      animation: arareWaveDash 15s ease-in-out infinite alternate;
+      animation: arareWaveDash 7s linear infinite;
+      will-change: stroke-dashoffset, opacity;
     }
 
     .arare-wave-line {
       stroke-width: 3;
       opacity: 0.58;
       stroke-dasharray: 240 740;
-      animation-duration: 12s;
-      animation-delay: -5s;
+      animation: arareWaveDashReverse 9s linear infinite;
+      animation-delay: -3s;
+    }
+
+    .arare-wave-magenta-glow,
+    .arare-wave-magenta,
+    .arare-wave-cyan-stream {
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      mix-blend-mode: screen;
+    }
+
+    .arare-wave-magenta-glow {
+      stroke: rgba(255, 43, 214, 0.72);
+      stroke-width: 96;
+      opacity: 0.42;
+      filter: url(#arareWaveBlur);
+    }
+
+    .arare-wave-magenta {
+      stroke: url(#arareWaveGradientMain);
+      stroke-width: 34;
+      opacity: 0.74;
+      filter: drop-shadow(0 0 22px rgba(255, 43, 214, 0.42));
+    }
+
+    .arare-wave-cyan-stream {
+      stroke: rgba(0, 212, 255, 0.70);
+      stroke-width: 10;
+      opacity: 0.56;
+      stroke-dasharray: 180 620;
+      animation: arareWaveDash 6.8s linear infinite;
+      filter: drop-shadow(0 0 18px rgba(0, 212, 255, 0.35));
     }
 
     .arare-hero__inner {
@@ -2557,25 +2608,51 @@
       display: none;
     }
 
-    @keyframes arareWaveDrift {
-      0% { transform: translate3d(-26px, 12px, 0) scale(1); opacity: 0.78; }
-      50% { transform: translate3d(18px, -18px, 0) scale(1.025); opacity: 1; }
-      100% { transform: translate3d(34px, 10px, 0) scale(1.045); opacity: 0.86; }
+    @keyframes arareWaveLayerOne {
+      0% { transform: translate3d(-130px, 46px, 0) scale(1) rotate(-1.8deg); opacity: 0.56; }
+      48% { transform: translate3d(54px, -36px, 0) scale(1.10) rotate(1.1deg); opacity: 0.95; }
+      100% { transform: translate3d(168px, 34px, 0) scale(1.18) rotate(2deg); opacity: 0.72; }
+    }
+
+    @keyframes arareWaveLayerTwo {
+      0% { transform: translate3d(150px, -20px, 0) scale(1.06) rotate(1.6deg); opacity: 0.38; }
+      55% { transform: translate3d(-80px, 44px, 0) scale(1.14) rotate(-1.2deg); opacity: 0.92; }
+      100% { transform: translate3d(-178px, -36px, 0) scale(1.02) rotate(-2deg); opacity: 0.55; }
+    }
+
+    @keyframes arareWaveLayerThree {
+      0% { transform: translate3d(-94px, 70px, 0) scale(1.02) rotate(-1deg); opacity: 0.35; }
+      50% { transform: translate3d(30px, -76px, 0) scale(1.16) rotate(0.8deg); opacity: 0.74; }
+      100% { transform: translate3d(118px, 52px, 0) scale(1.08) rotate(1.6deg); opacity: 0.50; }
+    }
+
+    @keyframes arareWaveLayerFour {
+      0% { transform: translate3d(126px, 36px, 0) scale(0.98) rotate(2deg); opacity: 0.42; }
+      45% { transform: translate3d(-46px, -54px, 0) scale(1.12) rotate(-0.8deg); opacity: 0.90; }
+      100% { transform: translate3d(-164px, 28px, 0) scale(1.06) rotate(-2deg); opacity: 0.62; }
     }
 
     @keyframes arareWaveBreath {
-      0% { opacity: 0.78; stroke-width: 72; }
-      100% { opacity: 0.98; stroke-width: 92; }
+      0% { opacity: 0.58; stroke-width: 68; }
+      42% { opacity: 0.98; stroke-width: 104; }
+      100% { opacity: 0.76; stroke-width: 84; }
     }
 
     @keyframes arareWaveDash {
-      0% { stroke-dashoffset: 0; opacity: 0.45; }
-      100% { stroke-dashoffset: -520; opacity: 0.86; }
+      0% { stroke-dashoffset: 0; opacity: 0.36; }
+      45% { opacity: 0.94; }
+      100% { stroke-dashoffset: -1620; opacity: 0.62; }
+    }
+
+    @keyframes arareWaveDashReverse {
+      0% { stroke-dashoffset: -1100; opacity: 0.78; }
+      100% { stroke-dashoffset: 420; opacity: 0.38; }
     }
 
     @keyframes arareWaveGlow {
-      0% { transform: translate3d(-22px, 10px, 0) scale(0.95); opacity: 0.34; }
-      100% { transform: translate3d(28px, -16px, 0) scale(1.08); opacity: 0.58; }
+      0% { transform: translate3d(-84px, 30px, 0) scale(0.88); opacity: 0.28; }
+      48% { transform: translate3d(38px, -42px, 0) scale(1.22); opacity: 0.72; }
+      100% { transform: translate3d(112px, 24px, 0) scale(1.05); opacity: 0.46; }
     }
 
     @media (max-width: 768px) {
@@ -2808,6 +2885,7 @@
         <div class="arare-hero-wave" aria-hidden="true">
           <div class="arare-hero-wave__glow arare-hero-wave__glow--cyan"></div>
           <div class="arare-hero-wave__glow arare-hero-wave__glow--magenta"></div>
+          <div class="arare-hero-wave__glow arare-hero-wave__glow--violet"></div>
           <svg class="arare-hero-wave__svg" viewBox="0 0 1600 720" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
             <defs>
               <linearGradient id="arareWaveGradientMain" x1="0%" y1="35%" x2="100%" y2="65%">
@@ -2843,11 +2921,16 @@
             <g class="arare-wave-layer arare-wave-layer--back">
               <path class="arare-wave-glow" d="M-70 445 C 205 310, 380 312, 575 505 S 930 680, 1128 452 S 1410 320, 1685 410"/>
               <path class="arare-wave-back" d="M-92 480 C 180 375, 405 360, 610 512 S 944 648, 1120 470 S 1400 340, 1690 435"/>
+              <path class="arare-wave-cyan-stream" d="M-110 410 C 185 300, 420 350, 594 494 S 924 612, 1116 428 S 1410 300, 1698 374"/>
             </g>
             <g class="arare-wave-layer arare-wave-layer--main">
               <path class="arare-wave-main-glow" d="M-80 382 C 210 320, 385 290, 590 500 S 895 655, 1095 438 S 1392 330, 1685 395"/>
               <path class="arare-wave-main" d="M-80 382 C 210 320, 385 290, 590 500 S 895 655, 1095 438 S 1392 330, 1685 395"/>
               <path class="arare-wave-highlight" d="M-75 332 C 208 296, 386 280, 590 475 S 893 614, 1086 403 S 1392 296, 1680 355"/>
+            </g>
+            <g class="arare-wave-layer arare-wave-layer--magenta">
+              <path class="arare-wave-magenta-glow" d="M-120 615 C 130 475, 365 690, 620 652 S 960 500, 1138 552 S 1370 690, 1700 488"/>
+              <path class="arare-wave-magenta" d="M-120 615 C 130 475, 365 690, 620 652 S 960 500, 1138 552 S 1370 690, 1700 488"/>
             </g>
             <g class="arare-wave-layer arare-wave-layer--front">
               <path class="arare-wave-front-glow" d="M-110 548 C 210 500, 382 645, 622 628 S 924 568, 1115 585 S 1430 660, 1690 525"/>
@@ -2860,7 +2943,7 @@
           <div class="arare-hero__content">
             <p class="arare-eyebrow" data-aos="fade-up">WEB DESIGN / AI / AUTOMATION</p>
             <h1 class="arare-title arare-hero__title" data-aos="fade-up" data-aos-delay="80">
-              WebとAIで、<br>事業の成長を<br>加速させる。
+              AIとデザインで、<br>Web集客を<br>加速する。
             </h1>
             <p class="arare-lead arare-hero__lead" data-aos="fade-up" data-aos-delay="160">ホームページ制作、LP改善、SNS運用、AI導入、業務自動化まで。ARAREが成果につながる仕組みづくりを一気通貫で支援します。</p>
             <div class="arare-hero__actions">
