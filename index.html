@@ -2353,12 +2353,13 @@
 
     .arare-hero-wave__glow {
       position: absolute;
-      width: min(920px, 82vw);
-      height: min(620px, 58vw);
+      width: min(840px, 78vw);
+      height: min(500px, 52vw);
       border-radius: 999px;
-      filter: blur(82px);
-      opacity: 0.58;
-      animation: arareWaveGlow 6s ease-in-out infinite alternate;
+      filter: blur(42px);
+      opacity: 0.52;
+      animation: arareWaveGlow 4.8s ease-in-out infinite alternate;
+      will-change: transform, opacity;
     }
 
     .arare-hero-wave__glow--cyan {
@@ -2377,10 +2378,10 @@
     .arare-hero-wave__glow--violet {
       left: 30%;
       bottom: -18%;
-      width: min(980px, 92vw);
-      height: min(420px, 44vw);
-      background: rgba(108, 99, 255, 0.28);
-      animation-duration: 9s;
+      width: min(880px, 86vw);
+      height: min(340px, 40vw);
+      background: rgba(108, 99, 255, 0.24);
+      animation-duration: 7.5s;
       animation-delay: -5s;
     }
 
@@ -2393,7 +2394,8 @@
       min-width: 960px;
       transform: translateX(-50%);
       overflow: visible;
-      filter: saturate(1.18) contrast(1.06);
+      filter: saturate(1.22) contrast(1.08);
+      will-change: transform;
     }
 
     .arare-wave-layer {
@@ -2403,24 +2405,24 @@
     }
 
     .arare-wave-layer--back {
-      opacity: 0.62;
-      animation: arareWaveLayerThree 16s ease-in-out infinite alternate;
+      opacity: 0.58;
+      animation: arareWaveLayerThree 10.5s ease-in-out infinite alternate;
     }
 
     .arare-wave-layer--main {
-      animation: arareWaveLayerOne 12s ease-in-out infinite alternate;
+      animation: arareWaveLayerOne 8.8s ease-in-out infinite alternate;
       animation-delay: -3s;
     }
 
     .arare-wave-layer--front {
       opacity: 0.82;
-      animation: arareWaveLayerTwo 9s ease-in-out infinite alternate-reverse;
+      animation: arareWaveLayerTwo 7s ease-in-out infinite alternate-reverse;
       animation-delay: -6s;
     }
 
     .arare-wave-layer--magenta {
       opacity: 0.76;
-      animation: arareWaveLayerFour 8s ease-in-out infinite alternate;
+      animation: arareWaveLayerFour 6.4s ease-in-out infinite alternate;
       animation-delay: -2s;
       transform-origin: 54% 68%;
     }
@@ -2430,26 +2432,25 @@
     .arare-wave-front-glow {
       fill: none;
       stroke-linecap: round;
-      filter: url(#arareWaveBlur);
       mix-blend-mode: screen;
     }
 
     .arare-wave-glow {
       stroke: url(#arareWaveGradientSub);
-      stroke-width: 150;
-      opacity: 0.54;
+      stroke-width: 128;
+      opacity: 0.34;
     }
 
     .arare-wave-main-glow {
       stroke: url(#arareWaveGradientMain);
-      stroke-width: 172;
-      opacity: 0.74;
+      stroke-width: 150;
+      opacity: 0.50;
     }
 
     .arare-wave-front-glow {
       stroke: url(#arareWaveGradientMain);
-      stroke-width: 84;
-      opacity: 0.42;
+      stroke-width: 68;
+      opacity: 0.28;
     }
 
     .arare-wave-back,
@@ -2465,24 +2466,21 @@
 
     .arare-wave-back {
       stroke: url(#arareWaveGradientSub);
-      stroke-width: 96;
-      opacity: 0.50;
-      filter: url(#arareWaveSoftBlur);
+      stroke-width: 82;
+      opacity: 0.46;
     }
 
     .arare-wave-main {
       stroke: url(#arareWaveGradientMain);
-      stroke-width: 82;
-      opacity: 0.92;
-      filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.24)) drop-shadow(0 0 32px rgba(255, 43, 214, 0.24));
-      animation: arareWaveBreath 11s ease-in-out infinite alternate;
+      stroke-width: 76;
+      opacity: 0.95;
+      animation: arareWaveBreath 6.6s ease-in-out infinite alternate;
     }
 
     .arare-wave-front {
       stroke: url(#arareWaveGradientSub);
-      stroke-width: 42;
-      opacity: 0.62;
-      filter: url(#arareWaveSoftBlur);
+      stroke-width: 36;
+      opacity: 0.66;
     }
 
     .arare-wave-highlight,
@@ -2491,7 +2489,7 @@
       stroke-width: 5;
       opacity: 0.72;
       stroke-dasharray: 340 980;
-      animation: arareWaveDash 7s linear infinite;
+      animation: arareWaveDash 4.8s linear infinite;
       will-change: stroke-dashoffset, opacity;
     }
 
@@ -2499,7 +2497,7 @@
       stroke-width: 3;
       opacity: 0.58;
       stroke-dasharray: 240 740;
-      animation: arareWaveDashReverse 9s linear infinite;
+      animation: arareWaveDashReverse 5.8s linear infinite;
       animation-delay: -3s;
     }
 
@@ -2514,16 +2512,14 @@
 
     .arare-wave-magenta-glow {
       stroke: rgba(255, 43, 214, 0.72);
-      stroke-width: 96;
-      opacity: 0.42;
-      filter: url(#arareWaveBlur);
+      stroke-width: 82;
+      opacity: 0.30;
     }
 
     .arare-wave-magenta {
       stroke: url(#arareWaveGradientMain);
-      stroke-width: 34;
-      opacity: 0.74;
-      filter: drop-shadow(0 0 22px rgba(255, 43, 214, 0.42));
+      stroke-width: 30;
+      opacity: 0.82;
     }
 
     .arare-wave-cyan-stream {
@@ -2531,8 +2527,7 @@
       stroke-width: 10;
       opacity: 0.56;
       stroke-dasharray: 180 620;
-      animation: arareWaveDash 6.8s linear infinite;
-      filter: drop-shadow(0 0 18px rgba(0, 212, 255, 0.35));
+      animation: arareWaveDash 4.5s linear infinite;
     }
 
     .arare-hero__inner {
@@ -2609,50 +2604,50 @@
     }
 
     @keyframes arareWaveLayerOne {
-      0% { transform: translate3d(-130px, 46px, 0) scale(1) rotate(-1.8deg); opacity: 0.56; }
-      48% { transform: translate3d(54px, -36px, 0) scale(1.10) rotate(1.1deg); opacity: 0.95; }
-      100% { transform: translate3d(168px, 34px, 0) scale(1.18) rotate(2deg); opacity: 0.72; }
+      0% { transform: translate3d(-220px, 78px, 0) scale(0.98) rotate(-2deg); opacity: 0.48; }
+      44% { transform: translate3d(72px, -72px, 0) scale(1.14) rotate(1.5deg); opacity: 0.98; }
+      100% { transform: translate3d(238px, 58px, 0) scale(1.20) rotate(2.2deg); opacity: 0.72; }
     }
 
     @keyframes arareWaveLayerTwo {
-      0% { transform: translate3d(150px, -20px, 0) scale(1.06) rotate(1.6deg); opacity: 0.38; }
-      55% { transform: translate3d(-80px, 44px, 0) scale(1.14) rotate(-1.2deg); opacity: 0.92; }
-      100% { transform: translate3d(-178px, -36px, 0) scale(1.02) rotate(-2deg); opacity: 0.55; }
+      0% { transform: translate3d(228px, -42px, 0) scale(1.06) rotate(2deg); opacity: 0.34; }
+      52% { transform: translate3d(-116px, 74px, 0) scale(1.18) rotate(-1.5deg); opacity: 0.94; }
+      100% { transform: translate3d(-248px, -66px, 0) scale(1.02) rotate(-2.2deg); opacity: 0.58; }
     }
 
     @keyframes arareWaveLayerThree {
-      0% { transform: translate3d(-94px, 70px, 0) scale(1.02) rotate(-1deg); opacity: 0.35; }
-      50% { transform: translate3d(30px, -76px, 0) scale(1.16) rotate(0.8deg); opacity: 0.74; }
-      100% { transform: translate3d(118px, 52px, 0) scale(1.08) rotate(1.6deg); opacity: 0.50; }
+      0% { transform: translate3d(-164px, 92px, 0) scale(1.00) rotate(-1.4deg); opacity: 0.30; }
+      48% { transform: translate3d(58px, -108px, 0) scale(1.18) rotate(1deg); opacity: 0.78; }
+      100% { transform: translate3d(184px, 76px, 0) scale(1.08) rotate(1.8deg); opacity: 0.50; }
     }
 
     @keyframes arareWaveLayerFour {
-      0% { transform: translate3d(126px, 36px, 0) scale(0.98) rotate(2deg); opacity: 0.42; }
-      45% { transform: translate3d(-46px, -54px, 0) scale(1.12) rotate(-0.8deg); opacity: 0.90; }
-      100% { transform: translate3d(-164px, 28px, 0) scale(1.06) rotate(-2deg); opacity: 0.62; }
+      0% { transform: translate3d(210px, 64px, 0) scale(0.98) rotate(2.2deg); opacity: 0.38; }
+      46% { transform: translate3d(-82px, -88px, 0) scale(1.16) rotate(-1deg); opacity: 0.94; }
+      100% { transform: translate3d(-230px, 54px, 0) scale(1.06) rotate(-2.2deg); opacity: 0.64; }
     }
 
     @keyframes arareWaveBreath {
-      0% { opacity: 0.58; stroke-width: 68; }
-      42% { opacity: 0.98; stroke-width: 104; }
-      100% { opacity: 0.76; stroke-width: 84; }
+      0% { opacity: 0.62; stroke-width: 60; }
+      44% { opacity: 1; stroke-width: 90; }
+      100% { opacity: 0.78; stroke-width: 72; }
     }
 
     @keyframes arareWaveDash {
-      0% { stroke-dashoffset: 0; opacity: 0.36; }
-      45% { opacity: 0.94; }
-      100% { stroke-dashoffset: -1620; opacity: 0.62; }
+      0% { stroke-dashoffset: 360; opacity: 0.30; }
+      42% { opacity: 0.98; }
+      100% { stroke-dashoffset: -2360; opacity: 0.64; }
     }
 
     @keyframes arareWaveDashReverse {
-      0% { stroke-dashoffset: -1100; opacity: 0.78; }
-      100% { stroke-dashoffset: 420; opacity: 0.38; }
+      0% { stroke-dashoffset: -1840; opacity: 0.82; }
+      100% { stroke-dashoffset: 760; opacity: 0.34; }
     }
 
     @keyframes arareWaveGlow {
-      0% { transform: translate3d(-84px, 30px, 0) scale(0.88); opacity: 0.28; }
-      48% { transform: translate3d(38px, -42px, 0) scale(1.22); opacity: 0.72; }
-      100% { transform: translate3d(112px, 24px, 0) scale(1.05); opacity: 0.46; }
+      0% { transform: translate3d(-150px, 58px, 0) scale(0.82); opacity: 0.24; }
+      45% { transform: translate3d(52px, -70px, 0) scale(1.22); opacity: 0.68; }
+      100% { transform: translate3d(176px, 42px, 0) scale(1.02); opacity: 0.42; }
     }
 
     @media (max-width: 768px) {
@@ -2671,7 +2666,7 @@
       .arare-hero-wave__glow {
         width: 78vw;
         height: 52vw;
-        filter: blur(48px);
+        filter: blur(30px);
         opacity: 0.40;
       }
 
@@ -2715,6 +2710,7 @@
       .arare-wave-main,
       .arare-wave-highlight,
       .arare-wave-line,
+      .arare-wave-cyan-stream,
       .arare-hero-wave__glow {
         animation: none !important;
       }
@@ -2911,12 +2907,6 @@
                 <stop offset="72%" stop-color="#FF2BD6" stop-opacity="0.82"/>
                 <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.18"/>
               </linearGradient>
-              <filter id="arareWaveBlur" x="-20%" y="-45%" width="140%" height="190%">
-                <feGaussianBlur stdDeviation="26"/>
-              </filter>
-              <filter id="arareWaveSoftBlur" x="-20%" y="-45%" width="140%" height="190%">
-                <feGaussianBlur stdDeviation="9"/>
-              </filter>
             </defs>
             <g class="arare-wave-layer arare-wave-layer--back">
               <path class="arare-wave-glow" d="M-70 445 C 205 310, 380 312, 575 505 S 930 680, 1128 452 S 1410 320, 1685 410"/>
