@@ -2300,6 +2300,46 @@
       }
     }
   
+
+    /* ===== ARARE hero particle background ===== */
+    .arare-hero,
+    .arare-sub-hero {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .arare-particle-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.48;
+    }
+
+    .arare-hero__inner,
+    .arare-sub-hero__inner,
+    .arare-sub-hero .arare-container,
+    .arare-sub-hero__content,
+    .arare-particle-canvas + .arare-container,
+    .arare-particle-canvas ~ .arare-container {
+      position: relative;
+      z-index: 2;
+    }
+
+    @media (max-width: 768px) {
+      .arare-particle-canvas {
+        opacity: 0.34;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .arare-particle-canvas {
+        opacity: 0.28;
+      }
+    }
     /* ===== Final mobile visual polish ===== */
     .jp-nowrap {
       display: inline-block;
@@ -2463,6 +2503,7 @@
 
     <main>
       <section class="arare-hero" id="home">
+        <canvas class="arare-particle-canvas" aria-hidden="true"></canvas>
         <div class="arare-container arare-hero__inner">
           <div class="arare-hero__content">
             <p class="arare-eyebrow" data-aos="fade-up">WEB DESIGN / AI / AUTOMATION</p>
@@ -2708,6 +2749,196 @@
       window.addEventListener("scroll", updateHeaderState, { passive: true });
       updateHeaderState();
     });
+  </script>
+  <script>
+    function initArareParticles() {
+      const canvases = document.querySelectorAll(".arare-particle-canvas");
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+      canvases.forEach((canvas) => {
+        if (canvas.dataset.arareParticlesReady === "true") return;
+        const parent = canvas.parentElement;
+        const ctx = canvas.getContext("2d");
+        if (!parent || !ctx) return;
+
+        canvas.dataset.arareParticlesReady = "true";
+
+        let width = 0;
+        let height = 0;
+        let dpr = 1;
+        let particles = [];
+        let rafId = 0;
+        let running = false;
+        let resizeTimer = 0;
+
+        const palette = [
+          { r: 245, g: 199, b: 122, a: 0.58 },
+          { r: 108, g: 99, b: 255, a: 0.16 },
+          { r: 0, g: 212, b: 255, a: 0.14 }
+        ];
+
+        const rand = (min, max) => min + Math.random() * (max - min);
+        const color = (p, alpha) => `rgba(${p.r},${p.g},${p.b},${alpha})`;
+
+        function measure() {
+          const rect = parent.getBoundingClientRect();
+          width = Math.max(1, Math.floor(rect.width));
+          height = Math.max(1, Math.min(Math.floor(rect.height), 1200));
+          dpr = Math.max(1, Math.min(window.devicePixelRatio || 1, 2, 1800 / height));
+
+          canvas.width = Math.floor(width * dpr);
+          canvas.height = Math.floor(height * dpr);
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        }
+
+        function particleCount() {
+          const area = width * height;
+          if (width < 560) return Math.max(16, Math.min(24, Math.round(area / 18000)));
+          if (width < 960) return Math.max(28, Math.min(40, Math.round(area / 21000)));
+          return Math.max(42, Math.min(60, Math.round(area / 24000)));
+        }
+
+        function createParticle() {
+          const tone = palette[Math.random() < 0.78 ? 0 : Math.random() < 0.55 ? 1 : 2];
+          return {
+            x: rand(0, width),
+            y: rand(0, height),
+            vx: rand(-0.16, 0.16),
+            vy: rand(-0.14, 0.14),
+            r: rand(0.7, 1.45),
+            phase: rand(0, Math.PI * 2),
+            tone
+          };
+        }
+
+        function resetParticles() {
+          particles = Array.from({ length: particleCount() }, createParticle);
+        }
+
+        function drawLines(maxDistance) {
+          for (let i = 0; i < particles.length; i += 1) {
+            for (let j = i + 1; j < particles.length; j += 1) {
+              const a = particles[i];
+              const b = particles[j];
+              const dx = a.x - b.x;
+              const dy = a.y - b.y;
+              const distance = Math.sqrt(dx * dx + dy * dy);
+              if (distance >= maxDistance) continue;
+
+              const alpha = (1 - distance / maxDistance) * 0.20;
+              ctx.beginPath();
+              ctx.moveTo(a.x, a.y);
+              ctx.lineTo(b.x, b.y);
+              ctx.strokeStyle = `rgba(245,199,122,${alpha})`;
+              ctx.lineWidth = 0.55;
+              ctx.stroke();
+            }
+          }
+        }
+
+        function drawParticles() {
+          particles.forEach((p) => {
+            const pulse = 0.72 + Math.sin(p.phase) * 0.18;
+            const glow = p.r * (5.2 + pulse);
+            const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, glow);
+
+            gradient.addColorStop(0, color(p.tone, Math.min(p.tone.a, 0.28)));
+            gradient.addColorStop(1, color(p.tone, 0));
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, glow, 0, Math.PI * 2);
+            ctx.fill();
+
+            ctx.fillStyle = color(p.tone, p.tone === palette[0] ? 0.72 : 0.30);
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fill();
+          });
+        }
+
+        function draw(staticFrame) {
+          ctx.clearRect(0, 0, width, height);
+          const maxDistance = width < 560 ? 110 : width < 960 ? 135 : 160;
+
+          if (!staticFrame) {
+            particles.forEach((p) => {
+              p.x += p.vx;
+              p.y += p.vy;
+              p.phase += 0.012;
+
+              if (p.x < 0 || p.x > width) p.vx *= -1;
+              if (p.y < 0 || p.y > height) p.vy *= -1;
+              p.x = Math.max(0, Math.min(width, p.x));
+              p.y = Math.max(0, Math.min(height, p.y));
+            });
+          }
+
+          drawLines(maxDistance);
+          drawParticles();
+        }
+
+        function tick() {
+          if (!running) return;
+          draw(false);
+          rafId = window.requestAnimationFrame(tick);
+        }
+
+        function stop() {
+          running = false;
+          if (rafId) window.cancelAnimationFrame(rafId);
+          rafId = 0;
+        }
+
+        function start() {
+          stop();
+          draw(true);
+          if (reduceMotion.matches || document.hidden) return;
+          running = true;
+          rafId = window.requestAnimationFrame(tick);
+        }
+
+        function refresh() {
+          stop();
+          measure();
+          resetParticles();
+          start();
+        }
+
+        function scheduleRefresh() {
+          window.clearTimeout(resizeTimer);
+          resizeTimer = window.setTimeout(refresh, 140);
+        }
+
+        refresh();
+
+        if (window.ResizeObserver) {
+          const observer = new ResizeObserver(scheduleRefresh);
+          observer.observe(parent);
+        } else {
+          window.addEventListener("resize", scheduleRefresh, { passive: true });
+        }
+
+        if (typeof reduceMotion.addEventListener === "function") {
+          reduceMotion.addEventListener("change", start);
+        } else if (typeof reduceMotion.addListener === "function") {
+          reduceMotion.addListener(start);
+        }
+
+        document.addEventListener("visibilitychange", () => {
+          if (document.hidden) {
+            stop();
+          } else {
+            start();
+          }
+        });
+      });
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initArareParticles, { once: true });
+    } else {
+      initArareParticles();
+    }
   </script>
   <!-- ARARE demo site version 1.0 -->
 </body>
