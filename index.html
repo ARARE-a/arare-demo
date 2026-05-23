@@ -2301,43 +2301,345 @@
     }
   
 
-    /* ===== ARARE hero particle background ===== */
-    .arare-hero,
-    .arare-sub-hero {
+    /* ===== ARARE hero neon wave background ===== */
+    .arare-hero {
       position: relative;
+      min-height: calc(100vh - 76px);
+      display: grid;
+      align-items: center;
+      padding-block: 138px 156px;
       overflow: hidden;
+      isolation: isolate;
+      background:
+        linear-gradient(180deg, #000 0%, #01020a 42%, #05020d 70%, #000 100%);
+      text-align: center;
+    }
+
+    .arare-hero::before,
+    .arare-hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .arare-hero::before {
+      background:
+        radial-gradient(ellipse at 50% 38%, rgba(0, 0, 0, 0.70) 0%, rgba(0, 0, 0, 0.42) 34%, rgba(0, 0, 0, 0.18) 58%, transparent 76%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.96) 0%, rgba(0, 0, 0, 0.86) 26%, rgba(0, 0, 0, 0.38) 56%, rgba(0, 0, 0, 0.06) 100%);
+    }
+
+    .arare-hero::after {
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      background-size: 76px 76px;
+      mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 76%, transparent 100%);
+      opacity: 0.18;
+    }
+
+    .arare-hero-wave {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse at 50% 74%, rgba(255, 43, 214, 0.16), transparent 34%),
+        radial-gradient(ellipse at 24% 62%, rgba(0, 212, 255, 0.18), transparent 30%),
+        radial-gradient(ellipse at 82% 58%, rgba(108, 99, 255, 0.18), transparent 32%);
+    }
+
+    .arare-hero-wave__glow {
+      position: absolute;
+      width: min(760px, 74vw);
+      height: min(520px, 52vw);
+      border-radius: 999px;
+      filter: blur(74px);
+      opacity: 0.48;
+      animation: arareWaveGlow 13s ease-in-out infinite alternate;
+    }
+
+    .arare-hero-wave__glow--cyan {
+      left: -12%;
+      bottom: 10%;
+      background: rgba(0, 212, 255, 0.38);
+    }
+
+    .arare-hero-wave__glow--magenta {
+      right: -10%;
+      bottom: 6%;
+      background: rgba(255, 43, 214, 0.34);
+      animation-delay: -4s;
+    }
+
+    .arare-hero-wave__svg {
+      position: absolute;
+      left: 50%;
+      bottom: -15%;
+      width: min(1760px, 148%);
+      height: 76%;
+      min-width: 960px;
+      transform: translateX(-50%);
+      overflow: visible;
+      filter: saturate(1.18) contrast(1.06);
+    }
+
+    .arare-wave-layer {
+      transform-origin: 50% 56%;
+      animation: arareWaveDrift 16s ease-in-out infinite alternate;
+    }
+
+    .arare-wave-layer--back {
+      opacity: 0.52;
+      animation-duration: 18s;
+    }
+
+    .arare-wave-layer--main {
+      animation-duration: 14s;
+      animation-delay: -3s;
+    }
+
+    .arare-wave-layer--front {
+      opacity: 0.82;
+      animation-duration: 12s;
+      animation-delay: -6s;
+    }
+
+    .arare-wave-glow,
+    .arare-wave-main-glow,
+    .arare-wave-front-glow {
+      fill: none;
+      stroke-linecap: round;
+      filter: url(#arareWaveBlur);
+      mix-blend-mode: screen;
+    }
+
+    .arare-wave-glow {
+      stroke: url(#arareWaveGradientSub);
+      stroke-width: 150;
+      opacity: 0.54;
+    }
+
+    .arare-wave-main-glow {
+      stroke: url(#arareWaveGradientMain);
+      stroke-width: 172;
+      opacity: 0.74;
+    }
+
+    .arare-wave-front-glow {
+      stroke: url(#arareWaveGradientMain);
+      stroke-width: 84;
+      opacity: 0.42;
+    }
+
+    .arare-wave-back,
+    .arare-wave-main,
+    .arare-wave-front,
+    .arare-wave-highlight,
+    .arare-wave-line {
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      mix-blend-mode: screen;
+    }
+
+    .arare-wave-back {
+      stroke: url(#arareWaveGradientSub);
+      stroke-width: 96;
+      opacity: 0.50;
+      filter: url(#arareWaveSoftBlur);
+    }
+
+    .arare-wave-main {
+      stroke: url(#arareWaveGradientMain);
+      stroke-width: 82;
+      opacity: 0.92;
+      filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.24)) drop-shadow(0 0 32px rgba(255, 43, 214, 0.24));
+      animation: arareWaveBreath 11s ease-in-out infinite alternate;
+    }
+
+    .arare-wave-front {
+      stroke: url(#arareWaveGradientSub);
+      stroke-width: 42;
+      opacity: 0.62;
+      filter: url(#arareWaveSoftBlur);
+    }
+
+    .arare-wave-highlight,
+    .arare-wave-line {
+      stroke: url(#arareWaveGradientLine);
+      stroke-width: 5;
+      opacity: 0.72;
+      stroke-dasharray: 340 980;
+      animation: arareWaveDash 15s ease-in-out infinite alternate;
+    }
+
+    .arare-wave-line {
+      stroke-width: 3;
+      opacity: 0.58;
+      stroke-dasharray: 240 740;
+      animation-duration: 12s;
+      animation-delay: -5s;
+    }
+
+    .arare-hero__inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      justify-items: center;
+      align-items: center;
+      gap: 44px;
+    }
+
+    .arare-hero__content {
+      position: relative;
+      z-index: 3;
+      max-width: 980px;
+      margin-inline: auto;
+      text-align: center;
       isolation: isolate;
     }
 
-    .arare-particle-canvas {
+    .arare-hero__content::before {
+      content: "";
       position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
+      inset: -38px -54px;
+      z-index: -1;
+      border-radius: 34px;
+      background:
+        radial-gradient(ellipse at 50% 42%, rgba(0, 0, 0, 0.82) 0%, rgba(0, 0, 0, 0.56) 48%, rgba(0, 0, 0, 0.16) 74%, transparent 100%);
       pointer-events: none;
-      z-index: 0;
-      opacity: 0.48;
     }
 
-    .arare-hero__inner,
-    .arare-sub-hero__inner,
-    .arare-sub-hero .arare-container,
-    .arare-sub-hero__content,
-    .arare-particle-canvas + .arare-container,
-    .arare-particle-canvas ~ .arare-container {
-      position: relative;
-      z-index: 2;
+    .arare-hero__title {
+      max-width: 1100px;
+      margin-inline: auto;
+      font-size: clamp(3.4rem, 7.4vw, 7rem);
+      line-height: 1.04;
+      letter-spacing: 0;
+      font-weight: 900;
+      background: linear-gradient(100deg, #eaf4ff 0%, #61b8ff 20%, #1a7cff 39%, #6c63ff 55%, #ff2bd6 76%, #ff4aa8 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 34px rgba(0, 135, 255, 0.12);
+      text-wrap: balance;
+    }
+
+    .arare-hero__lead {
+      max-width: 760px;
+      margin: 26px auto 0;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: clamp(1rem, 1.55vw, 1.18rem);
+      line-height: 1.95;
+      text-align: center;
+      text-wrap: balance;
+    }
+
+    .arare-hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 36px;
+    }
+
+    .arare-hero .arare-btn-secondary {
+      border-color: rgba(255, 255, 255, 0.56);
+      color: rgba(255, 255, 255, 0.90);
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    .arare-hero__visual {
+      display: none;
+    }
+
+    @keyframes arareWaveDrift {
+      0% { transform: translate3d(-26px, 12px, 0) scale(1); opacity: 0.78; }
+      50% { transform: translate3d(18px, -18px, 0) scale(1.025); opacity: 1; }
+      100% { transform: translate3d(34px, 10px, 0) scale(1.045); opacity: 0.86; }
+    }
+
+    @keyframes arareWaveBreath {
+      0% { opacity: 0.78; stroke-width: 72; }
+      100% { opacity: 0.98; stroke-width: 92; }
+    }
+
+    @keyframes arareWaveDash {
+      0% { stroke-dashoffset: 0; opacity: 0.45; }
+      100% { stroke-dashoffset: -520; opacity: 0.86; }
+    }
+
+    @keyframes arareWaveGlow {
+      0% { transform: translate3d(-22px, 10px, 0) scale(0.95); opacity: 0.34; }
+      100% { transform: translate3d(28px, -16px, 0) scale(1.08); opacity: 0.58; }
     }
 
     @media (max-width: 768px) {
-      .arare-particle-canvas {
-        opacity: 0.34;
+      .arare-hero {
+        min-height: auto;
+        padding-block: 94px 126px;
+      }
+
+      .arare-hero-wave__svg {
+        bottom: -8%;
+        width: 210%;
+        min-width: 760px;
+        height: 68%;
+      }
+
+      .arare-hero-wave__glow {
+        width: 78vw;
+        height: 52vw;
+        filter: blur(48px);
+        opacity: 0.40;
+      }
+
+      .arare-hero__content::before {
+        inset: -28px -18px;
+        border-radius: 26px;
+        background: radial-gradient(ellipse at 50% 40%, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.66) 52%, rgba(0, 0, 0, 0.22) 78%, transparent 100%);
+      }
+
+      .arare-hero__title {
+        font-size: clamp(2.25rem, 12vw, 3.5rem);
+        line-height: 1.13;
+      }
+
+      .arare-hero__lead {
+        font-size: clamp(0.92rem, 3.8vw, 1rem);
+        line-height: 1.85;
+      }
+
+      .arare-hero__actions {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        max-width: 340px;
+        margin-inline: auto;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .arare-hero {
+        padding-block: 86px 116px;
+      }
+
+      .arare-hero__title {
+        font-size: clamp(2.05rem, 11.4vw, 2.85rem);
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .arare-particle-canvas {
-        opacity: 0.28;
+      .arare-wave-layer,
+      .arare-wave-main,
+      .arare-wave-highlight,
+      .arare-wave-line,
+      .arare-hero-wave__glow {
+        animation: none !important;
       }
     }
     /* ===== Final mobile visual polish ===== */
@@ -2503,7 +2805,57 @@
 
     <main>
       <section class="arare-hero" id="home">
-        <canvas class="arare-particle-canvas" aria-hidden="true"></canvas>
+        <div class="arare-hero-wave" aria-hidden="true">
+          <div class="arare-hero-wave__glow arare-hero-wave__glow--cyan"></div>
+          <div class="arare-hero-wave__glow arare-hero-wave__glow--magenta"></div>
+          <svg class="arare-hero-wave__svg" viewBox="0 0 1600 720" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="arareWaveGradientMain" x1="0%" y1="35%" x2="100%" y2="65%">
+                <stop offset="0%" stop-color="#001BFF" stop-opacity="0.08"/>
+                <stop offset="16%" stop-color="#1A7CFF" stop-opacity="0.92"/>
+                <stop offset="34%" stop-color="#00D4FF" stop-opacity="0.95"/>
+                <stop offset="51%" stop-color="#6C63FF" stop-opacity="0.88"/>
+                <stop offset="68%" stop-color="#FF2BD6" stop-opacity="0.96"/>
+                <stop offset="86%" stop-color="#FF4AA8" stop-opacity="0.82"/>
+                <stop offset="100%" stop-color="#FF8A2A" stop-opacity="0.28"/>
+              </linearGradient>
+              <linearGradient id="arareWaveGradientSub" x1="0%" y1="55%" x2="100%" y2="35%">
+                <stop offset="0%" stop-color="#1A7CFF" stop-opacity="0.16"/>
+                <stop offset="28%" stop-color="#00D4FF" stop-opacity="0.68"/>
+                <stop offset="52%" stop-color="#6C63FF" stop-opacity="0.50"/>
+                <stop offset="78%" stop-color="#FF2BD6" stop-opacity="0.74"/>
+                <stop offset="100%" stop-color="#FF4AA8" stop-opacity="0.22"/>
+              </linearGradient>
+              <linearGradient id="arareWaveGradientLine" x1="0%" y1="50%" x2="100%" y2="50%">
+                <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.20"/>
+                <stop offset="18%" stop-color="#00D4FF" stop-opacity="0.88"/>
+                <stop offset="48%" stop-color="#6C63FF" stop-opacity="0.52"/>
+                <stop offset="72%" stop-color="#FF2BD6" stop-opacity="0.82"/>
+                <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.18"/>
+              </linearGradient>
+              <filter id="arareWaveBlur" x="-20%" y="-45%" width="140%" height="190%">
+                <feGaussianBlur stdDeviation="26"/>
+              </filter>
+              <filter id="arareWaveSoftBlur" x="-20%" y="-45%" width="140%" height="190%">
+                <feGaussianBlur stdDeviation="9"/>
+              </filter>
+            </defs>
+            <g class="arare-wave-layer arare-wave-layer--back">
+              <path class="arare-wave-glow" d="M-70 445 C 205 310, 380 312, 575 505 S 930 680, 1128 452 S 1410 320, 1685 410"/>
+              <path class="arare-wave-back" d="M-92 480 C 180 375, 405 360, 610 512 S 944 648, 1120 470 S 1400 340, 1690 435"/>
+            </g>
+            <g class="arare-wave-layer arare-wave-layer--main">
+              <path class="arare-wave-main-glow" d="M-80 382 C 210 320, 385 290, 590 500 S 895 655, 1095 438 S 1392 330, 1685 395"/>
+              <path class="arare-wave-main" d="M-80 382 C 210 320, 385 290, 590 500 S 895 655, 1095 438 S 1392 330, 1685 395"/>
+              <path class="arare-wave-highlight" d="M-75 332 C 208 296, 386 280, 590 475 S 893 614, 1086 403 S 1392 296, 1680 355"/>
+            </g>
+            <g class="arare-wave-layer arare-wave-layer--front">
+              <path class="arare-wave-front-glow" d="M-110 548 C 210 500, 382 645, 622 628 S 924 568, 1115 585 S 1430 660, 1690 525"/>
+              <path class="arare-wave-front" d="M-110 548 C 210 500, 382 645, 622 628 S 924 568, 1115 585 S 1430 660, 1690 525"/>
+              <path class="arare-wave-line" d="M-90 568 C 220 505, 385 640, 624 606 S 936 548, 1125 560 S 1438 616, 1680 498"/>
+            </g>
+          </svg>
+        </div>
         <div class="arare-container arare-hero__inner">
           <div class="arare-hero__content">
             <p class="arare-eyebrow" data-aos="fade-up">WEB DESIGN / AI / AUTOMATION</p>
@@ -2750,197 +3102,676 @@
       updateHeaderState();
     });
   </script>
+<style id="arare-chat-style">
+    .arare-chat-toggle,
+    .arare-chat-panel,
+    .arare-chat-panel * { box-sizing: border-box; }
+
+    .arare-chat-toggle {
+      position: fixed;
+      right: 20px;
+      bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+      width: 64px;
+      height: 64px;
+      border: 0;
+      border-radius: 50%;
+      z-index: 99991;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #11131c;
+      background: linear-gradient(135deg, #f5c77a 0%, #d6a84f 48%, #fff0bd 100%);
+      box-shadow: 0 16px 38px rgba(245, 199, 122, 0.32), 0 0 0 1px rgba(255,255,255,0.18) inset;
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      animation: arare-chat-pulse 2.8s ease-in-out infinite;
+    }
+
+    .arare-chat-toggle:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 22px 46px rgba(245, 199, 122, 0.42), 0 0 0 1px rgba(255,255,255,0.22) inset;
+    }
+
+    .arare-chat-toggle svg {
+      width: 30px;
+      height: 30px;
+      display: block;
+    }
+
+    @keyframes arare-chat-pulse {
+      0%, 100% { box-shadow: 0 16px 38px rgba(245,199,122,0.30), 0 0 0 0 rgba(245,199,122,0.34), 0 0 0 1px rgba(255,255,255,0.18) inset; }
+      50% { box-shadow: 0 18px 44px rgba(245,199,122,0.42), 0 0 0 12px rgba(245,199,122,0), 0 0 0 1px rgba(255,255,255,0.22) inset; }
+    }
+
+    .arare-chat-panel {
+      position: fixed;
+      right: 20px;
+      bottom: calc(96px + env(safe-area-inset-bottom, 0px));
+      width: 380px;
+      max-width: calc(100vw - 32px);
+      height: 560px;
+      max-height: calc(100vh - 120px);
+      z-index: 99990;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      color: rgba(255,255,255,0.88);
+      background:
+        radial-gradient(circle at 15% 0%, rgba(245,199,122,0.18), transparent 34%),
+        radial-gradient(circle at 88% 18%, rgba(0,212,255,0.09), transparent 28%),
+        rgba(11,13,20,0.92);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 24px;
+      box-shadow: 0 28px 80px rgba(0,0,0,0.54), 0 0 0 1px rgba(245,199,122,0.08) inset;
+      -webkit-backdrop-filter: blur(18px);
+      backdrop-filter: blur(18px);
+      visibility: hidden;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(18px) scale(0.96);
+      transform-origin: right bottom;
+      transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+    }
+
+    .arare-chat-panel.arare-chat-open {
+      visibility: visible;
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0) scale(1);
+    }
+
+    .arare-chat-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 18px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+      background: linear-gradient(180deg, rgba(255,255,255,0.055), rgba(255,255,255,0.015));
+    }
+
+    .arare-chat-orb {
+      flex: 0 0 42px;
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #11131c;
+      background: linear-gradient(135deg, #f5c77a, #d6a84f);
+      box-shadow: 0 0 24px rgba(245,199,122,0.30);
+    }
+
+    .arare-chat-title-wrap { min-width: 0; flex: 1; }
+    .arare-chat-status {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      margin: 0 0 3px;
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      color: rgba(245,199,122,0.86);
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .arare-chat-status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #62f3b0;
+      box-shadow: 0 0 12px rgba(98,243,176,0.8);
+    }
+
+    .arare-chat-title {
+      margin: 0;
+      color: #fff;
+      font-size: 15px;
+      line-height: 1.35;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    .arare-chat-subtitle {
+      margin: 2px 0 0;
+      color: rgba(255,255,255,0.52);
+      font-size: 11px;
+      line-height: 1.45;
+    }
+
+    .arare-chat-close {
+      flex: 0 0 36px;
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+      color: rgba(255,255,255,0.76);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .arare-chat-close:hover {
+      background: rgba(245,199,122,0.12);
+      border-color: rgba(245,199,122,0.34);
+      color: #f5c77a;
+    }
+
+    .arare-chat-messages {
+      flex: 1;
+      min-height: 0;
+      overflow-y: auto;
+      padding: 18px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(245,199,122,0.42) rgba(255,255,255,0.06);
+    }
+
+    .arare-chat-message {
+      display: flex;
+      margin: 0 0 12px;
+    }
+
+    .arare-chat-message.is-user { justify-content: flex-end; }
+
+    .arare-chat-bubble {
+      max-width: 88%;
+      padding: 12px 14px;
+      border-radius: 16px;
+      font-size: 13px;
+      line-height: 1.75;
+      white-space: pre-line;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.055);
+      color: rgba(255,255,255,0.82);
+    }
+
+    .arare-chat-message.is-bot .arare-chat-bubble {
+      border-top-left-radius: 6px;
+      box-shadow: 0 12px 26px rgba(0,0,0,0.18);
+    }
+
+    .arare-chat-message.is-user .arare-chat-bubble {
+      border-top-right-radius: 6px;
+      border-color: rgba(245,199,122,0.34);
+      background: linear-gradient(135deg, #f5c77a, #d6a84f);
+      color: #11131c;
+      font-weight: 700;
+    }
+
+    .arare-chat-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #f5c77a, #d6a84f);
+      color: #11131c;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1;
+      box-shadow: 0 10px 26px rgba(245,199,122,0.22);
+    }
+
+    .arare-chat-typing {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      min-width: 54px;
+    }
+
+    .arare-chat-typing span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(245,199,122,0.86);
+      animation: arare-chat-typing 1s ease-in-out infinite;
+    }
+
+    .arare-chat-typing span:nth-child(2) { animation-delay: 0.14s; }
+    .arare-chat-typing span:nth-child(3) { animation-delay: 0.28s; }
+
+    @keyframes arare-chat-typing {
+      0%, 100% { transform: translateY(0); opacity: 0.35; }
+      50% { transform: translateY(-4px); opacity: 1; }
+    }
+
+    .arare-chat-chips {
+      display: flex;
+      gap: 8px;
+      padding: 0 18px 14px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .arare-chat-chips::-webkit-scrollbar { display: none; }
+
+    .arare-chat-chip {
+      flex: 0 0 auto;
+      border: 1px solid rgba(245,199,122,0.24);
+      border-radius: 999px;
+      padding: 8px 11px;
+      background: rgba(245,199,122,0.07);
+      color: rgba(255,255,255,0.84);
+      font-size: 12px;
+      line-height: 1;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .arare-chat-chip:hover {
+      border-color: rgba(245,199,122,0.52);
+      background: rgba(245,199,122,0.14);
+      color: #f5c77a;
+    }
+
+    .arare-chat-input-area {
+      padding: 14px 18px 16px;
+      border-top: 1px solid rgba(255,255,255,0.10);
+      background: rgba(5,7,12,0.46);
+    }
+
+    .arare-chat-form {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .arare-chat-input {
+      min-width: 0;
+      flex: 1;
+      height: 44px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 999px;
+      padding: 0 15px;
+      background: rgba(255,255,255,0.055);
+      color: #fff;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .arare-chat-input::placeholder { color: rgba(255,255,255,0.38); }
+
+    .arare-chat-send {
+      flex: 0 0 44px;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #f5c77a, #d6a84f);
+      color: #11131c;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .arare-chat-send:hover { transform: translateY(-2px); }
+
+    .arare-chat-reset {
+      display: inline-flex;
+      margin: 10px 0 0;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: rgba(255,255,255,0.44);
+      font-size: 11px;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .arare-chat-toggle:focus-visible,
+    .arare-chat-close:focus-visible,
+    .arare-chat-chip:focus-visible,
+    .arare-chat-input:focus-visible,
+    .arare-chat-send:focus-visible,
+    .arare-chat-reset:focus-visible,
+    .arare-chat-cta:focus-visible {
+      outline: 2px solid rgba(245,199,122,0.92);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 768px) {
+      .arare-chat-toggle {
+        right: 16px;
+        bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+        width: 56px;
+        height: 56px;
+      }
+
+      .arare-chat-toggle svg {
+        width: 27px;
+        height: 27px;
+      }
+
+      .arare-chat-panel {
+        left: 12px;
+        right: 12px;
+        bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+        width: auto;
+        max-width: none;
+        height: min(72vh, 620px);
+        max-height: 72vh;
+        border-radius: 24px;
+        transform-origin: center bottom;
+      }
+
+      .arare-chat-header { padding: 16px 15px 14px; }
+      .arare-chat-messages { padding: 15px; }
+      .arare-chat-bubble { max-width: 91%; font-size: 13px; }
+      .arare-chat-chips { padding: 0 15px 12px; }
+      .arare-chat-input-area { padding: 12px 15px 14px; }
+    }
+  </style>
+
+  <button class="arare-chat-toggle" type="button" aria-label="AIチャットを開く" aria-expanded="false" aria-controls="arare-chat-panel">
+    <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+      <path d="M14 15.5C14 11.9 16.9 9 20.5 9h7C31.1 9 34 11.9 34 15.5v7c0 3.6-2.9 6.5-6.5 6.5h-5.7l-6.6 5.4c-.8.7-2.1.1-2.1-1v-17.9Z" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/>
+      <path d="M18.5 18.5h11M18.5 23.5h7.5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+      <path d="M34 20h1.5c3.6 0 6.5 2.9 6.5 6.5v12.1c0 1.1-1.3 1.7-2.1 1L34 35h-6.5c-2.7 0-5-1.7-6-4.1" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity=".72"/>
+      <circle cx="11" cy="10" r="2" fill="currentColor"/>
+      <circle cx="38" cy="10" r="2" fill="currentColor" opacity=".72"/>
+    </svg>
+  </button>
+
+  <section class="arare-chat-panel" id="arare-chat-panel" role="dialog" aria-modal="false" aria-label="ARARE AI Assistant">
+    <div class="arare-chat-header">
+      <div class="arare-chat-orb" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <path d="M12 3l1.6 5.1L19 10l-5.4 1.9L12 17l-1.6-5.1L5 10l5.4-1.9L12 3Z" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/>
+          <path d="M19 15l.8 2.4L22 18l-2.2.6L19 21l-.8-2.4L16 18l2.2-.6L19 15Z" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="arare-chat-title-wrap">
+        <div class="arare-chat-status"><span class="arare-chat-status-dot"></span><span>ONLINE</span></div>
+        <p class="arare-chat-title">ARARE AI Assistant</p>
+        <p class="arare-chat-subtitle">サービス内容をAI風にご案内します</p>
+      </div>
+      <button class="arare-chat-close" type="button" aria-label="AIチャットを閉じる">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="arare-chat-messages" aria-live="polite"></div>
+
+    <div class="arare-chat-chips" aria-label="よくある質問">
+      <button class="arare-chat-chip" type="button" data-chat-question="料金を知りたい">料金を知りたい</button>
+      <button class="arare-chat-chip" type="button" data-chat-question="納期はどれくらい？">納期はどれくらい？</button>
+      <button class="arare-chat-chip" type="button" data-chat-question="AI導入とは？">AI導入とは？</button>
+      <button class="arare-chat-chip" type="button" data-chat-question="LP制作について">LP制作について</button>
+      <button class="arare-chat-chip" type="button" data-chat-question="SNS運用について">SNS運用について</button>
+      <button class="arare-chat-chip" type="button" data-chat-question="無料相談したい">無料相談したい</button>
+    </div>
+
+    <div class="arare-chat-input-area">
+      <form class="arare-chat-form">
+        <input class="arare-chat-input" type="text" aria-label="AIチャットへの質問" placeholder="質問を入力してください" autocomplete="off">
+        <button class="arare-chat-send" type="submit" aria-label="送信">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 12 20 4l-5 16-3.2-6.2L4 12Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            <path d="m11.8 13.8 3.5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </form>
+      <button class="arare-chat-reset" type="button">会話をリセット</button>
+    </div>
+  </section>
+
   <script>
-    function initArareParticles() {
-      const canvases = document.querySelectorAll(".arare-particle-canvas");
-      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const ARARE_CHAT_KNOWLEDGE = [
+      { id: "price", keywords: ["料金", "費用", "値段", "いくら", "価格", "プラン", "見積"], answer: "料金の目安は、ライト：¥98,000〜、スタンダード：¥198,000〜、プレミアム：¥398,000〜です。\n正式なお見積もりは、目的・ページ数・必要な機能をヒアリングしたうえでご案内します。", cta: true },
+      { id: "delivery", keywords: ["納期", "期間", "どれくらい", "いつ", "スケジュール", "日数"], answer: "納期の目安は、LPが最短2週間、ホームページが3〜6週間、AI導入が内容により1〜4週間です。\n正式なスケジュールは要件確認後にご提案します。", cta: true },
+      { id: "automation", keywords: ["AI全自動化", "全自動", "自動化", "業務効率", "予約管理", "顧客対応", "レポート作成"], answer: "AI全自動化では、問い合わせ対応、予約管理、顧客対応、レポート作成などを自動化し、日々の運用負担を減らします。\n既存業務を整理したうえで、自動化できる範囲から段階的に設計します。詳しくは無料相談で具体的にご提案できます。", cta: true },
+      { id: "ai", keywords: ["AI導入", "ChatGPT", "Claude", "生成AI", "AI", "文章作成", "問い合わせ対応"], answer: "AI導入支援では、ChatGPTなどを業務に合わせて導入し、文章作成、問い合わせ対応、レポート作成などを効率化します。\nツールを入れるだけでなく、実際の業務フローに合わせた使い方まで設計します。詳しくは無料相談で具体的にご提案できます。", cta: true },
+      { id: "lp", keywords: ["LP", "ランディングページ", "キャンペーン", "広告"], answer: "LP制作では、広告・SNS・キャンペーン流入に合わせて、問い合わせや予約につながる構成を設計します。\nファーストビュー、訴求、CTA、スマホ表示まで一貫して制作します。詳しくは無料相談で具体的にご提案できます。", cta: true },
+      { id: "renewal", keywords: ["リニューアル", "改修", "古い", "改善", "問い合わせ率"], answer: "サイトリニューアルでは、古いデザイン、スマホ対応、導線、問い合わせ率の改善を支援します。\n現状サイトの課題を整理し、見た目だけでなく成果につながる構成へ見直します。詳しくは無料相談で具体的にご提案できます。", cta: true },
+      { id: "sns", keywords: ["SNS", "Instagram", "インスタ", "X", "投稿", "Threads", "運用代行"], answer: "SNS運用代行では、投稿設計、クリエイティブ作成、分析改善まで支援します。\nWebサイトやLPと連動し、認知から問い合わせまでの流れを整えます。詳しくは無料相談で具体的にご提案できます。", cta: true },
+      { id: "website", keywords: ["ホームページ", "HP", "コーポレート", "Webサイト", "サイト制作"], answer: "ホームページ制作では、企業の信頼感を高めるコーポレートサイトを制作します。\nスマホ対応、導線設計、基本SEO、問い合わせ導線まで対応します。詳しくは無料相談で具体的にご提案できます。", cta: true },
+      { id: "contact", keywords: ["相談", "問い合わせ", "無料相談", "話したい", "依頼", "申し込み"], answer: "ご相談は無料相談ページから送信できます。\n内容がまだ固まっていなくても大丈夫です。現状や課題を整理しながら、最適な進め方をご提案します。", cta: true },
+      { id: "process", keywords: ["流れ", "手順", "進め方", "制作の流れ", "ステップ"], answer: "制作の基本的な流れは、無料相談 → 課題整理 → 戦略設計 → 制作・導入 → 改善運用です。\n最初に目的や現状を整理し、必要な施策から優先順位をつけて進めます。詳しくは無料相談で具体的にご提案できます。", cta: true },
+      { id: "target", keywords: ["対象", "誰向け", "中小企業", "個人事業主", "スタートアップ"], answer: "ARAREは、中小企業、個人事業主、スタートアップ向けに、Web制作・LP制作・SNS運用・AI導入を支援しています。\n小さく始めたい場合も、成長に合わせて拡張する設計が可能です。詳しくは無料相談で具体的にご提案できます。", cta: true }
+    ];
 
-      canvases.forEach((canvas) => {
-        if (canvas.dataset.arareParticlesReady === "true") return;
-        const parent = canvas.parentElement;
-        const ctx = canvas.getContext("2d");
-        if (!parent || !ctx) return;
+    (function () {
+      const STORAGE_MESSAGES = "arareChatMessages";
+      const STORAGE_OPEN = "arareChatOpen";
+      const initialMessage = "こんにちは。ARAREのAIアシスタントです。\nWeb制作、LP制作、SNS運用、AI導入、AI全自動化についてご案内できます。\n気になる内容を選ぶか、自由に質問してください。";
+      const fallbackAnswer = "詳しい内容は無料相談で状況を伺いながらご案内できます。\nWeb制作、LP制作、SNS運用、AI導入、AI全自動化など、気になることをもう少し具体的に教えてください。";
 
-        canvas.dataset.arareParticlesReady = "true";
-
-        let width = 0;
-        let height = 0;
-        let dpr = 1;
-        let particles = [];
-        let rafId = 0;
-        let running = false;
-        let resizeTimer = 0;
-
-        const palette = [
-          { r: 245, g: 199, b: 122, a: 0.58 },
-          { r: 108, g: 99, b: 255, a: 0.16 },
-          { r: 0, g: 212, b: 255, a: 0.14 }
-        ];
-
-        const rand = (min, max) => min + Math.random() * (max - min);
-        const color = (p, alpha) => `rgba(${p.r},${p.g},${p.b},${alpha})`;
-
-        function measure() {
-          const rect = parent.getBoundingClientRect();
-          width = Math.max(1, Math.floor(rect.width));
-          height = Math.max(1, Math.min(Math.floor(rect.height), 1200));
-          dpr = Math.max(1, Math.min(window.devicePixelRatio || 1, 2, 1800 / height));
-
-          canvas.width = Math.floor(width * dpr);
-          canvas.height = Math.floor(height * dpr);
-          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-        }
-
-        function particleCount() {
-          const area = width * height;
-          if (width < 560) return Math.max(16, Math.min(24, Math.round(area / 18000)));
-          if (width < 960) return Math.max(28, Math.min(40, Math.round(area / 21000)));
-          return Math.max(42, Math.min(60, Math.round(area / 24000)));
-        }
-
-        function createParticle() {
-          const tone = palette[Math.random() < 0.78 ? 0 : Math.random() < 0.55 ? 1 : 2];
-          return {
-            x: rand(0, width),
-            y: rand(0, height),
-            vx: rand(-0.16, 0.16),
-            vy: rand(-0.14, 0.14),
-            r: rand(0.7, 1.45),
-            phase: rand(0, Math.PI * 2),
-            tone
-          };
-        }
-
-        function resetParticles() {
-          particles = Array.from({ length: particleCount() }, createParticle);
-        }
-
-        function drawLines(maxDistance) {
-          for (let i = 0; i < particles.length; i += 1) {
-            for (let j = i + 1; j < particles.length; j += 1) {
-              const a = particles[i];
-              const b = particles[j];
-              const dx = a.x - b.x;
-              const dy = a.y - b.y;
-              const distance = Math.sqrt(dx * dx + dy * dy);
-              if (distance >= maxDistance) continue;
-
-              const alpha = (1 - distance / maxDistance) * 0.20;
-              ctx.beginPath();
-              ctx.moveTo(a.x, a.y);
-              ctx.lineTo(b.x, b.y);
-              ctx.strokeStyle = `rgba(245,199,122,${alpha})`;
-              ctx.lineWidth = 0.55;
-              ctx.stroke();
-            }
-          }
-        }
-
-        function drawParticles() {
-          particles.forEach((p) => {
-            const pulse = 0.72 + Math.sin(p.phase) * 0.18;
-            const glow = p.r * (5.2 + pulse);
-            const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, glow);
-
-            gradient.addColorStop(0, color(p.tone, Math.min(p.tone.a, 0.28)));
-            gradient.addColorStop(1, color(p.tone, 0));
-            ctx.fillStyle = gradient;
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, glow, 0, Math.PI * 2);
-            ctx.fill();
-
-            ctx.fillStyle = color(p.tone, p.tone === palette[0] ? 0.72 : 0.30);
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-            ctx.fill();
-          });
-        }
-
-        function draw(staticFrame) {
-          ctx.clearRect(0, 0, width, height);
-          const maxDistance = width < 560 ? 110 : width < 960 ? 135 : 160;
-
-          if (!staticFrame) {
-            particles.forEach((p) => {
-              p.x += p.vx;
-              p.y += p.vy;
-              p.phase += 0.012;
-
-              if (p.x < 0 || p.x > width) p.vx *= -1;
-              if (p.y < 0 || p.y > height) p.vy *= -1;
-              p.x = Math.max(0, Math.min(width, p.x));
-              p.y = Math.max(0, Math.min(height, p.y));
-            });
-          }
-
-          drawLines(maxDistance);
-          drawParticles();
-        }
-
-        function tick() {
-          if (!running) return;
-          draw(false);
-          rafId = window.requestAnimationFrame(tick);
-        }
-
-        function stop() {
-          running = false;
-          if (rafId) window.cancelAnimationFrame(rafId);
-          rafId = 0;
-        }
-
-        function start() {
-          stop();
-          draw(true);
-          if (reduceMotion.matches || document.hidden) return;
-          running = true;
-          rafId = window.requestAnimationFrame(tick);
-        }
-
-        function refresh() {
-          stop();
-          measure();
-          resetParticles();
-          start();
-        }
-
-        function scheduleRefresh() {
-          window.clearTimeout(resizeTimer);
-          resizeTimer = window.setTimeout(refresh, 140);
-        }
-
-        refresh();
-
-        if (window.ResizeObserver) {
-          const observer = new ResizeObserver(scheduleRefresh);
-          observer.observe(parent);
+      function ready(callback) {
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", callback, { once: true });
         } else {
-          window.addEventListener("resize", scheduleRefresh, { passive: true });
+          callback();
         }
+      }
 
-        if (typeof reduceMotion.addEventListener === "function") {
-          reduceMotion.addEventListener("change", start);
-        } else if (typeof reduceMotion.addListener === "function") {
-          reduceMotion.addListener(start);
-        }
+      ready(function () {
+        const toggle = document.querySelector(".arare-chat-toggle");
+        const panel = document.querySelector(".arare-chat-panel");
+        const closeButton = document.querySelector(".arare-chat-close");
+        const messagesEl = document.querySelector(".arare-chat-messages");
+        const form = document.querySelector(".arare-chat-form");
+        const input = document.querySelector(".arare-chat-input");
+        const resetButton = document.querySelector(".arare-chat-reset");
+        const chips = document.querySelectorAll(".arare-chat-chip");
+        if (!toggle || !panel || !closeButton || !messagesEl || !form || !input || !resetButton) return;
 
-        document.addEventListener("visibilitychange", () => {
-          if (document.hidden) {
-            stop();
-          } else {
-            start();
+        let messages = loadMessages();
+        let typingEl = null;
+
+        function loadMessages() {
+          try {
+            const saved = window.localStorage.getItem(STORAGE_MESSAGES);
+            if (!saved) return [{ role: "bot", text: initialMessage, cta: false }];
+            const parsed = JSON.parse(saved);
+            if (!Array.isArray(parsed) || parsed.length === 0) return [{ role: "bot", text: initialMessage, cta: false }];
+            return parsed.filter(function (item) {
+              return item && (item.role === "bot" || item.role === "user") && typeof item.text === "string";
+            }).slice(-40);
+          } catch (error) {
+            return [{ role: "bot", text: initialMessage, cta: false }];
           }
-        });
-      });
-    }
+        }
 
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", initArareParticles, { once: true });
-    } else {
-      initArareParticles();
-    }
+        function saveMessages() {
+          try {
+            window.localStorage.setItem(STORAGE_MESSAGES, JSON.stringify(messages.slice(-40)));
+          } catch (error) {
+            return;
+          }
+        }
+
+        function saveOpenState(isOpen) {
+          try {
+            window.localStorage.setItem(STORAGE_OPEN, isOpen ? "true" : "false");
+          } catch (error) {
+            return;
+          }
+        }
+
+        function isPanelOpen() {
+          return panel.classList.contains("arare-chat-open");
+        }
+
+        function openPanel() {
+          panel.classList.add("arare-chat-open");
+          toggle.setAttribute("aria-expanded", "true");
+          toggle.setAttribute("aria-label", "AIチャットを閉じる");
+          saveOpenState(true);
+          window.setTimeout(function () {
+            input.focus({ preventScroll: true });
+          }, 80);
+          scrollMessages();
+        }
+
+        function closePanel() {
+          panel.classList.remove("arare-chat-open");
+          toggle.setAttribute("aria-expanded", "false");
+          toggle.setAttribute("aria-label", "AIチャットを開く");
+          saveOpenState(false);
+        }
+
+        function scrollMessages() {
+          messagesEl.scrollTop = messagesEl.scrollHeight;
+        }
+
+        function createMessageElement(message) {
+          const row = document.createElement("div");
+          row.className = "arare-chat-message";
+          row.classList.add(message.role === "user" ? "is-user" : "is-bot");
+
+          const bubble = document.createElement("div");
+          bubble.className = "arare-chat-bubble";
+          bubble.textContent = message.text;
+
+          if (message.role === "bot" && message.cta) {
+            const cta = document.createElement("a");
+            cta.className = "arare-chat-cta";
+            cta.href = "contact.html";
+            cta.textContent = "無料相談ページへ";
+            bubble.appendChild(cta);
+          }
+
+          row.appendChild(bubble);
+          return row;
+        }
+
+        function renderMessages() {
+          messagesEl.textContent = "";
+          messages.forEach(function (message) {
+            messagesEl.appendChild(createMessageElement(message));
+          });
+          scrollMessages();
+        }
+
+        function addMessage(role, text, cta) {
+          messages.push({ role: role, text: text, cta: Boolean(cta) });
+          messages = messages.slice(-40);
+          saveMessages();
+          renderMessages();
+        }
+
+        function showTyping() {
+          removeTyping();
+          typingEl = document.createElement("div");
+          typingEl.className = "arare-chat-message is-bot";
+          const bubble = document.createElement("div");
+          bubble.className = "arare-chat-bubble";
+          const dots = document.createElement("span");
+          dots.className = "arare-chat-typing";
+          for (let i = 0; i < 3; i += 1) {
+            dots.appendChild(document.createElement("span"));
+          }
+          bubble.appendChild(dots);
+          typingEl.appendChild(bubble);
+          messagesEl.appendChild(typingEl);
+          scrollMessages();
+        }
+
+        function removeTyping() {
+          if (typingEl && typingEl.parentNode) {
+            typingEl.parentNode.removeChild(typingEl);
+          }
+          typingEl = null;
+        }
+
+        function normalize(text) {
+          return text.toLowerCase().replace(/\s+/g, "");
+        }
+
+        function getBotResponse(question) {
+          const normalized = normalize(question);
+          const scored = ARARE_CHAT_KNOWLEDGE.map(function (entry, index) {
+            const score = entry.keywords.reduce(function (total, keyword) {
+              return normalized.includes(normalize(keyword)) ? total + keyword.length : total;
+            }, 0);
+            return { entry: entry, score: score, index: index };
+          }).filter(function (item) {
+            return item.score > 0;
+          }).sort(function (a, b) {
+            if (b.score !== a.score) return b.score - a.score;
+            return a.index - b.index;
+          });
+
+          if (scored.length === 0) return { text: fallbackAnswer, cta: true };
+          return { text: scored[0].entry.answer, cta: scored[0].entry.cta };
+        }
+
+        function submitQuestion(question) {
+          const text = question.trim();
+          if (!text) return;
+          addMessage("user", text, false);
+          input.value = "";
+          showTyping();
+
+          window.setTimeout(function () {
+            const response = getBotResponse(text);
+            removeTyping();
+            addMessage("bot", response.text, response.cta);
+          }, 520);
+        }
+
+        toggle.addEventListener("click", function () {
+          if (isPanelOpen()) closePanel();
+          else openPanel();
+        });
+
+        closeButton.addEventListener("click", closePanel);
+
+        document.addEventListener("keydown", function (event) {
+          if (event.key === "Escape" && isPanelOpen()) closePanel();
+        });
+
+        document.addEventListener("pointerdown", function (event) {
+          if (!isPanelOpen()) return;
+          const target = event.target;
+          if (panel.contains(target) || toggle.contains(target)) return;
+          closePanel();
+        });
+
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+          submitQuestion(input.value);
+        });
+
+        chips.forEach(function (chip) {
+          chip.addEventListener("click", function () {
+            const question = chip.getAttribute("data-chat-question") || chip.textContent || "";
+            submitQuestion(question);
+          });
+        });
+
+        resetButton.addEventListener("click", function () {
+          messages = [{ role: "bot", text: initialMessage, cta: false }];
+          saveMessages();
+          renderMessages();
+          input.focus({ preventScroll: true });
+        });
+
+        renderMessages();
+
+        try {
+          if (window.localStorage.getItem(STORAGE_OPEN) === "true") openPanel();
+        } catch (error) {
+          return;
+        }
+      });
+    })();
   </script>
-  <!-- ARARE demo site version 1.0 -->
+
+<!-- ARARE demo site version 1.0 -->
 </body>
 </html>
 

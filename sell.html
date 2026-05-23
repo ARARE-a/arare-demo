@@ -1733,6 +1733,675 @@
       initActiveNav();
     });
   </script>
-  <!-- ARARE demo site version 1.0 -->
+  <style id="arare-chat-style">
+    .arare-chat-toggle,
+    .arare-chat-panel,
+    .arare-chat-panel * { box-sizing: border-box; }
+
+    .arare-chat-toggle {
+      position: fixed;
+      right: 20px;
+      bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+      width: 64px;
+      height: 64px;
+      border: 0;
+      border-radius: 50%;
+      z-index: 99991;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #11131c;
+      background: linear-gradient(135deg, #f5c77a 0%, #d6a84f 48%, #fff0bd 100%);
+      box-shadow: 0 16px 38px rgba(245, 199, 122, 0.32), 0 0 0 1px rgba(255,255,255,0.18) inset;
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      animation: arare-chat-pulse 2.8s ease-in-out infinite;
+    }
+
+    .arare-chat-toggle:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 22px 46px rgba(245, 199, 122, 0.42), 0 0 0 1px rgba(255,255,255,0.22) inset;
+    }
+
+    .arare-chat-toggle svg {
+      width: 30px;
+      height: 30px;
+      display: block;
+    }
+
+    @keyframes arare-chat-pulse {
+      0%, 100% { box-shadow: 0 16px 38px rgba(245,199,122,0.30), 0 0 0 0 rgba(245,199,122,0.34), 0 0 0 1px rgba(255,255,255,0.18) inset; }
+      50% { box-shadow: 0 18px 44px rgba(245,199,122,0.42), 0 0 0 12px rgba(245,199,122,0), 0 0 0 1px rgba(255,255,255,0.22) inset; }
+    }
+
+    .arare-chat-panel {
+      position: fixed;
+      right: 20px;
+      bottom: calc(96px + env(safe-area-inset-bottom, 0px));
+      width: 380px;
+      max-width: calc(100vw - 32px);
+      height: 560px;
+      max-height: calc(100vh - 120px);
+      z-index: 99990;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      color: rgba(255,255,255,0.88);
+      background:
+        radial-gradient(circle at 15% 0%, rgba(245,199,122,0.18), transparent 34%),
+        radial-gradient(circle at 88% 18%, rgba(0,212,255,0.09), transparent 28%),
+        rgba(11,13,20,0.92);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 24px;
+      box-shadow: 0 28px 80px rgba(0,0,0,0.54), 0 0 0 1px rgba(245,199,122,0.08) inset;
+      -webkit-backdrop-filter: blur(18px);
+      backdrop-filter: blur(18px);
+      visibility: hidden;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(18px) scale(0.96);
+      transform-origin: right bottom;
+      transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+    }
+
+    .arare-chat-panel.arare-chat-open {
+      visibility: visible;
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0) scale(1);
+    }
+
+    .arare-chat-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 18px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+      background: linear-gradient(180deg, rgba(255,255,255,0.055), rgba(255,255,255,0.015));
+    }
+
+    .arare-chat-orb {
+      flex: 0 0 42px;
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #11131c;
+      background: linear-gradient(135deg, #f5c77a, #d6a84f);
+      box-shadow: 0 0 24px rgba(245,199,122,0.30);
+    }
+
+    .arare-chat-title-wrap { min-width: 0; flex: 1; }
+    .arare-chat-status {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      margin: 0 0 3px;
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      color: rgba(245,199,122,0.86);
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .arare-chat-status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #62f3b0;
+      box-shadow: 0 0 12px rgba(98,243,176,0.8);
+    }
+
+    .arare-chat-title {
+      margin: 0;
+      color: #fff;
+      font-size: 15px;
+      line-height: 1.35;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    .arare-chat-subtitle {
+      margin: 2px 0 0;
+      color: rgba(255,255,255,0.52);
+      font-size: 11px;
+      line-height: 1.45;
+    }
+
+    .arare-chat-close {
+      flex: 0 0 36px;
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+      color: rgba(255,255,255,0.76);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .arare-chat-close:hover {
+      background: rgba(245,199,122,0.12);
+      border-color: rgba(245,199,122,0.34);
+      color: #f5c77a;
+    }
+
+    .arare-chat-messages {
+      flex: 1;
+      min-height: 0;
+      overflow-y: auto;
+      padding: 18px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(245,199,122,0.42) rgba(255,255,255,0.06);
+    }
+
+    .arare-chat-message {
+      display: flex;
+      margin: 0 0 12px;
+    }
+
+    .arare-chat-message.is-user { justify-content: flex-end; }
+
+    .arare-chat-bubble {
+      max-width: 88%;
+      padding: 12px 14px;
+      border-radius: 16px;
+      font-size: 13px;
+      line-height: 1.75;
+      white-space: pre-line;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.055);
+      color: rgba(255,255,255,0.82);
+    }
+
+    .arare-chat-message.is-bot .arare-chat-bubble {
+      border-top-left-radius: 6px;
+      box-shadow: 0 12px 26px rgba(0,0,0,0.18);
+    }
+
+    .arare-chat-message.is-user .arare-chat-bubble {
+      border-top-right-radius: 6px;
+      border-color: rgba(245,199,122,0.34);
+      background: linear-gradient(135deg, #f5c77a, #d6a84f);
+      color: #11131c;
+      font-weight: 700;
+    }
+
+    .arare-chat-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #f5c77a, #d6a84f);
+      color: #11131c;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1;
+      box-shadow: 0 10px 26px rgba(245,199,122,0.22);
+    }
+
+    .arare-chat-typing {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      min-width: 54px;
+    }
+
+    .arare-chat-typing span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(245,199,122,0.86);
+      animation: arare-chat-typing 1s ease-in-out infinite;
+    }
+
+    .arare-chat-typing span:nth-child(2) { animation-delay: 0.14s; }
+    .arare-chat-typing span:nth-child(3) { animation-delay: 0.28s; }
+
+    @keyframes arare-chat-typing {
+      0%, 100% { transform: translateY(0); opacity: 0.35; }
+      50% { transform: translateY(-4px); opacity: 1; }
+    }
+
+    .arare-chat-chips {
+      display: flex;
+      gap: 8px;
+      padding: 0 18px 14px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .arare-chat-chips::-webkit-scrollbar { display: none; }
+
+    .arare-chat-chip {
+      flex: 0 0 auto;
+      border: 1px solid rgba(245,199,122,0.24);
+      border-radius: 999px;
+      padding: 8px 11px;
+      background: rgba(245,199,122,0.07);
+      color: rgba(255,255,255,0.84);
+      font-size: 12px;
+      line-height: 1;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .arare-chat-chip:hover {
+      border-color: rgba(245,199,122,0.52);
+      background: rgba(245,199,122,0.14);
+      color: #f5c77a;
+    }
+
+    .arare-chat-input-area {
+      padding: 14px 18px 16px;
+      border-top: 1px solid rgba(255,255,255,0.10);
+      background: rgba(5,7,12,0.46);
+    }
+
+    .arare-chat-form {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .arare-chat-input {
+      min-width: 0;
+      flex: 1;
+      height: 44px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 999px;
+      padding: 0 15px;
+      background: rgba(255,255,255,0.055);
+      color: #fff;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .arare-chat-input::placeholder { color: rgba(255,255,255,0.38); }
+
+    .arare-chat-send {
+      flex: 0 0 44px;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #f5c77a, #d6a84f);
+      color: #11131c;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .arare-chat-send:hover { transform: translateY(-2px); }
+
+    .arare-chat-reset {
+      display: inline-flex;
+      margin: 10px 0 0;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: rgba(255,255,255,0.44);
+      font-size: 11px;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .arare-chat-toggle:focus-visible,
+    .arare-chat-close:focus-visible,
+    .arare-chat-chip:focus-visible,
+    .arare-chat-input:focus-visible,
+    .arare-chat-send:focus-visible,
+    .arare-chat-reset:focus-visible,
+    .arare-chat-cta:focus-visible {
+      outline: 2px solid rgba(245,199,122,0.92);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 768px) {
+      .arare-chat-toggle {
+        right: 16px;
+        bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+        width: 56px;
+        height: 56px;
+      }
+
+      .arare-chat-toggle svg {
+        width: 27px;
+        height: 27px;
+      }
+
+      .arare-chat-panel {
+        left: 12px;
+        right: 12px;
+        bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+        width: auto;
+        max-width: none;
+        height: min(72vh, 620px);
+        max-height: 72vh;
+        border-radius: 24px;
+        transform-origin: center bottom;
+      }
+
+      .arare-chat-header { padding: 16px 15px 14px; }
+      .arare-chat-messages { padding: 15px; }
+      .arare-chat-bubble { max-width: 91%; font-size: 13px; }
+      .arare-chat-chips { padding: 0 15px 12px; }
+      .arare-chat-input-area { padding: 12px 15px 14px; }
+    }
+  </style>
+
+  <button class="arare-chat-toggle" type="button" aria-label="AIチャットを開く" aria-expanded="false" aria-controls="arare-chat-panel">
+    <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+      <path d="M14 15.5C14 11.9 16.9 9 20.5 9h7C31.1 9 34 11.9 34 15.5v7c0 3.6-2.9 6.5-6.5 6.5h-5.7l-6.6 5.4c-.8.7-2.1.1-2.1-1v-17.9Z" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/>
+      <path d="M18.5 18.5h11M18.5 23.5h7.5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+      <path d="M34 20h1.5c3.6 0 6.5 2.9 6.5 6.5v12.1c0 1.1-1.3 1.7-2.1 1L34 35h-6.5c-2.7 0-5-1.7-6-4.1" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity=".72"/>
+      <circle cx="11" cy="10" r="2" fill="currentColor"/>
+      <circle cx="38" cy="10" r="2" fill="currentColor" opacity=".72"/>
+    </svg>
+  </button>
+
+  <section class="arare-chat-panel" id="arare-chat-panel" role="dialog" aria-modal="false" aria-label="ARARE AI Assistant">
+    <div class="arare-chat-header">
+      <div class="arare-chat-orb" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <path d="M12 3l1.6 5.1L19 10l-5.4 1.9L12 17l-1.6-5.1L5 10l5.4-1.9L12 3Z" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/>
+          <path d="M19 15l.8 2.4L22 18l-2.2.6L19 21l-.8-2.4L16 18l2.2-.6L19 15Z" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="arare-chat-title-wrap">
+        <div class="arare-chat-status"><span class="arare-chat-status-dot"></span><span>ONLINE</span></div>
+        <p class="arare-chat-title">ARARE AI Assistant</p>
+        <p class="arare-chat-subtitle">サービス内容をAI風にご案内します</p>
+      </div>
+      <button class="arare-chat-close" type="button" aria-label="AIチャットを閉じる">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="arare-chat-messages" aria-live="polite"></div>
+
+    <div class="arare-chat-chips" aria-label="よくある質問">
+      <button class="arare-chat-chip" type="button" data-chat-question="料金を知りたい">料金を知りたい</button>
+      <button class="arare-chat-chip" type="button" data-chat-question="納期はどれくらい？">納期はどれくらい？</button>
+      <button class="arare-chat-chip" type="button" data-chat-question="AI導入とは？">AI導入とは？</button>
+      <button class="arare-chat-chip" type="button" data-chat-question="LP制作について">LP制作について</button>
+      <button class="arare-chat-chip" type="button" data-chat-question="SNS運用について">SNS運用について</button>
+      <button class="arare-chat-chip" type="button" data-chat-question="無料相談したい">無料相談したい</button>
+    </div>
+
+    <div class="arare-chat-input-area">
+      <form class="arare-chat-form">
+        <input class="arare-chat-input" type="text" aria-label="AIチャットへの質問" placeholder="質問を入力してください" autocomplete="off">
+        <button class="arare-chat-send" type="submit" aria-label="送信">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 12 20 4l-5 16-3.2-6.2L4 12Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            <path d="m11.8 13.8 3.5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </form>
+      <button class="arare-chat-reset" type="button">会話をリセット</button>
+    </div>
+  </section>
+
+  <script>
+    const ARARE_CHAT_KNOWLEDGE = [
+      { id: "price", keywords: ["料金", "費用", "値段", "いくら", "価格", "プラン", "見積"], answer: "料金の目安は、ライト：¥98,000〜、スタンダード：¥198,000〜、プレミアム：¥398,000〜です。\n正式なお見積もりは、目的・ページ数・必要な機能をヒアリングしたうえでご案内します。", cta: true },
+      { id: "delivery", keywords: ["納期", "期間", "どれくらい", "いつ", "スケジュール", "日数"], answer: "納期の目安は、LPが最短2週間、ホームページが3〜6週間、AI導入が内容により1〜4週間です。\n正式なスケジュールは要件確認後にご提案します。", cta: true },
+      { id: "automation", keywords: ["AI全自動化", "全自動", "自動化", "業務効率", "予約管理", "顧客対応", "レポート作成"], answer: "AI全自動化では、問い合わせ対応、予約管理、顧客対応、レポート作成などを自動化し、日々の運用負担を減らします。\n既存業務を整理したうえで、自動化できる範囲から段階的に設計します。詳しくは無料相談で具体的にご提案できます。", cta: true },
+      { id: "ai", keywords: ["AI導入", "ChatGPT", "Claude", "生成AI", "AI", "文章作成", "問い合わせ対応"], answer: "AI導入支援では、ChatGPTなどを業務に合わせて導入し、文章作成、問い合わせ対応、レポート作成などを効率化します。\nツールを入れるだけでなく、実際の業務フローに合わせた使い方まで設計します。詳しくは無料相談で具体的にご提案できます。", cta: true },
+      { id: "lp", keywords: ["LP", "ランディングページ", "キャンペーン", "広告"], answer: "LP制作では、広告・SNS・キャンペーン流入に合わせて、問い合わせや予約につながる構成を設計します。\nファーストビュー、訴求、CTA、スマホ表示まで一貫して制作します。詳しくは無料相談で具体的にご提案できます。", cta: true },
+      { id: "renewal", keywords: ["リニューアル", "改修", "古い", "改善", "問い合わせ率"], answer: "サイトリニューアルでは、古いデザイン、スマホ対応、導線、問い合わせ率の改善を支援します。\n現状サイトの課題を整理し、見た目だけでなく成果につながる構成へ見直します。詳しくは無料相談で具体的にご提案できます。", cta: true },
+      { id: "sns", keywords: ["SNS", "Instagram", "インスタ", "X", "投稿", "Threads", "運用代行"], answer: "SNS運用代行では、投稿設計、クリエイティブ作成、分析改善まで支援します。\nWebサイトやLPと連動し、認知から問い合わせまでの流れを整えます。詳しくは無料相談で具体的にご提案できます。", cta: true },
+      { id: "website", keywords: ["ホームページ", "HP", "コーポレート", "Webサイト", "サイト制作"], answer: "ホームページ制作では、企業の信頼感を高めるコーポレートサイトを制作します。\nスマホ対応、導線設計、基本SEO、問い合わせ導線まで対応します。詳しくは無料相談で具体的にご提案できます。", cta: true },
+      { id: "contact", keywords: ["相談", "問い合わせ", "無料相談", "話したい", "依頼", "申し込み"], answer: "ご相談は無料相談ページから送信できます。\n内容がまだ固まっていなくても大丈夫です。現状や課題を整理しながら、最適な進め方をご提案します。", cta: true },
+      { id: "process", keywords: ["流れ", "手順", "進め方", "制作の流れ", "ステップ"], answer: "制作の基本的な流れは、無料相談 → 課題整理 → 戦略設計 → 制作・導入 → 改善運用です。\n最初に目的や現状を整理し、必要な施策から優先順位をつけて進めます。詳しくは無料相談で具体的にご提案できます。", cta: true },
+      { id: "target", keywords: ["対象", "誰向け", "中小企業", "個人事業主", "スタートアップ"], answer: "ARAREは、中小企業、個人事業主、スタートアップ向けに、Web制作・LP制作・SNS運用・AI導入を支援しています。\n小さく始めたい場合も、成長に合わせて拡張する設計が可能です。詳しくは無料相談で具体的にご提案できます。", cta: true }
+    ];
+
+    (function () {
+      const STORAGE_MESSAGES = "arareChatMessages";
+      const STORAGE_OPEN = "arareChatOpen";
+      const initialMessage = "こんにちは。ARAREのAIアシスタントです。\nWeb制作、LP制作、SNS運用、AI導入、AI全自動化についてご案内できます。\n気になる内容を選ぶか、自由に質問してください。";
+      const fallbackAnswer = "詳しい内容は無料相談で状況を伺いながらご案内できます。\nWeb制作、LP制作、SNS運用、AI導入、AI全自動化など、気になることをもう少し具体的に教えてください。";
+
+      function ready(callback) {
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", callback, { once: true });
+        } else {
+          callback();
+        }
+      }
+
+      ready(function () {
+        const toggle = document.querySelector(".arare-chat-toggle");
+        const panel = document.querySelector(".arare-chat-panel");
+        const closeButton = document.querySelector(".arare-chat-close");
+        const messagesEl = document.querySelector(".arare-chat-messages");
+        const form = document.querySelector(".arare-chat-form");
+        const input = document.querySelector(".arare-chat-input");
+        const resetButton = document.querySelector(".arare-chat-reset");
+        const chips = document.querySelectorAll(".arare-chat-chip");
+        if (!toggle || !panel || !closeButton || !messagesEl || !form || !input || !resetButton) return;
+
+        let messages = loadMessages();
+        let typingEl = null;
+
+        function loadMessages() {
+          try {
+            const saved = window.localStorage.getItem(STORAGE_MESSAGES);
+            if (!saved) return [{ role: "bot", text: initialMessage, cta: false }];
+            const parsed = JSON.parse(saved);
+            if (!Array.isArray(parsed) || parsed.length === 0) return [{ role: "bot", text: initialMessage, cta: false }];
+            return parsed.filter(function (item) {
+              return item && (item.role === "bot" || item.role === "user") && typeof item.text === "string";
+            }).slice(-40);
+          } catch (error) {
+            return [{ role: "bot", text: initialMessage, cta: false }];
+          }
+        }
+
+        function saveMessages() {
+          try {
+            window.localStorage.setItem(STORAGE_MESSAGES, JSON.stringify(messages.slice(-40)));
+          } catch (error) {
+            return;
+          }
+        }
+
+        function saveOpenState(isOpen) {
+          try {
+            window.localStorage.setItem(STORAGE_OPEN, isOpen ? "true" : "false");
+          } catch (error) {
+            return;
+          }
+        }
+
+        function isPanelOpen() {
+          return panel.classList.contains("arare-chat-open");
+        }
+
+        function openPanel() {
+          panel.classList.add("arare-chat-open");
+          toggle.setAttribute("aria-expanded", "true");
+          toggle.setAttribute("aria-label", "AIチャットを閉じる");
+          saveOpenState(true);
+          window.setTimeout(function () {
+            input.focus({ preventScroll: true });
+          }, 80);
+          scrollMessages();
+        }
+
+        function closePanel() {
+          panel.classList.remove("arare-chat-open");
+          toggle.setAttribute("aria-expanded", "false");
+          toggle.setAttribute("aria-label", "AIチャットを開く");
+          saveOpenState(false);
+        }
+
+        function scrollMessages() {
+          messagesEl.scrollTop = messagesEl.scrollHeight;
+        }
+
+        function createMessageElement(message) {
+          const row = document.createElement("div");
+          row.className = "arare-chat-message";
+          row.classList.add(message.role === "user" ? "is-user" : "is-bot");
+
+          const bubble = document.createElement("div");
+          bubble.className = "arare-chat-bubble";
+          bubble.textContent = message.text;
+
+          if (message.role === "bot" && message.cta) {
+            const cta = document.createElement("a");
+            cta.className = "arare-chat-cta";
+            cta.href = "contact.html";
+            cta.textContent = "無料相談ページへ";
+            bubble.appendChild(cta);
+          }
+
+          row.appendChild(bubble);
+          return row;
+        }
+
+        function renderMessages() {
+          messagesEl.textContent = "";
+          messages.forEach(function (message) {
+            messagesEl.appendChild(createMessageElement(message));
+          });
+          scrollMessages();
+        }
+
+        function addMessage(role, text, cta) {
+          messages.push({ role: role, text: text, cta: Boolean(cta) });
+          messages = messages.slice(-40);
+          saveMessages();
+          renderMessages();
+        }
+
+        function showTyping() {
+          removeTyping();
+          typingEl = document.createElement("div");
+          typingEl.className = "arare-chat-message is-bot";
+          const bubble = document.createElement("div");
+          bubble.className = "arare-chat-bubble";
+          const dots = document.createElement("span");
+          dots.className = "arare-chat-typing";
+          for (let i = 0; i < 3; i += 1) {
+            dots.appendChild(document.createElement("span"));
+          }
+          bubble.appendChild(dots);
+          typingEl.appendChild(bubble);
+          messagesEl.appendChild(typingEl);
+          scrollMessages();
+        }
+
+        function removeTyping() {
+          if (typingEl && typingEl.parentNode) {
+            typingEl.parentNode.removeChild(typingEl);
+          }
+          typingEl = null;
+        }
+
+        function normalize(text) {
+          return text.toLowerCase().replace(/\s+/g, "");
+        }
+
+        function getBotResponse(question) {
+          const normalized = normalize(question);
+          const scored = ARARE_CHAT_KNOWLEDGE.map(function (entry, index) {
+            const score = entry.keywords.reduce(function (total, keyword) {
+              return normalized.includes(normalize(keyword)) ? total + keyword.length : total;
+            }, 0);
+            return { entry: entry, score: score, index: index };
+          }).filter(function (item) {
+            return item.score > 0;
+          }).sort(function (a, b) {
+            if (b.score !== a.score) return b.score - a.score;
+            return a.index - b.index;
+          });
+
+          if (scored.length === 0) return { text: fallbackAnswer, cta: true };
+          return { text: scored[0].entry.answer, cta: scored[0].entry.cta };
+        }
+
+        function submitQuestion(question) {
+          const text = question.trim();
+          if (!text) return;
+          addMessage("user", text, false);
+          input.value = "";
+          showTyping();
+
+          window.setTimeout(function () {
+            const response = getBotResponse(text);
+            removeTyping();
+            addMessage("bot", response.text, response.cta);
+          }, 520);
+        }
+
+        toggle.addEventListener("click", function () {
+          if (isPanelOpen()) closePanel();
+          else openPanel();
+        });
+
+        closeButton.addEventListener("click", closePanel);
+
+        document.addEventListener("keydown", function (event) {
+          if (event.key === "Escape" && isPanelOpen()) closePanel();
+        });
+
+        document.addEventListener("pointerdown", function (event) {
+          if (!isPanelOpen()) return;
+          const target = event.target;
+          if (panel.contains(target) || toggle.contains(target)) return;
+          closePanel();
+        });
+
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+          submitQuestion(input.value);
+        });
+
+        chips.forEach(function (chip) {
+          chip.addEventListener("click", function () {
+            const question = chip.getAttribute("data-chat-question") || chip.textContent || "";
+            submitQuestion(question);
+          });
+        });
+
+        resetButton.addEventListener("click", function () {
+          messages = [{ role: "bot", text: initialMessage, cta: false }];
+          saveMessages();
+          renderMessages();
+          input.focus({ preventScroll: true });
+        });
+
+        renderMessages();
+
+        try {
+          if (window.localStorage.getItem(STORAGE_OPEN) === "true") openPanel();
+        } catch (error) {
+          return;
+        }
+      });
+    })();
+  </script>
+
+<!-- ARARE demo site version 1.0 -->
 </body>
 </html>
