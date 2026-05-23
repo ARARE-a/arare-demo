@@ -896,6 +896,499 @@
         padding: 18px;
       }
     }
+  
+    /* ===== Mobile UI optimization (iPhone) ===== */
+    @media (max-width: 768px) {
+      html,
+      body,
+      .arare-site {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      img,
+      svg,
+      canvas,
+      video {
+        max-width: 100%;
+        height: auto;
+      }
+
+      .arare-container,
+      .arare-header__inner,
+      .arare-footer__inner,
+      .arare-sub-hero__inner,
+      .arare-hero__inner {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+      }
+
+      .arare-section {
+        padding-block: clamp(54px, 14vw, 72px);
+        overflow: hidden;
+      }
+
+      .arare-section-header {
+        max-width: 100%;
+        margin-bottom: clamp(28px, 8vw, 36px);
+      }
+
+      .arare-hero,
+      .arare-sub-hero {
+        overflow: hidden;
+      }
+
+      .arare-hero {
+        padding-block: 76px 82px;
+      }
+
+      .arare-sub-hero {
+        padding-block: 104px 62px;
+      }
+
+      .arare-hero::before,
+      .arare-hero::after,
+      .arare-sub-hero::before,
+      .arare-sub-hero::after {
+        max-width: 100%;
+        opacity: 0.42;
+        pointer-events: none;
+      }
+
+      .arare-hero::after {
+        width: min(420px, 112vw);
+        height: min(420px, 112vw);
+        right: -46%;
+      }
+
+      .arare-glow-orb {
+        width: min(320px, 86vw);
+        max-width: 86vw;
+      }
+
+      .arare-title,
+      .arare-hero__title,
+      .arare-sub-hero__title {
+        max-width: 100%;
+        font-size: clamp(1.9rem, 9.2vw, 2.65rem);
+        line-height: 1.25;
+        overflow-wrap: break-word;
+        word-break: keep-all;
+      }
+
+      .arare-lead,
+      .arare-hero__lead {
+        max-width: 100%;
+        font-size: clamp(0.9rem, 3.9vw, 0.98rem);
+        line-height: 1.9;
+      }
+
+      .arare-hero__actions,
+      .arare-sub-hero__actions {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        width: 100%;
+      }
+
+      .arare-btn,
+      a.arare-btn,
+      button.arare-btn {
+        width: 100%;
+        max-width: 100%;
+        min-height: 50px;
+        justify-content: center;
+        padding-inline: 18px;
+        text-align: center;
+        white-space: nowrap;
+      }
+
+      .arare-card,
+      .arare-dashboard,
+      .arare-cta-box,
+      .arare-cta-panel,
+      .arare-support-service,
+      .arare-support-reason,
+      .arare-support-price,
+      .arare-support-problem,
+      .arare-contact-service,
+      .arare-contact-trust,
+      .arare-contact-flow__step,
+      .arare-contact-form-card {
+        max-width: 100%;
+        min-width: 0;
+        padding: clamp(18px, 5.8vw, 24px);
+        border-radius: 20px;
+      }
+
+      .arare-grid,
+      .arare-grid-2,
+      .arare-grid-3,
+      .arare-grid-4,
+      .arare-cases-grid,
+      .arare-column-grid,
+      .arare-support-grid,
+      .arare-support-flow,
+      .arare-contact-grid,
+      .arare-contact-flow,
+      .arare-contact-form__grid {
+        grid-template-columns: 1fr !important;
+        gap: 18px;
+      }
+
+      .arare-filter,
+      .arare-column-filter {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 8px;
+        max-width: 100%;
+      }
+
+      .arare-filter__button,
+      .arare-column-filter__button {
+        flex: 1 1 calc(50% - 8px);
+        min-width: 0;
+        max-width: 100%;
+        padding: 10px 12px;
+        font-size: 0.78rem;
+        line-height: 1.4;
+        white-space: nowrap;
+      }
+
+      .arare-card__icon,
+      .arare-support-icon,
+      .arare-contact-icon {
+        flex: 0 0 auto;
+      }
+
+      .arare-pricing-card,
+      .arare-pricing-card--featured,
+      .arare-pricing-card--featured:hover,
+      .arare-support-price,
+      .arare-support-price--featured {
+        min-width: 0;
+        transform: none !important;
+      }
+
+      .arare-pricing-badge,
+      .arare-support-price__badge {
+        position: static;
+        max-width: 100%;
+        align-self: flex-start;
+        white-space: nowrap;
+      }
+
+      .arare-pricing-price,
+      .arare-support-price__value {
+        max-width: 100%;
+        font-size: clamp(1.8rem, 9vw, 2.45rem);
+        line-height: 1.1;
+        letter-spacing: 0;
+        white-space: nowrap;
+      }
+
+      .arare-pricing-card .arare-btn,
+      .arare-support-price .arare-btn,
+      .arare-contact-submit {
+        width: 100%;
+      }
+
+      .arare-faq-question,
+      .arare-support-faq__button,
+      .arare-contact-faq__button {
+        min-width: 0;
+        align-items: flex-start;
+        gap: 10px;
+        overflow-wrap: break-word;
+      }
+
+      .arare-faq-icon,
+      .arare-support-faq__icon,
+      .arare-contact-faq__icon {
+        flex: 0 0 auto;
+        margin-top: 2px;
+      }
+
+      .arare-contact-faq__question,
+      .arare-support-faq__question {
+        min-width: 0;
+      }
+
+      .arare-faq-answer p,
+      .arare-support-faq__answer p,
+      .arare-contact-faq__answer p {
+        font-size: 0.9rem;
+        line-height: 1.9;
+      }
+
+      .arare-contact-form,
+      .arare-contact-field,
+      .arare-contact-input,
+      .arare-contact-select,
+      .arare-contact-textarea,
+      .arare-input,
+      .arare-textarea {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+      }
+
+      .arare-contact-input,
+      .arare-contact-select,
+      .arare-contact-textarea,
+      .arare-input,
+      .arare-textarea {
+        min-height: 52px;
+        padding-inline: 14px;
+        font-size: 16px;
+      }
+
+      .arare-contact-textarea,
+      .arare-textarea {
+        min-height: 150px;
+      }
+
+      .arare-footer {
+        overflow: hidden;
+      }
+
+      .arare-footer__nav {
+        display: grid;
+        gap: 10px;
+      }
+
+      .arare-footer__nav a {
+        min-height: 32px;
+        overflow-wrap: break-word;
+      }
+
+      .arare-footer__social {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .arare-footer__social a,
+      .arare-footer__social span {
+        flex: 0 0 42px;
+        width: 42px;
+        height: 42px;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .arare-container {
+        padding-inline: 14px;
+      }
+
+      .arare-section {
+        padding-block: 52px;
+      }
+
+      .arare-hero {
+        padding-block: 66px 76px;
+      }
+
+      .arare-sub-hero {
+        padding-block: 96px 56px;
+      }
+
+      .arare-title,
+      .arare-hero__title,
+      .arare-sub-hero__title {
+        font-size: clamp(1.78rem, 9.6vw, 2.35rem);
+      }
+
+      .arare-card,
+      .arare-dashboard,
+      .arare-cta-box,
+      .arare-cta-panel,
+      .arare-support-service,
+      .arare-support-reason,
+      .arare-support-price,
+      .arare-support-problem,
+      .arare-contact-service,
+      .arare-contact-trust,
+      .arare-contact-flow__step,
+      .arare-contact-form-card {
+        padding: 18px;
+        border-radius: 18px;
+      }
+
+      .arare-filter__button,
+      .arare-column-filter__button {
+        flex-basis: 100%;
+      }
+
+      .arare-pricing-price,
+      .arare-support-price__value {
+        font-size: clamp(1.58rem, 8.4vw, 2.05rem);
+      }
+
+      .arare-faq-question,
+      .arare-support-faq__button,
+      .arare-contact-faq__button {
+        font-size: 0.9rem;
+      }
+    }
+  
+    /* ===== Mobile Japanese typography optimization ===== */
+    @media (max-width: 768px) {
+      html {
+        line-break: strict;
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+      }
+
+      body {
+        line-break: strict;
+        word-break: normal;
+        overflow-wrap: break-word;
+        hyphens: none;
+      }
+
+      .arare-title,
+      .arare-hero__title,
+      .arare-sub-hero__title,
+      .arare-section-title,
+      .arare-cta-box h2,
+      .arare-cta-panel h2,
+      .arare-card__title,
+      .arare-column-card__title,
+      .arare-case-card__industry,
+      .arare-support-service h3,
+      .arare-support-reason h3,
+      .arare-support-flow__step h3,
+      .arare-support-price h3,
+      .arare-contact-service h3,
+      .arare-contact-trust h3,
+      .step-title {
+        line-break: strict;
+        word-break: keep-all;
+        overflow-wrap: break-word;
+        text-wrap: balance;
+        hyphens: none;
+        letter-spacing: 0;
+      }
+
+      .arare-lead,
+      .arare-hero__lead,
+      .arare-card__text,
+      .arare-column-card__excerpt,
+      .arare-case-card__comment,
+      .arare-support-problem p,
+      .arare-support-service p,
+      .arare-support-reason p,
+      .arare-support-flow__step p,
+      .arare-support-price p,
+      .arare-contact-service p,
+      .arare-contact-trust p,
+      .arare-contact-flow__step p,
+      .arare-footer__text {
+        line-break: strict;
+        word-break: normal;
+        overflow-wrap: break-word;
+        hyphens: none;
+      }
+
+      .arare-btn,
+      a.arare-btn,
+      button.arare-btn,
+      .arare-support-service__link,
+      .arare-column-link,
+      .arare-case-link,
+      .arare-contact-submit {
+        line-height: 1.35;
+        word-break: keep-all;
+        overflow-wrap: normal;
+        white-space: nowrap;
+        hyphens: none;
+      }
+
+      .arare-filter__button,
+      .arare-column-filter__button,
+      .arare-column-tag,
+      .arare-case-tag,
+      .arare-case-service,
+      .arare-case-period,
+      .arare-support-price__badge,
+      .arare-column-date {
+        word-break: keep-all;
+        overflow-wrap: normal;
+        white-space: nowrap;
+        hyphens: none;
+      }
+
+      .arare-faq-question,
+      .arare-support-faq__button,
+      .arare-contact-faq__button,
+      .arare-support-faq__question,
+      .arare-contact-faq__question {
+        line-break: strict;
+        word-break: keep-all;
+        overflow-wrap: break-word;
+        text-wrap: balance;
+        hyphens: none;
+      }
+
+      .arare-case-card__meta,
+      .arare-case-card__bottom,
+      .arare-column-card__meta {
+        flex-wrap: wrap;
+        row-gap: 8px;
+      }
+    }
+
+    @supports (word-break: auto-phrase) {
+      @media (max-width: 768px) {
+        .arare-title,
+        .arare-hero__title,
+        .arare-sub-hero__title,
+        .arare-section-title,
+      .arare-cta-box h2,
+      .arare-cta-panel h2,
+        .arare-card__title,
+        .arare-column-card__title,
+        .arare-case-card__industry,
+        .arare-faq-question,
+        .arare-support-faq__question,
+        .arare-contact-faq__question {
+          word-break: auto-phrase;
+        }
+      }
+    }
+
+    @media (max-width: 340px) {
+      .arare-title,
+      .arare-hero__title,
+      .arare-sub-hero__title {
+        font-size: clamp(1.62rem, 9.4vw, 2.05rem);
+        line-height: 1.28;
+      }
+
+      .arare-btn,
+      a.arare-btn,
+      button.arare-btn,
+      .arare-contact-submit {
+        min-height: 48px;
+        padding-inline: 14px;
+        font-size: 0.86rem;
+      }
+
+      .arare-filter__button,
+      .arare-column-filter__button {
+        flex-basis: 100%;
+      }
+    }
   </style>
 </head>
 
@@ -946,7 +1439,7 @@
         <div class="arare-container arare-sub-hero__inner">
           <div class="arare-sub-hero__content" data-aos="fade-up">
             <p class="arare-eyebrow">BUSINESS GROWTH</p>
-            <h1 class="arare-title arare-sub-hero__title" id="sell-hero-title">事業の価値を高める、WebとAIの成長支援。</h1>
+            <h1 class="arare-title arare-sub-hero__title" id="sell-hero-title">事業の価値を高める、<br>WebとAIの成長支援。</h1>
             <p class="arare-lead">Web集客、導線改善、AI活用を通じて、事業の可能性を引き出します。</p>
             <div class="arare-sub-hero__actions">
               <a class="arare-btn arare-btn-primary" href="contact.html">無料で相談する</a>
