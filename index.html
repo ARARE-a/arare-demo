@@ -1,0 +1,2105 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ARAREは、Web制作・SNS運用・AI導入・自動化まで、事業成長に必要な仕組みを一気通貫で支援するWebパートナーです。">
+  <meta name="format-detection" content="telephone=no">
+  <title>ARARE | AIとデザインでWeb集客を加速</title>
+
+  
+  <meta property="og:site_name" content="ARARE">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ARARE | AIとデザインでWeb集客を加速">
+  <meta property="og:description" content="ARAREは、Web制作・SNS運用・AI導入・自動化まで、事業成長に必要な仕組みを一気通貫で支援するWebパートナーです。">
+  <meta property="og:url" content="index.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="ARARE | AIとデザインでWeb集客を加速">
+  <meta name="twitter:description" content="ARAREは、Web制作・SNS運用・AI導入・自動化まで、事業成長に必要な仕組みを一気通貫で支援するWebパートナーです。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --color-bg: #0B0D14;
+      --color-bg-soft: #111827;
+      --color-bg-card: rgba(255,255,255,0.04);
+
+      --color-text: #FFFFFF;
+      --color-muted: #B3B7C9;
+
+      --color-gold: #F5C77A;
+      --color-gold-light: #FFE6A3;
+
+      --color-purple: #6C63FF;
+      --color-cyan: #00D4FF;
+
+      --color-border: rgba(255,255,255,0.12);
+
+      --container: 1200px;
+
+      --radius-lg: 28px;
+      --radius-md: 20px;
+
+      --transition: 0.3s ease;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      text-size-adjust: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      margin: 0;
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-family: "Noto Sans JP", "Inter", sans-serif;
+      line-height: 1.8;
+      overflow-x: hidden;
+      overflow-wrap: break-word;
+    }
+
+    body.arare-is-ready {
+      opacity: 1;
+    }
+
+    img,
+    svg {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    .arare-site {
+      min-height: 100vh;
+      width: 100%;
+      overflow-x: clip;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(245, 199, 122, 0.08), transparent 34rem),
+        var(--color-bg);
+    }
+
+    .arare-container {
+      width: 100%;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding-inline: 24px;
+    }
+
+    .arare-section {
+      padding-block: 112px;
+      position: relative;
+    }
+
+    .arare-section-header {
+      position: relative;
+      max-width: 820px;
+      margin: 0 auto 58px;
+      text-align: center;
+    }
+
+    .arare-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: 0 0 16px;
+      color: var(--color-gold);
+      font-family: "Inter", sans-serif;
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .arare-section-header .arare-eyebrow::before,
+    .arare-section-header .arare-eyebrow::after {
+      content: "";
+      width: 34px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(245, 199, 122, 0.86));
+    }
+
+    .arare-section-header .arare-eyebrow::after {
+      background: linear-gradient(90deg, rgba(245, 199, 122, 0.86), transparent);
+    }
+
+    .arare-title {
+      margin: 0;
+      color: var(--color-text);
+      font-family: "Playfair Display", "Noto Sans JP", serif;
+      font-size: clamp(2.35rem, 5vw, 4.6rem);
+      line-height: 1.12;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    .arare-lead {
+      max-width: 680px;
+      margin: 22px 0 0;
+      color: var(--color-muted);
+      font-size: 1rem;
+      line-height: 2;
+    }
+
+    .arare-section-header .arare-lead {
+      margin-inline: auto;
+    }
+
+    .arare-btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 13px 28px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      font-weight: 700;
+      line-height: 1.4;
+      letter-spacing: 0;
+      transition:
+        color var(--transition),
+        background var(--transition),
+        box-shadow var(--transition),
+        border-color var(--transition),
+        transform var(--transition);
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .arare-btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .arare-btn:focus-visible {
+      outline: 2px solid var(--color-gold-light);
+      outline-offset: 4px;
+    }
+
+    .arare-btn-primary {
+      background: linear-gradient(135deg, var(--color-gold), var(--color-gold-light));
+      color: #14100A;
+      border-color: rgba(245, 199, 122, 0.54);
+      box-shadow:
+        0 16px 36px rgba(245, 199, 122, 0.16),
+        inset 0 1px 0 rgba(255, 255, 255, 0.45);
+    }
+
+    .arare-btn-primary:hover {
+      box-shadow:
+        0 20px 44px rgba(245, 199, 122, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    }
+
+    .arare-btn-secondary {
+      background: rgba(255, 255, 255, 0.015);
+      color: var(--color-text);
+      border-color: rgba(245, 199, 122, 0.48);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    }
+
+    .arare-btn-secondary:hover {
+      background: rgba(245, 199, 122, 0.09);
+      border-color: rgba(245, 199, 122, 0.7);
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.24);
+    }
+
+    .arare-card {
+      position: relative;
+      overflow: hidden;
+      padding: 34px;
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: max(24px, var(--radius-md));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(20px);
+      transition:
+        border-color var(--transition),
+        box-shadow var(--transition),
+        transform var(--transition),
+        background var(--transition);
+    }
+
+    .arare-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 24px;
+      right: 24px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(245, 199, 122, 0.72), transparent);
+      opacity: 0.72;
+      pointer-events: none;
+    }
+
+    .arare-card:hover {
+      background: rgba(255, 255, 255, 0.055);
+      border-color: rgba(245, 199, 122, 0.24);
+      box-shadow:
+        0 24px 60px rgba(0, 0, 0, 0.26),
+        0 0 44px rgba(245, 199, 122, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      transform: translateY(-6px);
+    }
+
+    .arare-glow-orb {
+      position: absolute;
+      width: min(42vw, 520px);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(245, 199, 122, 0.12), transparent 68%);
+      filter: blur(24px);
+      opacity: 0.55;
+      pointer-events: none;
+    }
+
+    .arare-subtle-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 76%, transparent);
+      opacity: 0.22;
+      pointer-events: none;
+    }
+
+    .arare-gold-line {
+      display: block;
+      width: 72px;
+      height: 1px;
+      margin: 24px auto 0;
+      background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+    }
+
+    .arare-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11, 13, 20, 0.64);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(20px);
+      transition:
+        background var(--transition),
+        border-color var(--transition),
+        box-shadow var(--transition);
+    }
+
+    .arare-header.arare-header--scrolled {
+      background: rgba(8, 10, 16, 0.94);
+      border-bottom-color: rgba(245, 199, 122, 0.16);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+    }
+
+    .arare-header__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 76px;
+      gap: 24px;
+    }
+
+    .arare-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: "Inter", sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+    }
+
+    .arare-logo__mark {
+      position: relative;
+      width: 26px;
+      height: 26px;
+      border: 1px solid rgba(245, 199, 122, 0.68);
+      border-radius: 50%;
+      background:
+        linear-gradient(145deg, rgba(245, 199, 122, 0.22), rgba(255, 255, 255, 0.02)),
+        rgba(255, 255, 255, 0.03);
+      box-shadow: inset 0 0 18px rgba(245, 199, 122, 0.08);
+    }
+
+    .arare-logo__mark::before {
+      content: "";
+      position: absolute;
+      inset: 6px;
+      border-top: 1px solid var(--color-gold-light);
+      border-right: 1px solid rgba(245, 199, 122, 0.58);
+      transform: rotate(45deg);
+    }
+
+    .arare-nav {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      color: var(--color-muted);
+      font-family: "Noto Sans JP", "Inter", sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .arare-nav a {
+      transition: color var(--transition);
+    }
+
+    .arare-nav a:hover,
+    .arare-nav a.is-active,
+    .arare-nav a.arare-nav-active {
+      color: var(--color-gold-light);
+    }
+
+    .arare-header__actions {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .arare-header .arare-btn {
+      min-height: 44px;
+      padding: 9px 18px;
+      font-size: 0.88rem;
+    }
+
+    .arare-menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border: 1px solid var(--color-border);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--color-text);
+      cursor: pointer;
+      transition:
+        background var(--transition),
+        border-color var(--transition);
+    }
+
+    .arare-menu-toggle span {
+      display: block;
+      width: 17px;
+      height: 1px;
+      margin: 5px auto;
+      background: currentColor;
+      transition:
+        transform var(--transition),
+        opacity var(--transition);
+    }
+
+    .arare-menu-toggle[aria-expanded="true"] span:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    .arare-menu-toggle[aria-expanded="true"] span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .arare-menu-toggle[aria-expanded="true"] span:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+
+    .arare-mobile-menu {
+      display: none;
+    }
+
+    .arare-hero {
+      position: relative;
+      min-height: calc(100vh - 76px);
+      display: grid;
+      align-items: center;
+      padding-block: 116px 88px;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(11, 13, 20, 0.84), rgba(17, 24, 39, 0.92) 46%, rgba(11, 13, 20, 0.96)),
+        radial-gradient(circle at 74% 30%, rgba(245, 199, 122, 0.12), transparent 28rem),
+        radial-gradient(circle at 16% 70%, rgba(108, 99, 255, 0.08), transparent 24rem);
+    }
+
+    .arare-hero::before,
+    .arare-hero::after {
+      content: "";
+      position: absolute;
+      pointer-events: none;
+    }
+
+    .arare-hero::before {
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+        radial-gradient(circle, rgba(245, 199, 122, 0.26) 1px, transparent 1px);
+      background-size: 72px 72px, 72px 72px, 92px 92px;
+      mask-image: linear-gradient(to bottom, transparent, #000 16%, #000 72%, transparent);
+      opacity: 0.28;
+    }
+
+    .arare-hero::after {
+      width: min(66vw, 820px);
+      height: min(66vw, 820px);
+      right: -18%;
+      top: 2%;
+      border: 1px solid rgba(245, 199, 122, 0.16);
+      border-radius: 50%;
+      background:
+        conic-gradient(from 210deg, transparent 0 56%, rgba(245, 199, 122, 0.16), transparent 74% 100%);
+      filter: blur(0.2px);
+      opacity: 0.78;
+    }
+
+    .arare-hero__inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.04fr) minmax(360px, 0.86fr);
+      align-items: center;
+      gap: 72px;
+    }
+
+    .arare-hero__content {
+      max-width: 760px;
+    }
+
+    .arare-hero__title {
+      font-size: clamp(3rem, 7vw, 6.2rem);
+      letter-spacing: 0;
+    }
+
+    .arare-hero__accent {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--color-gold-light), var(--color-gold) 44%, #B9863D);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .arare-hero__lead {
+      max-width: 650px;
+      font-size: clamp(1rem, 2vw, 1.16rem);
+    }
+
+    .arare-hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 36px;
+    }
+
+    .arare-hero__visual {
+      position: relative;
+      min-height: 500px;
+      display: grid;
+      place-items: center;
+    }
+
+    .arare-hero__visual::before {
+      content: "";
+      position: absolute;
+      width: 82%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, rgba(245, 199, 122, 0.12), transparent 64%),
+        radial-gradient(circle at 70% 24%, rgba(0, 212, 255, 0.08), transparent 34%);
+      filter: blur(12px);
+    }
+
+    .arare-dashboard {
+      position: relative;
+      z-index: 1;
+      width: min(100%, 460px);
+      padding: 26px;
+      border: 1px solid rgba(245, 199, 122, 0.22);
+      border-radius: var(--radius-lg);
+      background:
+        linear-gradient(150deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.035)),
+        rgba(11, 13, 20, 0.62);
+      box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.34),
+        inset 0 1px 0 rgba(255, 255, 255, 0.14);
+      backdrop-filter: blur(24px);
+    }
+
+    .arare-dashboard::before {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border-top: 1px solid rgba(245, 199, 122, 0.34);
+      pointer-events: none;
+    }
+
+    .arare-dashboard__top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 30px;
+    }
+
+    .arare-dashboard__label {
+      margin: 0 0 6px;
+      color: var(--color-muted);
+      font-family: "Inter", sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .arare-dashboard__score {
+      margin: 0;
+      font-family: "Inter", sans-serif;
+      font-size: clamp(2.8rem, 7vw, 4.8rem);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .arare-dashboard__badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 6px 12px;
+      border: 1px solid rgba(245, 199, 122, 0.26);
+      border-radius: 999px;
+      color: var(--color-gold-light);
+      background: rgba(245, 199, 122, 0.08);
+      font-size: 0.78rem;
+      white-space: nowrap;
+    }
+
+    .arare-dashboard__chart {
+      display: flex;
+      align-items: flex-end;
+      gap: 9px;
+      height: 118px;
+      padding: 18px;
+      margin-bottom: 22px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-md);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.018)),
+        repeating-linear-gradient(to top, rgba(255, 255, 255, 0.05) 0 1px, transparent 1px 28px);
+    }
+
+    .arare-dashboard__bar {
+      flex: 1;
+      min-width: 0;
+      border-radius: 999px 999px 5px 5px;
+      background: linear-gradient(180deg, var(--color-gold-light), rgba(245, 199, 122, 0.34));
+      opacity: 0.9;
+    }
+
+    .arare-dashboard__bar:nth-child(1) {
+      height: 42%;
+    }
+
+    .arare-dashboard__bar:nth-child(2) {
+      height: 56%;
+    }
+
+    .arare-dashboard__bar:nth-child(3) {
+      height: 48%;
+    }
+
+    .arare-dashboard__bar:nth-child(4) {
+      height: 72%;
+    }
+
+    .arare-dashboard__bar:nth-child(5) {
+      height: 66%;
+    }
+
+    .arare-dashboard__bar:nth-child(6) {
+      height: 92%;
+    }
+
+    .arare-dashboard__items {
+      display: grid;
+      gap: 12px;
+    }
+
+    .arare-dashboard__item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--color-muted);
+      font-size: 0.94rem;
+    }
+
+    .arare-dashboard__item:last-child {
+      border-bottom: 0;
+    }
+
+    .arare-dashboard__status {
+      color: var(--color-gold-light);
+      font-family: "Inter", sans-serif;
+      font-size: 0.82rem;
+      white-space: nowrap;
+    }
+
+    .arare-scroll-indicator {
+      position: absolute;
+      z-index: 2;
+      left: 50%;
+      bottom: 28px;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255, 255, 255, 0.54);
+      font-family: "Inter", sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      transform: translateX(-50%);
+    }
+
+    .arare-scroll-indicator::after {
+      content: "";
+      width: 1px;
+      height: 42px;
+      background: linear-gradient(to bottom, var(--color-gold), transparent);
+    }
+
+    .arare-section--soft {
+      background: var(--color-bg-soft);
+    }
+
+    .arare-grid,
+    .arare-grid-2,
+    .arare-grid-3,
+    .arare-grid-4 {
+      display: grid;
+      gap: 28px;
+      width: 100%;
+      min-width: 0;
+    }
+
+    .arare-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .arare-grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .arare-grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .arare-grid-4 {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .arare-placeholder {
+      min-height: 180px;
+      padding: clamp(24px, 4vw, 36px);
+    }
+
+    .arare-feature-card,
+    .arare-service-card {
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .arare-card__icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 54px;
+      height: 54px;
+      border: 1px solid rgba(245, 199, 122, 0.28);
+      border-radius: 18px;
+      color: var(--color-gold-light);
+      background:
+        linear-gradient(145deg, rgba(245, 199, 122, 0.12), rgba(255, 255, 255, 0.02)),
+        rgba(255, 255, 255, 0.03);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+
+    .arare-card__icon svg {
+      width: 27px;
+      height: 27px;
+      stroke: currentColor;
+      stroke-width: 1.7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+
+    .arare-card__number {
+      display: inline-flex;
+      align-items: center;
+      align-self: flex-start;
+      min-height: 30px;
+      padding: 4px 11px;
+      border: 1px solid rgba(245, 199, 122, 0.2);
+      border-radius: 999px;
+      color: var(--color-gold-light);
+      background: rgba(245, 199, 122, 0.07);
+      font-family: "Inter", sans-serif;
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+    }
+
+    .arare-card__body {
+      display: grid;
+      gap: 12px;
+    }
+
+    .arare-card__title {
+      margin: 0;
+      color: var(--color-text);
+      font-size: clamp(1.2rem, 2vw, 1.45rem);
+      line-height: 1.45;
+      letter-spacing: 0;
+    }
+
+    .arare-card__text {
+      margin: 0;
+      color: var(--color-muted);
+      font-size: 0.96rem;
+      line-height: 2;
+    }
+
+    .arare-service-card {
+      gap: 22px;
+    }
+
+    .arare-service-card .arare-card__body {
+      flex: 1;
+    }
+
+    .arare-service-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      align-self: flex-start;
+      margin-top: auto;
+      color: var(--color-gold-light);
+      font-size: 0.92rem;
+      font-weight: 700;
+      transition:
+        color var(--transition),
+        transform var(--transition);
+    }
+
+    .arare-service-link::after {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: currentColor;
+      transition: width var(--transition);
+    }
+
+    .arare-service-link:hover {
+      color: var(--color-gold);
+      transform: translateX(3px);
+    }
+
+    .arare-service-link:hover::after {
+      width: 38px;
+    }
+
+    .arare-service-link:focus-visible {
+      outline: 2px solid var(--color-gold-light);
+      outline-offset: 5px;
+      border-radius: 999px;
+    }
+
+    .arare-stats-card {
+      min-height: 210px;
+      display: grid;
+      align-content: center;
+      text-align: center;
+    }
+
+    .arare-stats-value {
+      display: inline-flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 4px;
+      margin: 0 0 14px;
+      color: var(--color-gold-light);
+      font-family: "Inter", sans-serif;
+      font-size: clamp(2.6rem, 5vw, 4.6rem);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .arare-stats-unit {
+      color: var(--color-gold);
+      font-size: 0.46em;
+      font-weight: 700;
+    }
+
+    .arare-stats-label {
+      margin: 0;
+      color: var(--color-muted);
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+
+    .arare-work-card {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      min-height: 100%;
+    }
+
+    .arare-work-mock {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 16 / 10;
+      border: 1px solid rgba(245, 199, 122, 0.16);
+      border-radius: 18px;
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)),
+        #0A0D15;
+      transition: transform var(--transition);
+    }
+
+    .arare-work-card:hover .arare-work-mock {
+      transform: scale(1.025);
+    }
+
+    .arare-work-browser {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      height: 34px;
+      padding-inline: 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    .arare-work-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(245, 199, 122, 0.42);
+    }
+
+    .arare-work-dot:nth-child(2) {
+      background: rgba(108, 99, 255, 0.38);
+    }
+
+    .arare-work-dot:nth-child(3) {
+      background: rgba(0, 212, 255, 0.34);
+    }
+
+    .arare-work-screen {
+      position: relative;
+      height: calc(100% - 34px);
+      padding: 18px;
+      background:
+        radial-gradient(circle at 76% 18%, rgba(245, 199, 122, 0.13), transparent 30%),
+        radial-gradient(circle at 20% 80%, rgba(108, 99, 255, 0.08), transparent 35%),
+        linear-gradient(135deg, rgba(17, 24, 39, 0.96), rgba(11, 13, 20, 0.98));
+    }
+
+    .arare-work-line {
+      display: block;
+      height: 7px;
+      margin-bottom: 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .arare-work-line--gold {
+      width: 34%;
+      background: linear-gradient(90deg, var(--color-gold), rgba(245, 199, 122, 0.22));
+    }
+
+    .arare-work-line--wide {
+      width: 72%;
+    }
+
+    .arare-work-line--short {
+      width: 48%;
+    }
+
+    .arare-work-chart {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+      height: 58px;
+    }
+
+    .arare-work-chart span {
+      flex: 1;
+      border-radius: 999px 999px 4px 4px;
+      background: linear-gradient(180deg, rgba(245, 199, 122, 0.78), rgba(245, 199, 122, 0.16));
+    }
+
+    .arare-work-chart span:nth-child(1) {
+      height: 38%;
+    }
+
+    .arare-work-chart span:nth-child(2) {
+      height: 64%;
+      background: linear-gradient(180deg, rgba(108, 99, 255, 0.46), rgba(108, 99, 255, 0.12));
+    }
+
+    .arare-work-chart span:nth-child(3) {
+      height: 52%;
+    }
+
+    .arare-work-chart span:nth-child(4) {
+      height: 82%;
+      background: linear-gradient(180deg, rgba(0, 212, 255, 0.36), rgba(0, 212, 255, 0.08));
+    }
+
+    .arare-work-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .arare-work-tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 5px 11px;
+      border: 1px solid rgba(245, 199, 122, 0.24);
+      border-radius: 999px;
+      color: var(--color-gold-light);
+      background: rgba(245, 199, 122, 0.07);
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .arare-work-text {
+      margin: 0;
+      color: var(--color-muted);
+      font-size: 0.96rem;
+      line-height: 2;
+    }
+
+    .arare-pricing-card {
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .arare-pricing-card--featured {
+      border-color: rgba(245, 199, 122, 0.52);
+      box-shadow:
+        0 26px 70px rgba(0, 0, 0, 0.3),
+        0 0 54px rgba(245, 199, 122, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+      transform: translateY(-16px);
+    }
+
+    .arare-pricing-card--featured:hover {
+      transform: translateY(-22px);
+    }
+
+    .arare-pricing-badge {
+      display: inline-flex;
+      align-items: center;
+      align-self: flex-start;
+      min-height: 30px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      color: #14100A;
+      background: linear-gradient(135deg, var(--color-gold), var(--color-gold-light));
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+
+    .arare-pricing-name {
+      margin: 0;
+      color: var(--color-text);
+      font-size: clamp(1.35rem, 2vw, 1.6rem);
+      line-height: 1.4;
+    }
+
+    .arare-pricing-price {
+      margin: 0;
+      color: var(--color-gold-light);
+      font-family: "Inter", sans-serif;
+      font-size: clamp(2.5rem, 4.4vw, 4rem);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .arare-pricing-desc {
+      margin: 0;
+      color: var(--color-muted);
+      font-size: 0.96rem;
+      line-height: 2;
+    }
+
+    .arare-pricing-list {
+      display: grid;
+      gap: 12px;
+      padding: 0;
+      margin: 2px 0 0;
+      list-style: none;
+    }
+
+    .arare-pricing-list li {
+      position: relative;
+      padding-left: 30px;
+      color: var(--color-muted);
+      font-size: 0.94rem;
+      line-height: 1.8;
+    }
+
+    .arare-pricing-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.64em;
+      width: 16px;
+      height: 16px;
+      border: 1px solid rgba(245, 199, 122, 0.5);
+      border-radius: 50%;
+      background: rgba(245, 199, 122, 0.08);
+    }
+
+    .arare-pricing-list li::after {
+      content: "";
+      position: absolute;
+      left: 5px;
+      top: calc(0.64em + 4px);
+      width: 6px;
+      height: 3px;
+      border-left: 1.5px solid var(--color-gold-light);
+      border-bottom: 1.5px solid var(--color-gold-light);
+      transform: rotate(-45deg);
+    }
+
+    .arare-pricing-card .arare-btn {
+      width: 100%;
+      margin-top: auto;
+    }
+
+    .arare-pricing-note {
+      margin: 28px 0 0;
+      color: rgba(179, 183, 201, 0.72);
+      font-size: 0.84rem;
+      line-height: 1.8;
+      text-align: center;
+    }
+
+    .arare-faq-list {
+      max-width: 920px;
+      margin: 0 auto;
+      display: grid;
+      gap: 16px;
+    }
+
+    .arare-faq-item {
+      padding: 0;
+    }
+
+    .arare-faq-item::before {
+      opacity: 0;
+    }
+
+    .arare-faq-item.is-open {
+      border-color: rgba(245, 199, 122, 0.34);
+      box-shadow:
+        0 22px 56px rgba(0, 0, 0, 0.24),
+        0 0 38px rgba(245, 199, 122, 0.07);
+    }
+
+    .arare-faq-item.is-open::before {
+      opacity: 1;
+    }
+
+    .arare-faq-question {
+      width: 100%;
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 24px 28px;
+      border: 0;
+      background: transparent;
+      color: var(--color-text);
+      font-weight: 700;
+      line-height: 1.7;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .arare-faq-question:focus-visible {
+      outline: 2px solid var(--color-gold-light);
+      outline-offset: -6px;
+      border-radius: 20px;
+    }
+
+    .arare-faq-icon {
+      position: relative;
+      flex: 0 0 auto;
+      width: 22px;
+      height: 22px;
+      border: 1px solid rgba(245, 199, 122, 0.32);
+      border-radius: 50%;
+    }
+
+    .arare-faq-icon::before,
+    .arare-faq-icon::after {
+      content: "";
+      position: absolute;
+      inset: 50% auto auto 50%;
+      width: 10px;
+      height: 1px;
+      background: var(--color-gold-light);
+      transform: translate(-50%, -50%);
+      transition: opacity var(--transition);
+    }
+
+    .arare-faq-icon::after {
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
+
+    .arare-faq-question[aria-expanded="true"] .arare-faq-icon::after {
+      opacity: 0;
+    }
+
+    .arare-faq-answer {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows var(--transition);
+    }
+
+    .arare-faq-question[aria-expanded="true"] + .arare-faq-answer {
+      grid-template-rows: 1fr;
+    }
+
+    .arare-faq-answer-inner {
+      overflow: hidden;
+    }
+
+    .arare-faq-answer p {
+      margin: 0;
+      padding: 0 28px 28px;
+      color: var(--color-muted);
+      font-size: 0.96rem;
+      line-height: 2;
+    }
+
+    .arare-contact-layout {
+      max-width: 920px;
+      margin: 0 auto;
+    }
+
+    .arare-contact-card {
+      padding: clamp(28px, 5vw, 46px);
+    }
+
+    .arare-form-message {
+      display: none;
+      margin: 0 0 24px;
+      padding: 14px 16px;
+      border: 1px solid rgba(245, 199, 122, 0.28);
+      border-radius: 16px;
+      color: var(--color-gold-light);
+      background: rgba(245, 199, 122, 0.08);
+      font-size: 0.94rem;
+      line-height: 1.8;
+    }
+
+    .arare-form-message.is-visible {
+      display: block;
+    }
+
+    .arare-form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .arare-form-field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .arare-form-field--full {
+      grid-column: 1 / -1;
+    }
+
+    .arare-form-label {
+      color: var(--color-text);
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .arare-required {
+      margin-left: 8px;
+      color: var(--color-gold);
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .arare-input,
+    .arare-textarea {
+      width: 100%;
+      min-height: 54px;
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      border-radius: 16px;
+      background: rgba(5, 7, 12, 0.62);
+      color: var(--color-text);
+      padding: 14px 16px;
+      outline: none;
+      transition:
+        border-color var(--transition),
+        box-shadow var(--transition),
+        background var(--transition);
+    }
+
+    .arare-textarea {
+      min-height: 160px;
+      resize: vertical;
+    }
+
+    .arare-input:focus,
+    .arare-textarea:focus {
+      border-color: rgba(245, 199, 122, 0.68);
+      background: rgba(5, 7, 12, 0.76);
+      box-shadow: 0 0 0 4px rgba(245, 199, 122, 0.08);
+    }
+
+    .arare-input[aria-invalid="true"],
+    .arare-textarea[aria-invalid="true"] {
+      border-color: rgba(255, 116, 116, 0.72);
+    }
+
+    .arare-form-error {
+      min-height: 1.6em;
+      color: #FF8A8A;
+      font-size: 0.82rem;
+      line-height: 1.6;
+    }
+
+    .arare-form-actions {
+      margin-top: 28px;
+    }
+
+    .arare-footer {
+      padding-block: 84px 34px;
+      background:
+        radial-gradient(circle at 18% 0%, rgba(245, 199, 122, 0.08), transparent 28rem),
+        #080A10;
+      border-top: 1px solid rgba(245, 199, 122, 0.14);
+      color: var(--color-muted);
+    }
+
+    .arare-footer__inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(220px, 0.45fr) minmax(180px, 0.35fr);
+      align-items: start;
+      gap: 48px;
+    }
+
+    .arare-footer__brand {
+      max-width: 560px;
+    }
+
+    .arare-footer__catch {
+      margin: 24px 0 12px;
+      color: var(--color-text);
+      font-family: "Playfair Display", "Noto Sans JP", serif;
+      font-size: clamp(1.55rem, 3vw, 2.6rem);
+      line-height: 1.32;
+      letter-spacing: 0;
+    }
+
+    .arare-footer__text {
+      margin: 0;
+      color: var(--color-muted);
+      font-size: 0.96rem;
+      line-height: 2;
+    }
+
+    .arare-footer__heading {
+      margin: 0 0 18px;
+      color: var(--color-gold);
+      font-family: "Inter", sans-serif;
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .arare-footer__nav {
+      display: grid;
+      gap: 10px;
+    }
+
+    .arare-footer__nav a {
+      color: var(--color-muted);
+      font-weight: 700;
+      transition: color var(--transition), transform var(--transition);
+    }
+
+    .arare-footer__nav a:hover,
+    .arare-footer__nav a.arare-nav-active {
+      color: var(--color-gold-light);
+      transform: translateX(3px);
+    }
+
+    .arare-footer__social {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .arare-footer__social a,
+    .arare-footer__social span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(245, 199, 122, 0.24);
+      border-radius: 50%;
+      color: var(--color-text);
+      background: rgba(255, 255, 255, 0.035);
+      font-family: "Inter", sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      transition:
+        color var(--transition),
+        background var(--transition),
+        border-color var(--transition),
+        transform var(--transition);
+    }
+
+    .arare-footer__social a:hover,
+    .arare-footer__social span:hover {
+      color: #14100A;
+      background: linear-gradient(135deg, var(--color-gold), var(--color-gold-light));
+      border-color: rgba(245, 199, 122, 0.6);
+      transform: translateY(-3px);
+    }
+
+    .arare-footer__bottom {
+      margin-top: 56px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      color: rgba(179, 183, 201, 0.72);
+      font-size: 0.84rem;
+    }
+
+    @media (max-width: 768px) {
+      body.arare-menu-open {
+        overflow: hidden;
+      }
+
+      .arare-container {
+        padding-inline: 18px;
+      }
+
+      .arare-section {
+        padding-block: 72px;
+      }
+
+      .arare-section-header {
+        max-width: 100%;
+        margin-bottom: 32px;
+      }
+
+      .arare-section-header .arare-eyebrow::before,
+      .arare-section-header .arare-eyebrow::after {
+        width: 22px;
+      }
+
+      .arare-title {
+        font-size: clamp(1.8rem, 8vw, 2.6rem);
+      }
+
+      .arare-lead {
+        max-width: 100%;
+        font-size: 0.94rem;
+        line-height: 1.9;
+      }
+
+      .arare-header__inner {
+        min-height: 68px;
+        gap: 14px;
+      }
+
+      .arare-nav {
+        display: none;
+      }
+
+      .arare-header__actions .arare-btn {
+        display: none;
+      }
+
+      .arare-menu-toggle {
+        display: block;
+      }
+
+      .arare-menu-toggle:focus-visible {
+        outline: 2px solid var(--color-gold-light);
+        outline-offset: 4px;
+      }
+
+      .arare-mobile-menu {
+        position: fixed;
+        inset: 68px 0 auto;
+        z-index: 90;
+        display: block;
+        visibility: hidden;
+        opacity: 0;
+        transform: translateY(-12px);
+        transition:
+          opacity var(--transition),
+          visibility var(--transition),
+          transform var(--transition);
+      }
+
+      .arare-mobile-menu[aria-hidden="false"] {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .arare-mobile-menu__inner {
+        width: calc(100% - 36px);
+        margin: 12px auto 0;
+        padding: 16px;
+        border: 1px solid rgba(245, 199, 122, 0.16);
+        border-radius: var(--radius-md);
+        background: rgba(8, 10, 16, 0.96);
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.42);
+        backdrop-filter: blur(20px);
+      }
+
+      .arare-mobile-nav {
+        display: grid;
+        gap: 2px;
+      }
+
+      .arare-mobile-nav a {
+        display: flex;
+        align-items: center;
+        min-height: 48px;
+        padding: 10px 8px;
+        color: var(--color-muted);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        font-weight: 700;
+      }
+
+      .arare-mobile-nav a:last-child,
+      .arare-mobile-nav a.arare-nav-active {
+        border-bottom: 0;
+      }
+
+      .arare-mobile-menu .arare-btn {
+        width: 100%;
+        margin-top: 16px;
+      }
+
+      .arare-hero {
+        min-height: auto;
+        padding-block: 72px 88px;
+      }
+
+      .arare-hero::after {
+        width: 520px;
+        height: 520px;
+        right: -260px;
+        top: 18%;
+      }
+
+      .arare-hero__inner {
+        grid-template-columns: 1fr;
+        gap: 38px;
+      }
+
+      .arare-hero__title {
+        font-size: clamp(2.35rem, 11vw, 4rem);
+        line-height: 1.18;
+      }
+
+      .arare-hero__actions {
+        flex-direction: column;
+      }
+
+      .arare-btn {
+        width: 100%;
+        min-height: 48px;
+        padding: 11px 20px;
+      }
+
+      .arare-hero__visual {
+        min-height: auto;
+      }
+
+      .arare-dashboard {
+        width: 100%;
+        padding: 20px;
+        border-radius: 22px;
+      }
+
+      .arare-dashboard__top {
+        flex-direction: column;
+        margin-bottom: 24px;
+      }
+
+      .arare-dashboard__score {
+        font-size: clamp(2.6rem, 14vw, 3.2rem);
+      }
+
+      .arare-dashboard__item {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .arare-scroll-indicator {
+        bottom: 18px;
+      }
+
+      .arare-card {
+        padding: 20px;
+        border-radius: 22px;
+      }
+
+      .arare-grid,
+      .arare-grid-2,
+      .arare-grid-3,
+      .arare-grid-4 {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .arare-card__icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 16px;
+      }
+
+      .arare-card__title {
+        font-size: clamp(1.1rem, 5vw, 1.28rem);
+      }
+
+      .arare-card__text,
+      .arare-work-text,
+      .arare-pricing-desc {
+        font-size: 0.92rem;
+        line-height: 1.9;
+      }
+
+      .arare-stats-card {
+        min-height: 170px;
+      }
+
+      .arare-stats-value {
+        font-size: clamp(2.35rem, 14vw, 3.5rem);
+      }
+
+      .arare-work-card {
+        gap: 18px;
+      }
+
+      .arare-work-mock {
+        border-radius: 16px;
+      }
+
+      .arare-work-screen {
+        padding: 16px;
+      }
+
+      .arare-glow-orb {
+        width: 360px;
+        opacity: 0.38;
+      }
+
+      .arare-subtle-grid {
+        background-size: 56px 56px;
+        opacity: 0.16;
+      }
+
+      .arare-pricing-card--featured,
+      .arare-pricing-card--featured:hover {
+        transform: none;
+      }
+
+      .arare-pricing-price {
+        font-size: clamp(2.25rem, 12vw, 3.15rem);
+      }
+
+      .arare-pricing-list li {
+        font-size: 0.9rem;
+      }
+
+      .arare-faq-question {
+        min-height: 68px;
+        padding: 18px 20px;
+        font-size: 0.95rem;
+      }
+
+      .arare-faq-answer p {
+        padding: 0 20px 22px;
+      }
+
+      .arare-form-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .arare-contact-card {
+        padding: 20px;
+      }
+
+      .arare-input,
+      .arare-textarea {
+        min-height: 52px;
+        border-radius: 14px;
+        padding: 13px 14px;
+      }
+
+      .arare-textarea {
+        min-height: 150px;
+      }
+
+      .arare-footer__inner {
+        grid-template-columns: 1fr;
+        align-items: flex-start;
+        gap: 34px;
+      }
+
+      .arare-footer {
+        padding-block: 64px 28px;
+      }
+
+      .arare-footer__catch {
+        font-size: clamp(1.4rem, 7vw, 2rem);
+      }
+
+      .arare-footer__nav {
+        gap: 12px;
+      }
+
+      .arare-footer__social a {
+        width: 42px;
+        height: 42px;
+      }
+
+      .arare-footer__bottom {
+        margin-top: 38px;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .arare-container {
+        padding-inline: 16px;
+      }
+
+      .arare-logo {
+        gap: 10px;
+        font-size: 1.05rem;
+      }
+
+      .arare-logo__mark {
+        width: 24px;
+        height: 24px;
+      }
+
+      .arare-menu-toggle {
+        width: 42px;
+        height: 42px;
+      }
+
+      .arare-mobile-menu__inner {
+        width: calc(100% - 32px);
+        padding: 14px;
+      }
+
+      .arare-hero {
+        padding-block: 66px 82px;
+      }
+
+      .arare-hero__title {
+        font-size: clamp(2.25rem, 10.5vw, 3.7rem);
+      }
+
+      .arare-eyebrow {
+        font-size: 0.68rem;
+        letter-spacing: 0.16em;
+      }
+
+      .arare-section-header .arare-eyebrow::before,
+      .arare-section-header .arare-eyebrow::after {
+        width: 16px;
+      }
+
+      .arare-card,
+      .arare-contact-card {
+        padding: 18px;
+      }
+
+      .arare-dashboard {
+        padding: 18px;
+      }
+
+      .arare-dashboard__chart {
+        height: 96px;
+        padding: 14px;
+      }
+
+      .arare-work-browser {
+        height: 30px;
+      }
+
+      .arare-work-screen {
+        height: calc(100% - 30px);
+      }
+
+      .arare-pricing-price {
+        font-size: clamp(2.05rem, 11vw, 2.8rem);
+      }
+
+      .arare-faq-question {
+        padding: 16px 18px;
+      }
+
+      .arare-footer__social {
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="arare-site">
+    <header class="arare-header" data-arare-header>
+      <div class="arare-container arare-header__inner">
+        <a class="arare-logo" href="index.html" aria-label="ARARE トップページ">
+          <span class="arare-logo__mark" aria-hidden="true"></span>
+          <span>ARARE</span>
+        </a>
+        <nav class="arare-nav" aria-label="グローバルナビゲーション">
+          <a class="arare-nav-active" href="index.html">ホーム</a>
+          <a href="sell.html">成長支援</a>
+          <a href="buy.html">立ち上げ支援</a>
+          <a href="cases.html">事例一覧</a>
+          <a href="column.html">コラム</a>
+          <a href="support.html">事業支援</a>
+          <a href="contact.html">無料相談</a>
+        </nav>
+        <div class="arare-header__actions">
+          <a class="arare-btn arare-btn-primary" href="contact.html">無料相談する</a>
+          <button class="arare-menu-toggle" type="button" aria-label="メニューを開く" aria-controls="arare-mobile-menu" aria-expanded="false" data-arare-menu-toggle>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+      <div class="arare-mobile-menu" id="arare-mobile-menu" aria-hidden="true" data-arare-mobile-menu>
+        <div class="arare-mobile-menu__inner">
+          <nav class="arare-mobile-nav" aria-label="モバイルナビゲーション">
+            <a class="arare-nav-active" href="index.html">ホーム</a>
+            <a href="sell.html">成長支援</a>
+            <a href="buy.html">立ち上げ支援</a>
+            <a href="cases.html">事例一覧</a>
+            <a href="column.html">コラム</a>
+            <a href="support.html">事業支援</a>
+            <a href="contact.html">無料相談</a>
+          </nav>
+          <a class="arare-btn arare-btn-primary" href="contact.html">無料相談する</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="arare-hero" id="home">
+        <div class="arare-container arare-hero__inner">
+          <div class="arare-hero__content">
+            <p class="arare-eyebrow" data-aos="fade-up">WEB DESIGN / AI / AUTOMATION</p>
+            <h1 class="arare-title arare-hero__title" data-aos="fade-up" data-aos-delay="80">
+              WebとAIで、事業の成長を加速させる。
+            </h1>
+            <p class="arare-lead arare-hero__lead" data-aos="fade-up" data-aos-delay="160">ホームページ制作、LP改善、SNS運用、AI導入、業務自動化まで。ARAREが成果につながる仕組みづくりを一気通貫で支援します。</p>
+            <div class="arare-hero__actions">
+              <a class="arare-btn arare-btn-primary" href="contact.html" data-aos="fade-up" data-aos-delay="240">無料で相談する</a>
+              <a class="arare-btn arare-btn-secondary" href="support.html" data-aos="fade-up" data-aos-delay="300">サービスを見る</a>
+            </div>
+          </div>
+          <div class="arare-hero__visual" data-aos="fade-up" data-aos-delay="220">
+            <div class="arare-hero-card">
+              <span class="arare-hero-card__label">ARARE SYSTEM</span>
+              <div class="arare-hero-card__grid">
+                <span>Web</span><span>LP</span><span>SNS</span><span>AI</span><span>Auto</span><span>Growth</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+     <section class="arare-section" id="reasons">
+  <div class="arare-container">
+    <div class="arare-section-header" data-aos="fade-up">
+      <span class="arare-eyebrow">WHY ARARE</span>
+      <h2 class="arare-title">選ばれる3つの理由</h2>
+      <p class="arare-lead">
+        制作スピード、AI活用、運用サポートまで。
+        成果に直結するWeb支援を一気通貫で提供します。
+      </p>
+      <span class="arare-gold-line"></span>
+    </div>
+
+    <div class="arare-grid-3">
+      <article class="arare-card" data-aos="fade-up">
+        <h3>圧倒的スピード</h3>
+        <p>
+          AIと設計テンプレートを適切に活用し、
+          短期間でも品質を落とさず公開まで伴走します。
+        </p>
+      </article>
+
+      <article class="arare-card" data-aos="fade-up" data-aos-delay="100">
+        <h3>AI活用の実績</h3>
+        <p>
+          問い合わせ対応、SNS運用、業務自動化など、
+          現場で使えるAI導入を前提に設計します。
+        </p>
+      </article>
+
+      <article class="arare-card" data-aos="fade-up" data-aos-delay="200">
+        <h3>充実サポート体制</h3>
+        <p>
+          公開後の改善、分析、更新、運用まで支援。
+          作って終わりではなく、成果改善まで見続けます。
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+      <section class="arare-section arare-section--soft" id="services">
+        <div class="arare-container">
+          <div class="arare-section-header" data-aos="fade-up">
+            <p class="arare-eyebrow">Services</p>
+            <h2 class="arare-title">成長に必要な施策をまとめて支援。</h2>
+            <p class="arare-lead">単発の制作で終わらせず、公開後の改善やAI活用まで見据えて設計します。</p>
+          </div>
+          <div class="arare-service-grid">
+            <article class="arare-card arare-service-card" data-aos="fade-up"><h3>ホームページ制作</h3><p>信頼感と問い合わせ導線を備えたWebサイトを制作します。</p><a class="arare-service-link" href="support.html">詳しく見る</a></article>
+            <article class="arare-card arare-service-card" data-aos="fade-up" data-aos-delay="60"><h3>LP制作・改善</h3><p>広告やキャンペーンに合わせ、成果につながる構成を設計します。</p><a class="arare-service-link" href="support.html">詳しく見る</a></article>
+            <article class="arare-card arare-service-card" data-aos="fade-up" data-aos-delay="120"><h3>SNS運用代行</h3><p>投稿設計から原稿作成、改善運用まで継続しやすく整えます。</p><a class="arare-service-link" href="support.html">詳しく見る</a></article>
+            <article class="arare-card arare-service-card" data-aos="fade-up"><h3>AI導入支援</h3><p>業務に合ったAI活用範囲と運用ルールを設計します。</p><a class="arare-service-link" href="support.html">詳しく見る</a></article>
+            <article class="arare-card arare-service-card" data-aos="fade-up" data-aos-delay="60"><h3>AI全自動化</h3><p>問い合わせ対応や定型作業を自動化し、運用負荷を下げます。</p><a class="arare-service-link" href="support.html">詳しく見る</a></article>
+            <article class="arare-card arare-service-card" data-aos="fade-up" data-aos-delay="120"><h3>改善運用</h3><p>公開後の反応を見ながら、導線・コピー・CTAを改善します。</p><a class="arare-service-link" href="support.html">詳しく見る</a></article>
+          </div>
+        </div>
+      </section>
+
+     <section class="arare-section arare-stats-section">
+  <div class="arare-container">
+    <div class="arare-stats-grid">
+
+      <article class="arare-stat-card" data-aos="fade-up">
+        <h3 class="arare-count" data-count="200">0</h3>
+        <p>制作・支援実績</p>
+      </article>
+
+      <article class="arare-stat-card" data-aos="fade-up" data-aos-delay="100">
+        <h3 class="arare-count" data-count="98">0</h3>
+        <p>顧客満足度（%）</p>
+      </article>
+
+      <article class="arare-stat-card" data-aos="fade-up" data-aos-delay="200">
+        <h3 class="arare-count" data-count="14">0</h3>
+        <p>平均制作期間（日）</p>
+      </article>
+
+      <article class="arare-stat-card" data-aos="fade-up" data-aos-delay="300">
+        <h3 class="arare-count" data-count="92">0</h3>
+        <p>継続支援率（%）</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+     <section class="arare-section" id="works">
+        <div class="arare-container">
+          <div class="arare-section-header" data-aos="fade-up">
+            <p class="arare-eyebrow">Cases</p>
+            <h2 class="arare-title">課題に合わせた支援事例。</h2>
+            <p class="arare-lead">Web制作、導線改善、SNS運用、AI自動化など、目的別の支援例を掲載しています。</p>
+          </div>
+          <div class="arare-hero__actions" data-aos="fade-up">
+            <a class="arare-btn arare-btn-primary" href="cases.html">事例を見る</a>
+            <a class="arare-btn arare-btn-secondary" href="column.html">コラムを見る</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="arare-section arare-section--soft" id="pricing">
+        <div class="arare-container">
+          <div class="arare-section-header" data-aos="fade-up">
+            <p class="arare-eyebrow">Support</p>
+            <h2 class="arare-title">まずは現状整理から。</h2>
+            <p class="arare-lead">WebとAIの課題を整理し、必要な施策と優先順位をご提案します。</p>
+          </div>
+          <div class="arare-hero__actions" data-aos="fade-up">
+            <a class="arare-btn arare-btn-primary" href="contact.html">無料相談する</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="arare-footer">
+      <div class="arare-container">
+        <div class="arare-footer__inner">
+          <div class="arare-footer__brand">
+            <a class="arare-logo" href="index.html" aria-label="ARARE トップページ">
+              <span class="arare-logo__mark" aria-hidden="true"></span>
+              <span>ARARE</span>
+            </a>
+            <p class="arare-footer__catch">AIとデザインで、Web集客を加速させる。</p>
+            <p class="arare-footer__text">ホームページ制作からAI全自動化まで、成果につながるWeb戦略を一気通貫で支援します。</p>
+          </div>
+          <div>
+            <p class="arare-footer__heading">Navigation</p>
+            <nav class="arare-footer__nav" aria-label="フッターナビゲーション">
+              <a class="arare-nav-active" href="index.html">ホーム</a>
+              <a href="sell.html">成長支援</a>
+              <a href="buy.html">立ち上げ支援</a>
+              <a href="cases.html">事例一覧</a>
+              <a href="column.html">コラム</a>
+              <a href="support.html">事業支援</a>
+              <a href="contact.html">無料相談</a>
+            </nav>
+          </div>
+          <div>
+            <p class="arare-footer__heading">Social</p>
+            <div class="arare-footer__social">
+              <span aria-hidden="true">X</span>
+              <span aria-hidden="true">IG</span>
+              <span aria-hidden="true">LINE</span>
+            </div>
+          </div>
+        </div>
+        <div class="arare-footer__bottom">
+          <small>&copy; 2025 ARARE</small>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const body = document.body;
+      const header = document.querySelector("[data-arare-header]");
+      const menuToggle = document.querySelector("[data-arare-menu-toggle]");
+      const mobileMenu = document.querySelector("[data-arare-mobile-menu]");
+
+      const setMenuOpen = (open) => {
+        if (!menuToggle || !mobileMenu) {
+          return;
+        }
+
+        menuToggle.setAttribute("aria-expanded", String(open));
+        menuToggle.setAttribute("aria-label", open ? "メニューを閉じる" : "メニューを開く");
+        mobileMenu.setAttribute("aria-hidden", String(!open));
+        body.classList.toggle("arare-menu-open", open);
+      };
+
+      const updateHeaderState = () => {
+        if (!header) {
+          return;
+        }
+
+        header.classList.toggle("arare-header--scrolled", window.scrollY > 24);
+      };
+
+      if (window.AOS) {
+        AOS.init({
+          duration: 720,
+          easing: "ease-out-cubic",
+          once: true,
+          offset: 80
+        });
+      }
+
+      document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener("click", (event) => {
+          const targetId = link.getAttribute("href");
+          if (!targetId || targetId === "#") {
+            return;
+          }
+
+          const target = document.querySelector(targetId);
+          if (!target) {
+            return;
+          }
+
+          event.preventDefault();
+          setMenuOpen(false);
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      });
+
+      if (menuToggle) {
+        menuToggle.addEventListener("click", () => {
+          setMenuOpen(menuToggle.getAttribute("aria-expanded") !== "true");
+        });
+      }
+
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 768) {
+          setMenuOpen(false);
+        }
+      });
+
+      window.addEventListener("scroll", updateHeaderState, { passive: true });
+      updateHeaderState();
+    });
+  </script>
+  <!-- ARARE demo site version 1.0 -->
+</body>
+</html>
+

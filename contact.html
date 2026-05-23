@@ -1,0 +1,1784 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ARAREの無料相談ページ。Web制作、LP制作、SNS運用、AI導入、AI自動化について、内容が固まっていない段階でも相談できます。">
+  <meta name="format-detection" content="telephone=no">
+  <title>無料相談 | ARARE</title>
+
+  
+  <meta property="og:site_name" content="ARARE">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="無料相談 | ARARE">
+  <meta property="og:description" content="ARAREの無料相談ページ。Web制作、LP制作、SNS運用、AI導入、AI自動化について、内容が固まっていない段階でも相談できます。">
+  <meta property="og:url" content="contact.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="無料相談 | ARARE">
+  <meta name="twitter:description" content="ARAREの無料相談ページ。Web制作、LP制作、SNS運用、AI導入、AI自動化について、内容が固まっていない段階でも相談できます。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --color-bg: #0B0D14;
+      --color-bg-soft: #111827;
+      --color-bg-card: rgba(255,255,255,0.04);
+      --color-text: #FFFFFF;
+      --color-muted: #B3B7C9;
+      --color-gold: #F5C77A;
+      --color-gold-light: #FFE6A3;
+      --color-purple: #6C63FF;
+      --color-cyan: #00D4FF;
+      --color-border: rgba(255,255,255,0.12);
+      --container: 1200px;
+      --radius-lg: 28px;
+      --radius-md: 20px;
+      --transition: 0.3s ease;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      text-size-adjust: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      margin: 0;
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-family: "Noto Sans JP", "Inter", sans-serif;
+      line-height: 1.8;
+      overflow-x: hidden;
+      overflow-wrap: break-word;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    .arare-site {
+      min-height: 100vh;
+      width: 100%;
+      overflow-x: clip;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(245, 199, 122, 0.08), transparent 34rem),
+        var(--color-bg);
+    }
+
+    .arare-container {
+      width: 100%;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding-inline: 24px;
+    }
+
+    .arare-section {
+      position: relative;
+      padding-block: 112px;
+    }
+
+    .arare-section--soft {
+      background: var(--color-bg-soft);
+    }
+
+    .arare-section-header {
+      position: relative;
+      max-width: 820px;
+      margin: 0 auto 58px;
+      text-align: center;
+    }
+
+    .arare-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: 0 0 16px;
+      color: var(--color-gold);
+      font-family: "Inter", sans-serif;
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .arare-section-header .arare-eyebrow::before,
+    .arare-section-header .arare-eyebrow::after {
+      content: "";
+      width: 34px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(245, 199, 122, 0.86));
+    }
+
+    .arare-section-header .arare-eyebrow::after {
+      background: linear-gradient(90deg, rgba(245, 199, 122, 0.86), transparent);
+    }
+
+    .arare-title {
+      margin: 0;
+      color: var(--color-text);
+      font-family: "Playfair Display", "Noto Sans JP", serif;
+      font-size: clamp(2.35rem, 5vw, 4.6rem);
+      line-height: 1.12;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    .arare-lead {
+      max-width: 680px;
+      margin: 22px auto 0;
+      color: var(--color-muted);
+      font-size: 1rem;
+      line-height: 2;
+    }
+
+    .arare-btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 13px 28px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      font-weight: 700;
+      line-height: 1.4;
+      transition:
+        color var(--transition),
+        background var(--transition),
+        box-shadow var(--transition),
+        border-color var(--transition),
+        transform var(--transition);
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .arare-btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .arare-btn:focus-visible {
+      outline: 2px solid var(--color-gold-light);
+      outline-offset: 4px;
+    }
+
+    .arare-btn-primary {
+      background: linear-gradient(135deg, var(--color-gold), var(--color-gold-light));
+      color: #14100A;
+      border-color: rgba(245, 199, 122, 0.54);
+      box-shadow:
+        0 16px 36px rgba(245, 199, 122, 0.16),
+        inset 0 1px 0 rgba(255, 255, 255, 0.45);
+    }
+
+    .arare-btn-secondary {
+      background: rgba(255, 255, 255, 0.015);
+      color: var(--color-text);
+      border-color: rgba(245, 199, 122, 0.48);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    }
+
+    .arare-btn-secondary:hover {
+      background: rgba(245, 199, 122, 0.09);
+      border-color: rgba(245, 199, 122, 0.7);
+    }
+
+    .arare-card {
+      position: relative;
+      overflow: hidden;
+      padding: 34px;
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: max(24px, var(--radius-md));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(20px);
+      transition:
+        border-color var(--transition),
+        box-shadow var(--transition),
+        transform var(--transition),
+        background var(--transition);
+    }
+
+    .arare-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 24px;
+      right: 24px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(245, 199, 122, 0.72), transparent);
+      opacity: 0.72;
+      pointer-events: none;
+    }
+
+    .arare-card:hover {
+      background: rgba(255, 255, 255, 0.055);
+      border-color: rgba(245, 199, 122, 0.24);
+      box-shadow:
+        0 24px 60px rgba(0, 0, 0, 0.26),
+        0 0 44px rgba(245, 199, 122, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      transform: translateY(-6px);
+    }
+
+    .arare-grid-2,
+    .arare-grid-3 {
+      display: grid;
+      gap: 28px;
+      width: 100%;
+      min-width: 0;
+    }
+
+    .arare-grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .arare-grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .arare-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11, 13, 20, 0.64);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(20px);
+      transition:
+        background var(--transition),
+        border-color var(--transition),
+        box-shadow var(--transition);
+    }
+
+    .arare-header.arare-header--scrolled {
+      background: rgba(8, 10, 16, 0.94);
+      border-bottom-color: rgba(245, 199, 122, 0.16);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+    }
+
+    .arare-header__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 76px;
+      gap: 24px;
+    }
+
+    .arare-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: "Inter", sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+    }
+
+    .arare-logo__mark {
+      position: relative;
+      width: 26px;
+      height: 26px;
+      border: 1px solid rgba(245, 199, 122, 0.68);
+      border-radius: 50%;
+      background:
+        linear-gradient(145deg, rgba(245, 199, 122, 0.22), rgba(255, 255, 255, 0.02)),
+        rgba(255, 255, 255, 0.03);
+      box-shadow: inset 0 0 18px rgba(245, 199, 122, 0.08);
+    }
+
+    .arare-logo__mark::before {
+      content: "";
+      position: absolute;
+      inset: 6px;
+      border-top: 1px solid var(--color-gold-light);
+      border-right: 1px solid rgba(245, 199, 122, 0.58);
+      transform: rotate(45deg);
+    }
+
+    .arare-nav {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      color: var(--color-muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .arare-nav a {
+      transition: color var(--transition);
+    }
+
+    .arare-nav a:hover,
+    .arare-nav a.is-active,
+    .arare-nav a.arare-nav-active {
+      color: var(--color-gold-light);
+    }
+
+    .arare-header__actions {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .arare-header .arare-btn {
+      min-height: 44px;
+      padding: 9px 18px;
+      font-size: 0.88rem;
+    }
+
+    .arare-menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border: 1px solid var(--color-border);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--color-text);
+      cursor: pointer;
+    }
+
+    .arare-menu-toggle span {
+      display: block;
+      width: 17px;
+      height: 1px;
+      margin: 5px auto;
+      background: currentColor;
+      transition:
+        transform var(--transition),
+        opacity var(--transition);
+    }
+
+    .arare-menu-toggle[aria-expanded="true"] span:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    .arare-menu-toggle[aria-expanded="true"] span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .arare-menu-toggle[aria-expanded="true"] span:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+
+    .arare-mobile-menu {
+      display: none;
+    }
+
+    .arare-sub-hero {
+      position: relative;
+      overflow: hidden;
+      min-height: calc(86vh - 76px);
+      display: grid;
+      align-items: center;
+      padding-block: 118px 96px;
+      background:
+        linear-gradient(135deg, rgba(11, 13, 20, 0.84), rgba(17, 24, 39, 0.92) 48%, rgba(11, 13, 20, 0.98)),
+        radial-gradient(circle at 78% 28%, rgba(245, 199, 122, 0.12), transparent 30rem),
+        radial-gradient(circle at 14% 74%, rgba(108, 99, 255, 0.08), transparent 24rem);
+    }
+
+    .arare-sub-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: linear-gradient(to bottom, transparent, #000 16%, #000 72%, transparent);
+      opacity: 0.24;
+      pointer-events: none;
+    }
+
+    .arare-sub-hero__inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.04fr) minmax(320px, 0.72fr);
+      align-items: center;
+      gap: 64px;
+    }
+
+    .arare-sub-hero__content {
+      max-width: 780px;
+    }
+
+    .arare-sub-hero__title {
+      font-size: clamp(2.7rem, 6.5vw, 5.7rem);
+    }
+
+    .arare-sub-hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 36px;
+    }
+
+    .arare-sub-panel {
+      position: relative;
+      min-height: 430px;
+      display: grid;
+      align-content: center;
+      gap: 18px;
+    }
+
+    .arare-sub-panel__metric {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .arare-sub-panel__metric:last-child {
+      border-bottom: 0;
+    }
+
+    .arare-sub-panel__label {
+      margin: 0;
+      color: var(--color-muted);
+      font-size: 0.92rem;
+    }
+
+    .arare-sub-panel__value {
+      margin: 0;
+      color: var(--color-gold-light);
+      font-family: "Inter", sans-serif;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .arare-problem-list {
+      display: grid;
+      gap: 14px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .arare-problem-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 22px 24px;
+    }
+
+    .arare-problem-mark,
+    .arare-flow-number {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border: 1px solid rgba(245, 199, 122, 0.28);
+      border-radius: 50%;
+      color: var(--color-gold-light);
+      background: rgba(245, 199, 122, 0.08);
+      font-family: "Inter", sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .arare-problem-item p {
+      margin: 0;
+      color: var(--color-text);
+      font-weight: 700;
+      line-height: 1.75;
+    }
+
+    .arare-service-mini {
+      min-height: 100%;
+      display: grid;
+      gap: 14px;
+    }
+
+    .arare-card__icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 54px;
+      height: 54px;
+      border: 1px solid rgba(245, 199, 122, 0.28);
+      border-radius: 18px;
+      color: var(--color-gold-light);
+      background:
+        linear-gradient(145deg, rgba(245, 199, 122, 0.12), rgba(255, 255, 255, 0.02)),
+        rgba(255, 255, 255, 0.03);
+    }
+
+    .arare-card__icon svg {
+      width: 27px;
+      height: 27px;
+      stroke: currentColor;
+      stroke-width: 1.7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+
+    .arare-card__title {
+      margin: 0;
+      color: var(--color-text);
+      font-size: clamp(1.18rem, 2vw, 1.42rem);
+      line-height: 1.45;
+    }
+
+    .arare-card__text {
+      margin: 0;
+      color: var(--color-muted);
+      font-size: 0.96rem;
+      line-height: 2;
+    }
+
+    .arare-flow {
+      position: relative;
+      display: grid;
+      gap: 18px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .arare-flow-item {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .arare-flow-number {
+      width: 52px;
+      height: 52px;
+    }
+
+    .arare-flow-body h3 {
+      margin: 0 0 8px;
+      color: var(--color-text);
+      font-size: 1.15rem;
+    }
+
+    .arare-flow-body p {
+      margin: 0;
+      color: var(--color-muted);
+      line-height: 2;
+    }
+
+    .arare-outcome-card {
+      min-height: 100%;
+      display: grid;
+      gap: 14px;
+    }
+
+    .arare-cta-section {
+      text-align: center;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(245, 199, 122, 0.12), transparent 32rem),
+        var(--color-bg-soft);
+    }
+
+    .arare-cta-box {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: clamp(34px, 6vw, 62px);
+      text-align: center;
+    }
+
+    .arare-footer {
+      padding-block: 84px 34px;
+      background:
+        radial-gradient(circle at 18% 0%, rgba(245, 199, 122, 0.08), transparent 28rem),
+        #080A10;
+      border-top: 1px solid rgba(245, 199, 122, 0.14);
+      color: var(--color-muted);
+    }
+
+    .arare-footer__inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(220px, 0.45fr) minmax(180px, 0.35fr);
+      align-items: start;
+      gap: 48px;
+    }
+
+    .arare-footer__brand {
+      max-width: 560px;
+    }
+
+    .arare-footer__catch {
+      margin: 24px 0 12px;
+      color: var(--color-text);
+      font-family: "Playfair Display", "Noto Sans JP", serif;
+      font-size: clamp(1.55rem, 3vw, 2.6rem);
+      line-height: 1.32;
+    }
+
+    .arare-footer__text {
+      margin: 0;
+      color: var(--color-muted);
+      font-size: 0.96rem;
+      line-height: 2;
+    }
+
+    .arare-footer__heading {
+      margin: 0 0 18px;
+      color: var(--color-gold);
+      font-family: "Inter", sans-serif;
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .arare-footer__nav {
+      display: grid;
+      gap: 10px;
+    }
+
+    .arare-footer__nav a {
+      color: var(--color-muted);
+      font-weight: 700;
+      transition: color var(--transition), transform var(--transition);
+    }
+
+    .arare-footer__nav a:hover,
+    .arare-footer__nav a.arare-nav-active {
+      color: var(--color-gold-light);
+      transform: translateX(3px);
+    }
+
+    .arare-footer__social {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .arare-footer__social a,
+    .arare-footer__social span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(245, 199, 122, 0.24);
+      border-radius: 50%;
+      color: var(--color-text);
+      background: rgba(255, 255, 255, 0.035);
+      font-family: "Inter", sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      transition:
+        color var(--transition),
+        background var(--transition),
+        border-color var(--transition),
+        transform var(--transition);
+    }
+
+    .arare-footer__social a:hover,
+    .arare-footer__social span:hover {
+      color: #14100A;
+      background: linear-gradient(135deg, var(--color-gold), var(--color-gold-light));
+      border-color: rgba(245, 199, 122, 0.6);
+      transform: translateY(-3px);
+    }
+
+    .arare-footer__bottom {
+      margin-top: 56px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      color: rgba(179, 183, 201, 0.72);
+      font-size: 0.84rem;
+    }
+
+    @media (max-width: 768px) {
+      body.arare-menu-open {
+        overflow: hidden;
+      }
+
+      .arare-container {
+        padding-inline: 18px;
+      }
+
+      .arare-section {
+        padding-block: 72px;
+      }
+
+      .arare-section-header {
+        max-width: 100%;
+        margin-bottom: 32px;
+      }
+
+      .arare-section-header .arare-eyebrow::before,
+      .arare-section-header .arare-eyebrow::after {
+        width: 22px;
+      }
+
+      .arare-title {
+        font-size: clamp(1.8rem, 8vw, 2.6rem);
+      }
+
+      .arare-lead {
+        max-width: 100%;
+        font-size: 0.94rem;
+        line-height: 1.9;
+      }
+
+      .arare-header__inner {
+        min-height: 68px;
+        gap: 14px;
+      }
+
+      .arare-nav,
+      .arare-header__actions .arare-btn {
+        display: none;
+      }
+
+      .arare-menu-toggle {
+        display: block;
+      }
+
+      .arare-mobile-menu {
+        position: fixed;
+        inset: 68px 0 auto;
+        z-index: 90;
+        display: block;
+        visibility: hidden;
+        opacity: 0;
+        transform: translateY(-12px);
+        transition:
+          opacity var(--transition),
+          visibility var(--transition),
+          transform var(--transition);
+      }
+
+      .arare-mobile-menu[aria-hidden="false"] {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .arare-mobile-menu__inner {
+        width: calc(100% - 36px);
+        margin: 12px auto 0;
+        padding: 16px;
+        border: 1px solid rgba(245, 199, 122, 0.16);
+        border-radius: var(--radius-md);
+        background: rgba(8, 10, 16, 0.96);
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.42);
+        backdrop-filter: blur(20px);
+      }
+
+      .arare-mobile-nav {
+        display: grid;
+        gap: 2px;
+      }
+
+      .arare-mobile-nav a {
+        display: flex;
+        align-items: center;
+        min-height: 48px;
+        padding: 10px 8px;
+        color: var(--color-muted);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        font-weight: 700;
+      }
+
+      .arare-mobile-nav a:last-child,
+      .arare-mobile-nav a.arare-nav-active {
+        border-bottom: 0;
+      }
+
+      .arare-mobile-menu .arare-btn,
+      .arare-btn {
+        width: 100%;
+      }
+
+      .arare-sub-hero {
+        min-height: auto;
+        padding-block: 72px 88px;
+      }
+
+      .arare-sub-hero__inner {
+        grid-template-columns: 1fr;
+        gap: 38px;
+      }
+
+      .arare-sub-hero__title {
+        font-size: clamp(2.35rem, 11vw, 4rem);
+        line-height: 1.18;
+      }
+
+      .arare-sub-hero__actions {
+        flex-direction: column;
+      }
+
+      .arare-sub-panel {
+        min-height: auto;
+      }
+
+      .arare-card {
+        padding: 20px;
+        border-radius: 22px;
+      }
+
+      .arare-grid-2,
+      .arare-grid-3 {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .arare-flow-item {
+        grid-template-columns: 44px 1fr;
+        gap: 14px;
+      }
+
+      .arare-flow-number {
+        width: 44px;
+        height: 44px;
+      }
+
+      .arare-footer__inner {
+        grid-template-columns: 1fr;
+        gap: 34px;
+      }
+
+      .arare-footer {
+        padding-block: 64px 28px;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .arare-container {
+        padding-inline: 16px;
+      }
+
+      .arare-logo {
+        gap: 10px;
+        font-size: 1.05rem;
+      }
+
+      .arare-logo__mark {
+        width: 24px;
+        height: 24px;
+      }
+
+      .arare-menu-toggle {
+        width: 42px;
+        height: 42px;
+      }
+
+      .arare-mobile-menu__inner {
+        width: calc(100% - 32px);
+        padding: 14px;
+      }
+
+      .arare-card {
+        padding: 18px;
+      }
+    }
+
+    .arare-filter {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      max-width: 980px;
+      margin: 0 auto 40px;
+    }
+
+    .arare-filter__button {
+      min-height: 44px;
+      border: 1px solid rgba(212, 175, 55, 0.28);
+      border-radius: 999px;
+      padding: 10px 18px;
+      background: rgba(255, 255, 255, 0.035);
+      color: rgba(255, 255, 255, 0.72);
+      font: 700 0.78rem/1.2 var(--font-sans);
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease, color 0.25s ease;
+    }
+
+    .arare-filter__button:hover,
+    .arare-filter__button.is-active {
+      transform: translateY(-2px);
+      border-color: rgba(212, 175, 55, 0.72);
+      background: rgba(212, 175, 55, 0.12);
+      color: var(--color-gold-light);
+    }
+
+
+
+    .arare-contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .arare-contact-service,
+    .arare-contact-trust,
+    .arare-contact-flow__step {
+      position: relative;
+      overflow: hidden;
+      min-height: 100%;
+      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .arare-contact-service::before,
+    .arare-contact-trust::before,
+    .arare-contact-form-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(135deg, rgba(245, 199, 122, 0.18), transparent 34%),
+        radial-gradient(circle at 88% 12%, rgba(0, 212, 255, 0.08), transparent 24rem);
+      opacity: 0.8;
+    }
+
+    .arare-contact-service:hover,
+    .arare-contact-trust:hover,
+    .arare-contact-flow__step:hover {
+      transform: translateY(-6px);
+      border-color: rgba(245, 199, 122, 0.36);
+      box-shadow: 0 26px 58px rgba(0, 0, 0, 0.24);
+    }
+
+    .arare-contact-icon {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: 62px;
+      height: 62px;
+      margin-bottom: 24px;
+      color: var(--color-gold);
+      border: 1px solid rgba(245, 199, 122, 0.24);
+      border-radius: 18px;
+      background: rgba(245, 199, 122, 0.08);
+      box-shadow: 0 18px 42px rgba(245, 199, 122, 0.08);
+    }
+
+    .arare-contact-icon svg {
+      width: 34px;
+      height: 34px;
+      stroke: currentColor;
+    }
+
+    .arare-contact-service h3,
+    .arare-contact-trust h3,
+    .arare-contact-flow__step h3 {
+      position: relative;
+      margin: 0 0 12px;
+      font-size: 1.14rem;
+      line-height: 1.55;
+    }
+
+    .arare-contact-service p,
+    .arare-contact-trust p,
+    .arare-contact-flow__step p {
+      position: relative;
+      margin: 0;
+      color: var(--color-muted);
+      font-size: 0.94rem;
+    }
+
+    .arare-contact-flow {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
+      counter-reset: contact-flow;
+    }
+
+    .arare-contact-flow__step {
+      padding-top: 76px;
+    }
+
+    .arare-contact-flow__step::before {
+      counter-increment: contact-flow;
+      content: "0" counter(contact-flow);
+      position: absolute;
+      top: 26px;
+      left: 28px;
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      color: #0b0d14;
+      font-family: "Inter", sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--color-gold), var(--color-gold-light));
+    }
+
+    .arare-contact-form-card {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 36px;
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(145deg, rgba(255,255,255,0.075), rgba(255,255,255,0.025));
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.28);
+      backdrop-filter: blur(18px);
+    }
+
+    .arare-contact-form {
+      position: relative;
+      display: grid;
+      gap: 22px;
+      z-index: 1;
+    }
+
+    .arare-contact-form__grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .arare-contact-field--full {
+      grid-column: 1 / -1;
+    }
+
+    .arare-contact-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.93rem;
+      font-weight: 700;
+    }
+
+    .arare-contact-required {
+      display: inline-flex;
+      align-items: center;
+      height: 20px;
+      padding: 0 8px;
+      color: #0b0d14;
+      font-size: 0.68rem;
+      line-height: 1;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--color-gold), var(--color-gold-light));
+    }
+
+    .arare-contact-input,
+    .arare-contact-select,
+    .arare-contact-textarea {
+      width: 100%;
+      min-height: 54px;
+      padding: 14px 16px;
+      color: var(--color-text);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 14px;
+      background-color: rgba(9, 12, 20, 0.86);
+      outline: none;
+      transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+    }
+
+    .arare-contact-select {
+      appearance: none;
+      padding-right: 44px;
+      background-image:
+        linear-gradient(45deg, transparent 50%, var(--color-gold) 50%),
+        linear-gradient(135deg, var(--color-gold) 50%, transparent 50%);
+      background-position:
+        calc(100% - 22px) 50%,
+        calc(100% - 16px) 50%;
+      background-size: 6px 6px, 6px 6px;
+      background-repeat: no-repeat;
+    }
+
+    .arare-contact-textarea {
+      min-height: 170px;
+      resize: vertical;
+    }
+
+    .arare-contact-input:focus,
+    .arare-contact-select:focus,
+    .arare-contact-textarea:focus {
+      border-color: rgba(245, 199, 122, 0.82);
+      box-shadow: 0 0 0 4px rgba(245, 199, 122, 0.12);
+      background-color: rgba(10, 14, 24, 0.98);
+    }
+
+    .arare-contact-input[aria-invalid="true"],
+    .arare-contact-select[aria-invalid="true"],
+    .arare-contact-textarea[aria-invalid="true"] {
+      border-color: rgba(255, 126, 126, 0.78);
+    }
+
+    .arare-contact-error {
+      min-height: 1.45em;
+      margin: 6px 0 0;
+      color: #ff9c9c;
+      font-size: 0.82rem;
+      line-height: 1.45;
+    }
+
+    .arare-contact-success {
+      padding: 16px 18px;
+      color: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(245, 199, 122, 0.34);
+      border-radius: 16px;
+      background: rgba(245, 199, 122, 0.1);
+    }
+
+    .arare-contact-success[hidden] {
+      display: none;
+    }
+
+    .arare-contact-submit {
+      justify-content: center;
+      width: min(100%, 380px);
+      margin: 6px auto 0;
+      border: 0;
+      cursor: pointer;
+    }
+
+    .arare-contact-faq {
+      max-width: 820px;
+      margin: 0 auto;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .arare-contact-faq__item {
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .arare-contact-faq__button {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 14px;
+      width: 100%;
+      min-height: 76px;
+      padding: 22px 0;
+      color: var(--color-text);
+      text-align: left;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .arare-contact-faq__mark {
+      color: var(--color-gold);
+      font-family: "Playfair Display", serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+
+    .arare-contact-faq__question {
+      font-weight: 700;
+      line-height: 1.7;
+    }
+
+    .arare-contact-faq__icon {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      color: var(--color-gold);
+      border: 1px solid rgba(245, 199, 122, 0.22);
+      border-radius: 999px;
+      transition: transform var(--transition), background var(--transition);
+    }
+
+    .arare-contact-faq__item.is-open .arare-contact-faq__icon {
+      transform: rotate(45deg);
+      background: rgba(245, 199, 122, 0.1);
+    }
+
+    .arare-contact-faq__answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.34s ease;
+    }
+
+    .arare-contact-faq__item.is-open .arare-contact-faq__answer {
+      max-height: 260px;
+    }
+
+    .arare-contact-faq__answer p {
+      margin: 0;
+      padding: 0 54px 24px 42px;
+      color: var(--color-muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 1024px) {
+      .arare-contact-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .arare-contact-flow {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      .arare-contact-grid,
+      .arare-contact-flow,
+      .arare-contact-form__grid {
+        grid-template-columns: 1fr;
+      }
+
+      .arare-contact-form-card {
+        padding: 24px;
+        border-radius: 22px;
+      }
+
+      .arare-contact-service,
+      .arare-contact-trust,
+      .arare-contact-flow__step {
+        padding: 26px;
+      }
+
+      .arare-contact-faq__button {
+        grid-template-columns: auto 1fr auto;
+        gap: 10px;
+      }
+
+      .arare-contact-faq__answer p {
+        padding: 0 0 22px 32px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="arare-site">
+    <header class="arare-header" data-arare-header>
+      <div class="arare-container arare-header__inner">
+        <a class="arare-logo" href="index.html" aria-label="ARARE トップページ">
+          <span class="arare-logo__mark" aria-hidden="true"></span>
+          <span>ARARE</span>
+        </a>
+        <nav class="arare-nav" aria-label="グローバルナビゲーション">
+          <a href="index.html">ホーム</a>
+          <a href="sell.html">成長支援</a>
+          <a href="buy.html">立ち上げ支援</a>
+          <a href="cases.html">事例一覧</a>
+          <a href="column.html">コラム</a>
+          <a href="support.html">事業支援</a>
+          <a class="arare-nav-active" href="contact.html">無料相談</a>
+        </nav>
+        <div class="arare-header__actions">
+          <a class="arare-btn arare-btn-primary" href="contact.html">無料相談する</a>
+          <button class="arare-menu-toggle" type="button" aria-label="メニューを開く" aria-controls="arare-mobile-menu" aria-expanded="false" data-arare-menu-toggle>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+      <div class="arare-mobile-menu" id="arare-mobile-menu" aria-hidden="true" data-arare-mobile-menu>
+        <div class="arare-mobile-menu__inner">
+          <nav class="arare-mobile-nav" aria-label="モバイルナビゲーション">
+            <a href="index.html">ホーム</a>
+            <a href="sell.html">成長支援</a>
+            <a href="buy.html">立ち上げ支援</a>
+            <a href="cases.html">事例一覧</a>
+            <a href="column.html">コラム</a>
+            <a href="support.html">事業支援</a>
+            <a class="arare-nav-active" href="contact.html">無料相談</a>
+          </nav>
+          <a class="arare-btn arare-btn-primary" href="contact.html">無料相談する</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="arare-sub-hero" aria-labelledby="contact-hero-title">
+        <div class="arare-container">
+          <div class="arare-sub-hero__content" data-aos="fade-up">
+            <p class="arare-eyebrow">CONTACT</p>
+            <h1 class="arare-title" id="contact-hero-title">まずは無料相談から。</h1>
+            <p class="arare-lead">Web制作やAI導入の内容がまだ固まっていなくても大丈夫です。<br>現状や課題を整理し、最適な進め方をご提案します。</p>
+            <div class="arare-hero__actions">
+              <a class="arare-btn arare-btn-primary" href="contact.html">無料相談する</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="arare-section arare-section--soft" id="contact-services">
+        <div class="arare-container">
+          <div class="arare-section-header" data-aos="fade-up">
+            <p class="arare-eyebrow">Consultation Menu</p>
+            <h2 class="arare-section-title">相談できる内容</h2>
+          </div>
+          <div class="arare-contact-grid">
+            <article class="arare-card arare-contact-service" data-aos="fade-up">
+              <div class="arare-contact-icon"><svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><rect x="10" y="14" width="44" height="34" rx="4" stroke-width="2"/><path d="M10 24h44M20 36h16M20 42h24" stroke-width="2" stroke-linecap="round"/><circle cx="17" cy="19" r="1.5" fill="currentColor"/><circle cx="23" cy="19" r="1.5" fill="currentColor"/></svg></div>
+              <h3>ホームページ制作</h3>
+              <p>事業内容、強み、信頼感が伝わるサイトを、導線設計から整理します。</p>
+            </article>
+            <article class="arare-card arare-contact-service" data-aos="fade-up" data-aos-delay="40">
+              <div class="arare-contact-icon"><svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><rect x="17" y="8" width="30" height="48" rx="5" stroke-width="2"/><path d="M24 20h16M24 28h10M24 39h16M24 46h12" stroke-width="2" stroke-linecap="round"/></svg></div>
+              <h3>LP制作</h3>
+              <p>広告やキャンペーンの成果につながる、訴求とCTAを設計します。</p>
+            </article>
+            <article class="arare-card arare-contact-service" data-aos="fade-up" data-aos-delay="80">
+              <div class="arare-contact-icon"><svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M18 24a16 16 0 0 1 26-7l4 4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M48 12v9h-9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M46 40a16 16 0 0 1-26 7l-4-4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 52v-9h9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <h3>サイトリニューアル</h3>
+              <p>古くなった見た目、スマホ対応、問い合わせ導線をまとめて見直します。</p>
+            </article>
+            <article class="arare-card arare-contact-service" data-aos="fade-up">
+              <div class="arare-contact-icon"><svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><circle cx="32" cy="32" r="7" stroke-width="2"/><circle cx="16" cy="18" r="5" stroke-width="2"/><circle cx="48" cy="18" r="5" stroke-width="2"/><circle cx="16" cy="46" r="5" stroke-width="2"/><circle cx="48" cy="46" r="5" stroke-width="2"/><path d="M20 21l7 7M44 21l-7 7M20 43l7-7M44 43l-7-7" stroke-width="2" stroke-linecap="round"/></svg></div>
+              <h3>SNS運用代行</h3>
+              <p>投稿カテゴリ、原稿作成、継続しやすい運用ルールまで支援します。</p>
+            </article>
+            <article class="arare-card arare-contact-service" data-aos="fade-up" data-aos-delay="40">
+              <div class="arare-contact-icon"><svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><rect x="18" y="18" width="28" height="28" rx="6" stroke-width="2"/><path d="M26 34l4-10h4l4 10M28 30h8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 10v8M40 10v8M24 46v8M40 46v8M10 24h8M10 40h8M46 24h8M46 40h8" stroke-width="2" stroke-linecap="round"/></svg></div>
+              <h3>AI導入支援</h3>
+              <p>ChatGPTなどの活用範囲を整理し、現場で使える形に落とし込みます。</p>
+            </article>
+            <article class="arare-card arare-contact-service" data-aos="fade-up" data-aos-delay="80">
+              <div class="arare-contact-icon"><svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M32 10l5 10 11 2-8 8 2 12-10-6-10 6 2-12-8-8 11-2 5-10z" stroke-width="2" stroke-linejoin="round"/><path d="M18 50h28M24 56h16" stroke-width="2" stroke-linecap="round"/></svg></div>
+              <h3>AI全自動化</h3>
+              <p>問い合わせ対応、資料作成、定型業務を自動化する仕組みを設計します。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="arare-section" id="contact-flow">
+        <div class="arare-container">
+          <div class="arare-section-header" data-aos="fade-up">
+            <p class="arare-eyebrow">Flow</p>
+            <h2 class="arare-section-title">相談の流れ</h2>
+          </div>
+          <div class="arare-contact-flow">
+            <article class="arare-card arare-contact-flow__step" data-aos="fade-up"><h3>フォーム送信</h3><p>相談内容がまとまっていない段階でも、わかる範囲で送信してください。</p></article>
+            <article class="arare-card arare-contact-flow__step" data-aos="fade-up" data-aos-delay="40"><h3>ヒアリング</h3><p>現状の課題、目標、予算感、希望スケジュールを丁寧に伺います。</p></article>
+            <article class="arare-card arare-contact-flow__step" data-aos="fade-up" data-aos-delay="80"><h3>課題整理</h3><p>Web、SNS、AI活用のどこから着手すべきかを整理します。</p></article>
+            <article class="arare-card arare-contact-flow__step" data-aos="fade-up" data-aos-delay="120"><h3>ご提案</h3><p>必要な支援内容、進め方、費用目安を具体的にご提案します。</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="arare-section arare-section--soft" id="contact-trust">
+        <div class="arare-container">
+          <div class="arare-section-header" data-aos="fade-up">
+            <p class="arare-eyebrow">Promise</p>
+            <h2 class="arare-section-title">安心して相談できる理由</h2>
+          </div>
+          <div class="arare-contact-grid">
+            <article class="arare-card arare-contact-trust" data-aos="fade-up">
+              <div class="arare-contact-icon"><svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><circle cx="32" cy="32" r="20" stroke-width="2"/><path d="M22 33l7 7 14-16" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <h3>無料相談</h3>
+              <p>初回相談は無料です。現状整理だけでもお気軽にご利用いただけます。</p>
+            </article>
+            <article class="arare-card arare-contact-trust" data-aos="fade-up" data-aos-delay="60">
+              <div class="arare-contact-icon"><svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M14 18h36v25H28l-10 8v-8h-4V18z" stroke-width="2" stroke-linejoin="round"/><path d="M23 28h18M23 35h12" stroke-width="2" stroke-linecap="round"/></svg></div>
+              <h3>無理な営業なし</h3>
+              <p>必要な支援と不要な施策を切り分け、納得できる進め方を大切にします。</p>
+            </article>
+            <article class="arare-card arare-contact-trust" data-aos="fade-up" data-aos-delay="120">
+              <div class="arare-contact-icon"><svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M32 10a15 15 0 0 0-8 28v6h16v-6a15 15 0 0 0-8-28z" stroke-width="2" stroke-linejoin="round"/><path d="M26 52h12M28 58h8" stroke-width="2" stroke-linecap="round"/></svg></div>
+              <h3>まだ未定でも相談可能</h3>
+              <p>サービス内容、予算、公開時期が未定でも、一緒に整理できます。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="arare-section" id="contact-form-section">
+        <div class="arare-container">
+          <div class="arare-section-header" data-aos="fade-up">
+            <p class="arare-eyebrow">Form</p>
+            <h2 class="arare-section-title">お問い合わせフォーム</h2>
+          </div>
+          <div class="arare-contact-form-card" data-aos="fade-up">
+            <form class="arare-contact-form" data-arare-contact-form novalidate>
+              <div class="arare-contact-success" data-form-success hidden>送信ありがとうございます。内容を確認し、折り返しご連絡します。</div>
+              <div class="arare-contact-form__grid">
+                <div class="arare-contact-field">
+                  <label class="arare-contact-label" for="contact-name">お名前 <span class="arare-contact-required">必須</span></label>
+                  <input class="arare-contact-input" id="contact-name" name="name" type="text" autocomplete="name" required aria-invalid="false" aria-describedby="contact-name-error">
+                  <p class="arare-contact-error" id="contact-name-error" data-error-for="name"></p>
+                </div>
+                <div class="arare-contact-field">
+                  <label class="arare-contact-label" for="contact-company">会社名</label>
+                  <input class="arare-contact-input" id="contact-company" name="company" type="text" autocomplete="organization" aria-invalid="false" aria-describedby="contact-company-error">
+                  <p class="arare-contact-error" id="contact-company-error" data-error-for="company"></p>
+                </div>
+                <div class="arare-contact-field">
+                  <label class="arare-contact-label" for="contact-email">メールアドレス <span class="arare-contact-required">必須</span></label>
+                  <input class="arare-contact-input" id="contact-email" name="email" type="email" autocomplete="email" required aria-invalid="false" aria-describedby="contact-email-error">
+                  <p class="arare-contact-error" id="contact-email-error" data-error-for="email"></p>
+                </div>
+                <div class="arare-contact-field">
+                  <label class="arare-contact-label" for="contact-tel">電話番号</label>
+                  <input class="arare-contact-input" id="contact-tel" name="tel" type="tel" autocomplete="tel" aria-invalid="false" aria-describedby="contact-tel-error">
+                  <p class="arare-contact-error" id="contact-tel-error" data-error-for="tel"></p>
+                </div>
+                <div class="arare-contact-field arare-contact-field--full">
+                  <label class="arare-contact-label" for="contact-service">相談したいサービス <span class="arare-contact-required">必須</span></label>
+                  <select class="arare-contact-select" id="contact-service" name="service" required aria-invalid="false" aria-describedby="contact-service-error">
+                    <option value="">選択してください</option>
+                    <option value="ホームページ制作">ホームページ制作</option>
+                    <option value="LP制作">LP制作</option>
+                    <option value="サイトリニューアル">サイトリニューアル</option>
+                    <option value="SNS運用代行">SNS運用代行</option>
+                    <option value="AI導入支援">AI導入支援</option>
+                    <option value="AI全自動化">AI全自動化</option>
+                    <option value="まだ決まっていない">まだ決まっていない</option>
+                  </select>
+                  <p class="arare-contact-error" id="contact-service-error" data-error-for="service"></p>
+                </div>
+                <div class="arare-contact-field arare-contact-field--full">
+                  <label class="arare-contact-label" for="contact-message">ご相談内容 <span class="arare-contact-required">必須</span></label>
+                  <textarea class="arare-contact-textarea" id="contact-message" name="message" rows="7" required aria-invalid="false" aria-describedby="contact-message-error" placeholder="現在のお悩み、実現したいこと、相談したい内容などをご記入ください。"></textarea>
+                  <p class="arare-contact-error" id="contact-message-error" data-error-for="message"></p>
+                </div>
+              </div>
+              <button class="arare-btn arare-btn-primary arare-contact-submit" type="submit">無料相談を送信する</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section class="arare-section arare-section--soft" id="contact-faq">
+        <div class="arare-container">
+          <div class="arare-section-header" data-aos="fade-up">
+            <p class="arare-eyebrow">FAQ</p>
+            <h2 class="arare-section-title">よくある質問</h2>
+          </div>
+          <div class="arare-contact-faq" data-aos="fade-up">
+            <div class="arare-contact-faq__item is-open">
+              <button class="arare-contact-faq__button" type="button" data-arare-contact-faq aria-expanded="true" aria-controls="contact-faq-1">
+                <span class="arare-contact-faq__mark">Q.</span><span class="arare-contact-faq__question">相談だけでも大丈夫ですか？</span><span class="arare-contact-faq__icon" aria-hidden="true">+</span>
+              </button>
+              <div class="arare-contact-faq__answer" id="contact-faq-1" aria-hidden="false"><p>はい、大丈夫です。具体的な依頼内容が決まっていなくても、現状整理や優先順位づけからご相談いただけます。</p></div>
+            </div>
+            <div class="arare-contact-faq__item">
+              <button class="arare-contact-faq__button" type="button" data-arare-contact-faq aria-expanded="false" aria-controls="contact-faq-2">
+                <span class="arare-contact-faq__mark">Q.</span><span class="arare-contact-faq__question">費用はいつ決まりますか？</span><span class="arare-contact-faq__icon" aria-hidden="true">+</span>
+              </button>
+              <div class="arare-contact-faq__answer" id="contact-faq-2" aria-hidden="true"><p>ヒアリング後に必要な支援範囲を整理し、作業内容と費用目安をご提示します。ご納得いただいてから進行します。</p></div>
+            </div>
+            <div class="arare-contact-faq__item">
+              <button class="arare-contact-faq__button" type="button" data-arare-contact-faq aria-expanded="false" aria-controls="contact-faq-3">
+                <span class="arare-contact-faq__mark">Q.</span><span class="arare-contact-faq__question">オンライン相談は可能ですか？</span><span class="arare-contact-faq__icon" aria-hidden="true">+</span>
+              </button>
+              <div class="arare-contact-faq__answer" id="contact-faq-3" aria-hidden="true"><p>可能です。地域を問わず、オンラインでヒアリングや提案の打ち合わせに対応できます。</p></div>
+            </div>
+            <div class="arare-contact-faq__item">
+              <button class="arare-contact-faq__button" type="button" data-arare-contact-faq aria-expanded="false" aria-controls="contact-faq-4">
+                <span class="arare-contact-faq__mark">Q.</span><span class="arare-contact-faq__question">AI導入だけでも相談できますか？</span><span class="arare-contact-faq__icon" aria-hidden="true">+</span>
+              </button>
+              <div class="arare-contact-faq__answer" id="contact-faq-4" aria-hidden="true"><p>はい。Web制作とは別に、AI活用範囲の整理、社内ルールづくり、自動化設計だけのご相談も可能です。</p></div>
+            </div>
+            <div class="arare-contact-faq__item">
+              <button class="arare-contact-faq__button" type="button" data-arare-contact-faq aria-expanded="false" aria-controls="contact-faq-5">
+                <span class="arare-contact-faq__mark">Q.</span><span class="arare-contact-faq__question">まだ事業内容が固まっていなくても大丈夫ですか？</span><span class="arare-contact-faq__icon" aria-hidden="true">+</span>
+              </button>
+              <div class="arare-contact-faq__answer" id="contact-faq-5" aria-hidden="true"><p>大丈夫です。サービス設計や発信内容が未定の段階でも、WebやAIで何を整えるべきか一緒に整理します。</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="arare-footer">
+      <div class="arare-container">
+        <div class="arare-footer__inner">
+          <div class="arare-footer__brand">
+            <a class="arare-logo" href="index.html" aria-label="ARARE トップページ">
+              <span class="arare-logo__mark" aria-hidden="true"></span>
+              <span>ARARE</span>
+            </a>
+            <p class="arare-footer__catch">AIとデザインで、Web集客を加速させる。</p>
+            <p class="arare-footer__text">ホームページ制作からAI全自動化まで、成果につながるWeb戦略を一気通貫で支援します。</p>
+          </div>
+          <div>
+            <p class="arare-footer__heading">Navigation</p>
+            <nav class="arare-footer__nav" aria-label="フッターナビゲーション">
+              <a href="index.html">ホーム</a>
+              <a href="sell.html">成長支援</a>
+              <a href="buy.html">立ち上げ支援</a>
+              <a href="cases.html">事例一覧</a>
+              <a href="column.html">コラム</a>
+              <a href="support.html">事業支援</a>
+              <a class="arare-nav-active" href="contact.html">無料相談</a>
+            </nav>
+          </div>
+          <div>
+            <p class="arare-footer__heading">Social</p>
+            <div class="arare-footer__social">
+              <span aria-hidden="true">X</span>
+              <span aria-hidden="true">IG</span>
+              <span aria-hidden="true">LINE</span>
+            </div>
+          </div>
+        </div>
+        <div class="arare-footer__bottom">
+          <small>&copy; 2025 ARARE</small>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const body = document.body;
+      const header = document.querySelector("[data-arare-header]");
+      const menuToggle = document.querySelector("[data-arare-menu-toggle]");
+      const mobileMenu = document.querySelector("[data-arare-mobile-menu]");
+      const navLinks = document.querySelectorAll(".arare-nav a[href^='#']");
+      const sections = document.querySelectorAll("main section[id]");
+
+      const setMenuOpen = (open) => {
+        if (!menuToggle || !mobileMenu) {
+          return;
+        }
+
+        menuToggle.setAttribute("aria-expanded", String(open));
+        menuToggle.setAttribute("aria-label", open ? "メニューを閉じる" : "メニューを開く");
+        mobileMenu.setAttribute("aria-hidden", String(!open));
+        body.classList.toggle("arare-menu-open", open);
+      };
+
+      const updateHeaderState = () => {
+        if (!header) {
+          return;
+        }
+
+        header.classList.toggle("arare-header--scrolled", window.scrollY > 24);
+      };
+
+      const initContactFaq = () => {
+        const buttons = Array.from(document.querySelectorAll("[data-arare-contact-faq]"));
+
+        buttons.forEach((button) => {
+          button.addEventListener("click", () => {
+            const controls = button.getAttribute("aria-controls");
+            const answer = controls ? document.getElementById(controls) : null;
+            const item = button.closest(".arare-contact-faq__item");
+            const isOpen = item ? item.classList.contains("is-open") : false;
+
+            if (!item || !answer) {
+              return;
+            }
+
+            item.classList.toggle("is-open", !isOpen);
+            button.setAttribute("aria-expanded", String(!isOpen));
+            answer.setAttribute("aria-hidden", String(isOpen));
+          });
+        });
+      };
+
+      const initContactForm = () => {
+        const form = document.querySelector("[data-arare-contact-form]");
+        if (!form) {
+          return;
+        }
+
+        const success = form.querySelector("[data-form-success]");
+        const fields = {
+          name: form.elements.name,
+          company: form.elements.company,
+          email: form.elements.email,
+          tel: form.elements.tel,
+          service: form.elements.service,
+          message: form.elements.message
+        };
+        const errors = {};
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        form.querySelectorAll("[data-error-for]").forEach((error) => {
+          errors[error.dataset.errorFor] = error;
+        });
+
+        const setError = (fieldName, message) => {
+          const field = fields[fieldName];
+          if (!field) {
+            return;
+          }
+
+          field.setAttribute("aria-invalid", message ? "true" : "false");
+          if (errors[fieldName]) {
+            errors[fieldName].textContent = message;
+          }
+        };
+
+        const validateField = (fieldName) => {
+          const field = fields[fieldName];
+          if (!field) {
+            return true;
+          }
+
+          const value = field.value.trim();
+          let message = "";
+
+          if (fieldName === "name" && !value) {
+            message = "お名前を入力してください。";
+          }
+
+          if (fieldName === "email") {
+            if (!value) {
+              message = "メールアドレスを入力してください。";
+            } else if (!emailPattern.test(value)) {
+              message = "メールアドレスの形式で入力してください。";
+            }
+          }
+
+          if (fieldName === "service" && !value) {
+            message = "相談したいサービスを選択してください。";
+          }
+
+          if (fieldName === "message" && !value) {
+            message = "ご相談内容を入力してください。";
+          }
+
+          setError(fieldName, message);
+          return !message;
+        };
+
+        const validateForm = () => {
+          let isValid = true;
+          ["name", "email", "service", "message"].forEach((fieldName) => {
+            if (!validateField(fieldName)) {
+              isValid = false;
+            }
+          });
+          return isValid;
+        };
+
+        Object.entries(fields).forEach(([fieldName, field]) => {
+          if (!field) {
+            return;
+          }
+
+          field.addEventListener("input", () => {
+            if (success) {
+              success.hidden = true;
+            }
+            if (field.getAttribute("aria-invalid") === "true") {
+              validateField(fieldName);
+            }
+          });
+
+          field.addEventListener("change", () => {
+            if (success) {
+              success.hidden = true;
+            }
+            if (fieldName === "service" || field.getAttribute("aria-invalid") === "true") {
+              validateField(fieldName);
+            }
+          });
+        });
+
+        form.addEventListener("submit", (event) => {
+          event.preventDefault();
+          if (success) {
+            success.hidden = true;
+          }
+
+          if (!validateForm()) {
+            const firstInvalid = form.querySelector('[aria-invalid="true"]');
+            if (firstInvalid) {
+              firstInvalid.focus();
+            }
+            return;
+          }
+
+          form.reset();
+          Object.keys(fields).forEach((fieldName) => setError(fieldName, ""));
+          if (success) {
+            success.hidden = false;
+            success.scrollIntoView({ behavior: "smooth", block: "nearest" });
+          }
+        });
+      };
+
+      if (window.AOS) {
+        AOS.init({
+          duration: 720,
+          easing: "ease-out-cubic",
+          once: true,
+          offset: 80
+        });
+      }
+
+      document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener("click", (event) => {
+          const targetId = link.getAttribute("href");
+          if (!targetId || targetId === "#") {
+            return;
+          }
+
+          const target = document.querySelector(targetId);
+          if (!target) {
+            return;
+          }
+
+          event.preventDefault();
+          setMenuOpen(false);
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      });
+
+      const updateActiveNav = () => {
+        let currentId = "";
+        sections.forEach((section) => {
+          const rect = section.getBoundingClientRect();
+          if (rect.top <= 140 && rect.bottom >= 140) {
+            currentId = section.id;
+          }
+        });
+
+        navLinks.forEach((link) => {
+          link.classList.toggle("is-active", link.getAttribute("href") === "#" + currentId);
+        });
+      };
+
+      if (menuToggle) {
+        menuToggle.addEventListener("click", () => {
+          setMenuOpen(menuToggle.getAttribute("aria-expanded") !== "true");
+        });
+      }
+
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 768) {
+          setMenuOpen(false);
+        }
+      });
+
+      window.addEventListener("scroll", updateHeaderState, { passive: true });
+      window.addEventListener("scroll", updateActiveNav, { passive: true });
+
+      initContactFaq();
+      initContactForm();
+      updateHeaderState();
+      updateActiveNav();
+    });
+  </script>
+  <!-- ARARE demo site version 1.0 -->
+</body>
+</html>
