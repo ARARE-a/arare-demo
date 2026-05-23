@@ -2307,11 +2307,12 @@
       min-height: calc(100vh - 76px);
       display: grid;
       align-items: center;
-      padding-block: 138px 156px;
+      padding-block: 150px 168px;
       overflow: hidden;
       isolation: isolate;
       background:
-        linear-gradient(180deg, #000 0%, #01020a 42%, #05020d 70%, #000 100%);
+        radial-gradient(ellipse at 50% 72%, rgba(0, 212, 255, 0.08), transparent 38%),
+        linear-gradient(180deg, #000 0%, #01020a 42%, #03030d 70%, #000 100%);
       text-align: center;
     }
 
@@ -2326,8 +2327,9 @@
 
     .arare-hero::before {
       background:
-        radial-gradient(ellipse at 50% 38%, rgba(0, 0, 0, 0.70) 0%, rgba(0, 0, 0, 0.42) 34%, rgba(0, 0, 0, 0.18) 58%, transparent 76%),
-        linear-gradient(180deg, rgba(0, 0, 0, 0.96) 0%, rgba(0, 0, 0, 0.86) 26%, rgba(0, 0, 0, 0.38) 56%, rgba(0, 0, 0, 0.06) 100%);
+        radial-gradient(ellipse at 50% 40%, rgba(0, 0, 0, 0.80) 0%, rgba(0, 0, 0, 0.58) 36%, rgba(0, 0, 0, 0.22) 62%, transparent 78%),
+        radial-gradient(ellipse at 50% 50%, transparent 0%, transparent 48%, rgba(0, 0, 0, 0.42) 100%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.98) 0%, rgba(0, 0, 0, 0.82) 24%, rgba(0, 0, 0, 0.42) 58%, rgba(0, 0, 0, 0.16) 100%);
     }
 
     .arare-hero::after {
@@ -2336,7 +2338,7 @@
         linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
       background-size: 76px 76px;
       mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 76%, transparent 100%);
-      opacity: 0.18;
+      opacity: 0.12;
     }
 
     .arare-hero-wave {
@@ -2346,9 +2348,643 @@
       overflow: hidden;
       pointer-events: none;
       background:
-        radial-gradient(ellipse at 50% 74%, rgba(255, 43, 214, 0.16), transparent 34%),
-        radial-gradient(ellipse at 24% 62%, rgba(0, 212, 255, 0.18), transparent 30%),
-        radial-gradient(ellipse at 82% 58%, rgba(108, 99, 255, 0.18), transparent 32%);
+        radial-gradient(ellipse at 50% 78%, rgba(255, 43, 214, 0.10), transparent 34%),
+        radial-gradient(ellipse at 24% 62%, rgba(0, 212, 255, 0.16), transparent 30%),
+        radial-gradient(ellipse at 82% 58%, rgba(108, 99, 255, 0.16), transparent 32%);
+    }
+
+    .arare-meteor-layer {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .arare-meteor-layer::before,
+    .arare-meteor-layer::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .arare-meteor-layer::before {
+      z-index: 0;
+      background-image:
+        radial-gradient(circle at 14% 18%, rgba(255, 255, 255, 0.22) 0 1px, transparent 1.5px),
+        radial-gradient(circle at 72% 16%, rgba(0, 212, 255, 0.20) 0 1px, transparent 1.6px),
+        radial-gradient(circle at 88% 62%, rgba(126, 96, 255, 0.22) 0 1px, transparent 1.6px),
+        radial-gradient(circle at 28% 78%, rgba(255, 255, 255, 0.16) 0 1px, transparent 1.5px);
+      background-size: 210px 180px, 260px 220px, 240px 210px, 300px 260px;
+      mix-blend-mode: screen;
+      opacity: 0.28;
+    }
+
+    .arare-meteor-layer::after {
+      z-index: 1;
+      background:
+        radial-gradient(ellipse at 50% 42%, rgba(0, 0, 0, 0.26), transparent 42%),
+        radial-gradient(ellipse at 50% 100%, rgba(0, 212, 255, 0.16), transparent 34%),
+        radial-gradient(ellipse at 82% 76%, rgba(126, 96, 255, 0.10), transparent 30%);
+      mix-blend-mode: screen;
+      opacity: 0.50;
+    }
+
+    .arare-meteor-bg,
+    .arare-meteor-glow {
+      position: absolute;
+      inset: -18%;
+      pointer-events: none;
+    }
+
+    .arare-meteor-bg {
+      background:
+        radial-gradient(ellipse at 18% 22%, rgba(0, 212, 255, 0.18), transparent 30%),
+        radial-gradient(ellipse at 78% 34%, rgba(126, 96, 255, 0.22), transparent 34%),
+        radial-gradient(ellipse at 48% 72%, rgba(255, 43, 214, 0.08), transparent 38%),
+        radial-gradient(ellipse at 50% 100%, rgba(0, 212, 255, 0.16), transparent 34%),
+        linear-gradient(122deg, rgba(0, 0, 0, 0.06), rgba(0, 212, 255, 0.08) 38%, rgba(126, 96, 255, 0.10) 62%, rgba(0, 0, 0, 0.08));
+      filter: blur(12px) saturate(1.16);
+      opacity: 0.86;
+      animation: arareMeteorNebula 18s ease-in-out infinite alternate;
+      will-change: transform, opacity;
+    }
+
+    .arare-meteor-glow {
+      background:
+        linear-gradient(126deg, transparent 6%, rgba(255, 255, 255, 0.08) 14%, transparent 23%),
+        linear-gradient(126deg, transparent 30%, rgba(0, 212, 255, 0.15) 38%, rgba(255, 255, 255, 0.12) 41%, transparent 49%),
+        linear-gradient(126deg, transparent 54%, rgba(126, 96, 255, 0.18) 62%, rgba(255, 43, 214, 0.08) 66%, transparent 76%);
+      filter: blur(20px);
+      mix-blend-mode: screen;
+      opacity: 0.60;
+      transform: rotate(-3deg) scale(1.08);
+      animation: arareMeteorGlowDrift 13s ease-in-out infinite alternate;
+      will-change: transform, opacity, filter;
+    }
+
+    .meteor {
+      position: absolute;
+      display: block;
+      width: var(--meteor-width, 34vw);
+      height: var(--meteor-height, 2px);
+      border-radius: 999px;
+      background:
+        linear-gradient(90deg, transparent 0%, rgba(0, 212, 255, 0.05) 8%, rgba(0, 212, 255, 0.50) 40%, rgba(126, 96, 255, 0.48) 58%, rgba(255, 255, 255, 0.98) 76%, rgba(255, 255, 255, 0.16) 100%);
+      box-shadow:
+        0 0 20px rgba(0, 212, 255, 0.58),
+        0 0 42px rgba(126, 96, 255, 0.34),
+        0 0 62px rgba(255, 43, 214, 0.12);
+      filter: blur(var(--meteor-blur, 0px));
+      mix-blend-mode: screen;
+      opacity: var(--meteor-opacity, 0.72);
+      transform: translate3d(var(--meteor-start-x, -24vw), var(--meteor-start-y, -18vh), 0) rotate(var(--meteor-angle, 43deg)) scale(0.98);
+      transform-origin: center;
+      z-index: var(--meteor-depth, 2);
+      animation: arareMeteorDrift var(--meteor-duration, 10s) cubic-bezier(0.18, 0.02, 0.28, 1) infinite;
+      animation-delay: var(--meteor-delay, 0s);
+      will-change: transform, opacity, filter, box-shadow;
+    }
+
+    .meteor::before,
+    .meteor::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -1px;
+      border-radius: inherit;
+      pointer-events: none;
+      transform: translateY(-50%);
+    }
+
+    .meteor::before {
+      width: 15%;
+      min-width: 42px;
+      height: 520%;
+      background: radial-gradient(ellipse at center, rgba(255, 255, 255, 1), rgba(0, 212, 255, 0.56) 34%, transparent 72%);
+      filter: blur(8px);
+    }
+
+    .meteor::after {
+      width: 72%;
+      height: 980%;
+      background: radial-gradient(ellipse at center, rgba(0, 212, 255, 0.30), rgba(126, 96, 255, 0.20) 42%, rgba(255, 43, 214, 0.06) 58%, transparent 76%);
+      filter: blur(22px);
+      opacity: 0.78;
+    }
+
+    .meteor--1 {
+      --meteor-width: 38vw;
+      --meteor-opacity: 0.86;
+      --meteor-angle: 42deg;
+      --meteor-duration: 8s;
+      --meteor-delay: -4.8s;
+      --meteor-start-x: -42vw;
+      --meteor-start-y: -28vh;
+      --meteor-end-x: 62vw;
+      --meteor-end-y: 54vh;
+      left: -5%;
+      top: 15%;
+    }
+
+    .meteor--2 {
+      --meteor-width: 24vw;
+      --meteor-height: 1px;
+      --meteor-opacity: 0.48;
+      --meteor-angle: 51deg;
+      --meteor-duration: 16s;
+      --meteor-delay: -9s;
+      --meteor-start-x: -26vw;
+      --meteor-start-y: -24vh;
+      --meteor-end-x: 46vw;
+      --meteor-end-y: 50vh;
+      left: 56%;
+      top: 9%;
+    }
+
+    .meteor--3 {
+      --meteor-width: 32vw;
+      --meteor-blur: 1px;
+      --meteor-opacity: 0.64;
+      --meteor-angle: 38deg;
+      --meteor-duration: 11s;
+      --meteor-delay: -2.5s;
+      --meteor-start-x: -34vw;
+      --meteor-start-y: -20vh;
+      --meteor-end-x: 54vw;
+      --meteor-end-y: 42vh;
+      left: 24%;
+      top: 29%;
+    }
+
+    .meteor--4 {
+      --meteor-width: 48vw;
+      --meteor-height: 3px;
+      --meteor-opacity: 0.76;
+      --meteor-angle: 45deg;
+      --meteor-duration: 7s;
+      --meteor-delay: -6.2s;
+      --meteor-start-x: -48vw;
+      --meteor-start-y: -34vh;
+      --meteor-end-x: 72vw;
+      --meteor-end-y: 62vh;
+      left: 58%;
+      top: 24%;
+    }
+
+    .meteor--5 {
+      --meteor-width: 22vw;
+      --meteor-opacity: 0.42;
+      --meteor-angle: 55deg;
+      --meteor-duration: 18s;
+      --meteor-delay: -12s;
+      --meteor-start-x: -24vw;
+      --meteor-start-y: -22vh;
+      --meteor-end-x: 40vw;
+      --meteor-end-y: 54vh;
+      left: 4%;
+      top: 43%;
+    }
+
+    .meteor--6 {
+      --meteor-width: 36vw;
+      --meteor-height: 2px;
+      --meteor-opacity: 0.68;
+      --meteor-angle: 40deg;
+      --meteor-duration: 9.5s;
+      --meteor-delay: -1.8s;
+      --meteor-start-x: -38vw;
+      --meteor-start-y: -26vh;
+      --meteor-end-x: 58vw;
+      --meteor-end-y: 48vh;
+      left: 34%;
+      top: 49%;
+    }
+
+    .meteor--7 {
+      --meteor-width: 28vw;
+      --meteor-blur: 1px;
+      --meteor-opacity: 0.54;
+      --meteor-angle: 47deg;
+      --meteor-duration: 14s;
+      --meteor-delay: -7.6s;
+      --meteor-start-x: -30vw;
+      --meteor-start-y: -28vh;
+      --meteor-end-x: 50vw;
+      --meteor-end-y: 50vh;
+      left: 74%;
+      top: 48%;
+    }
+
+    .meteor--8 {
+      --meteor-width: 44vw;
+      --meteor-height: 3px;
+      --meteor-opacity: 0.72;
+      --meteor-angle: 36deg;
+      --meteor-duration: 8.8s;
+      --meteor-delay: -5.4s;
+      --meteor-start-x: -52vw;
+      --meteor-start-y: -24vh;
+      --meteor-end-x: 72vw;
+      --meteor-end-y: 42vh;
+      left: -12%;
+      top: 65%;
+    }
+
+    .meteor--9 {
+      --meteor-width: 30vw;
+      --meteor-opacity: 0.50;
+      --meteor-angle: 49deg;
+      --meteor-duration: 13s;
+      --meteor-delay: -10.5s;
+      --meteor-start-x: -32vw;
+      --meteor-start-y: -30vh;
+      --meteor-end-x: 48vw;
+      --meteor-end-y: 55vh;
+      left: 45%;
+      top: 70%;
+    }
+
+    .meteor--10 {
+      --meteor-width: 19vw;
+      --meteor-height: 1px;
+      --meteor-opacity: 0.38;
+      --meteor-angle: 43deg;
+      --meteor-duration: 19s;
+      --meteor-delay: -3.2s;
+      --meteor-start-x: -22vw;
+      --meteor-start-y: -20vh;
+      --meteor-end-x: 38vw;
+      --meteor-end-y: 36vh;
+      left: 12%;
+      top: 82%;
+    }
+
+    .meteor--11 {
+      --meteor-width: 34vw;
+      --meteor-blur: 0.5px;
+      --meteor-opacity: 0.58;
+      --meteor-angle: 52deg;
+      --meteor-duration: 10.5s;
+      --meteor-delay: -8.4s;
+      --meteor-start-x: -36vw;
+      --meteor-start-y: -34vh;
+      --meteor-end-x: 56vw;
+      --meteor-end-y: 58vh;
+      left: 67%;
+      top: 82%;
+    }
+
+    .meteor--12 {
+      --meteor-width: 26vw;
+      --meteor-height: 1px;
+      --meteor-opacity: 0.36;
+      --meteor-angle: 39deg;
+      --meteor-duration: 15s;
+      --meteor-delay: -0.8s;
+      --meteor-start-x: -30vw;
+      --meteor-start-y: -18vh;
+      --meteor-end-x: 44vw;
+      --meteor-end-y: 34vh;
+      left: 82%;
+      top: 8%;
+    }
+
+    .meteor--13 {
+      --meteor-width: 86px;
+      --meteor-height: 1px;
+      --meteor-opacity: 0.32;
+      --meteor-angle: 44deg;
+      --meteor-duration: 22s;
+      --meteor-delay: -14s;
+      --meteor-start-x: -18vw;
+      --meteor-start-y: -16vh;
+      --meteor-end-x: 34vw;
+      --meteor-end-y: 32vh;
+      --meteor-depth: 2;
+      left: 18%;
+      top: 8%;
+    }
+
+    .meteor--14 {
+      --meteor-width: 128px;
+      --meteor-height: 1px;
+      --meteor-opacity: 0.44;
+      --meteor-angle: 53deg;
+      --meteor-duration: 17s;
+      --meteor-delay: -4s;
+      --meteor-start-x: -24vw;
+      --meteor-start-y: -22vh;
+      --meteor-end-x: 44vw;
+      --meteor-end-y: 48vh;
+      --meteor-depth: 2;
+      left: 70%;
+      top: 18%;
+    }
+
+    .meteor--15 {
+      --meteor-width: 190px;
+      --meteor-height: 2px;
+      --meteor-opacity: 0.68;
+      --meteor-angle: 41deg;
+      --meteor-duration: 9s;
+      --meteor-delay: -7.2s;
+      --meteor-start-x: -34vw;
+      --meteor-start-y: -20vh;
+      --meteor-end-x: 58vw;
+      --meteor-end-y: 44vh;
+      --meteor-depth: 3;
+      left: 8%;
+      top: 27%;
+    }
+
+    .meteor--16 {
+      --meteor-width: 110px;
+      --meteor-height: 1px;
+      --meteor-blur: 0.5px;
+      --meteor-opacity: 0.38;
+      --meteor-angle: 48deg;
+      --meteor-duration: 20s;
+      --meteor-delay: -11.4s;
+      --meteor-start-x: -20vw;
+      --meteor-start-y: -18vh;
+      --meteor-end-x: 38vw;
+      --meteor-end-y: 40vh;
+      --meteor-depth: 2;
+      left: 44%;
+      top: 18%;
+    }
+
+    .meteor--17 {
+      --meteor-width: 230px;
+      --meteor-height: 3px;
+      --meteor-blur: 0.5px;
+      --meteor-opacity: 0.88;
+      --meteor-angle: 37deg;
+      --meteor-duration: 6.4s;
+      --meteor-delay: -2.1s;
+      --meteor-start-x: -46vw;
+      --meteor-start-y: -30vh;
+      --meteor-end-x: 76vw;
+      --meteor-end-y: 50vh;
+      --meteor-depth: 4;
+      left: 30%;
+      top: 37%;
+    }
+
+    .meteor--18 {
+      --meteor-width: 150px;
+      --meteor-height: 2px;
+      --meteor-opacity: 0.56;
+      --meteor-angle: 55deg;
+      --meteor-duration: 12.5s;
+      --meteor-delay: -9.4s;
+      --meteor-start-x: -28vw;
+      --meteor-start-y: -28vh;
+      --meteor-end-x: 48vw;
+      --meteor-end-y: 58vh;
+      --meteor-depth: 3;
+      left: 84%;
+      top: 35%;
+    }
+
+    .meteor--19 {
+      --meteor-width: 96px;
+      --meteor-height: 1px;
+      --meteor-opacity: 0.30;
+      --meteor-angle: 39deg;
+      --meteor-duration: 24s;
+      --meteor-delay: -18s;
+      --meteor-start-x: -18vw;
+      --meteor-start-y: -18vh;
+      --meteor-end-x: 32vw;
+      --meteor-end-y: 34vh;
+      --meteor-depth: 2;
+      left: 58%;
+      top: 42%;
+    }
+
+    .meteor--20 {
+      --meteor-width: 214px;
+      --meteor-height: 3px;
+      --meteor-opacity: 0.78;
+      --meteor-angle: 46deg;
+      --meteor-duration: 7.6s;
+      --meteor-delay: -5.8s;
+      --meteor-start-x: -44vw;
+      --meteor-start-y: -32vh;
+      --meteor-end-x: 68vw;
+      --meteor-end-y: 58vh;
+      --meteor-depth: 4;
+      left: 2%;
+      top: 54%;
+    }
+
+    .meteor--21 {
+      --meteor-width: 140px;
+      --meteor-height: 1px;
+      --meteor-opacity: 0.46;
+      --meteor-angle: 51deg;
+      --meteor-duration: 15s;
+      --meteor-delay: -1.6s;
+      --meteor-start-x: -24vw;
+      --meteor-start-y: -24vh;
+      --meteor-end-x: 42vw;
+      --meteor-end-y: 50vh;
+      --meteor-depth: 2;
+      left: 28%;
+      top: 60%;
+    }
+
+    .meteor--22 {
+      --meteor-width: 172px;
+      --meteor-height: 2px;
+      --meteor-blur: 0.5px;
+      --meteor-opacity: 0.62;
+      --meteor-angle: 35deg;
+      --meteor-duration: 10.8s;
+      --meteor-delay: -8.8s;
+      --meteor-start-x: -36vw;
+      --meteor-start-y: -18vh;
+      --meteor-end-x: 56vw;
+      --meteor-end-y: 36vh;
+      --meteor-depth: 3;
+      left: 76%;
+      top: 61%;
+    }
+
+    .meteor--23 {
+      --meteor-width: 118px;
+      --meteor-height: 1px;
+      --meteor-opacity: 0.34;
+      --meteor-angle: 43deg;
+      --meteor-duration: 21s;
+      --meteor-delay: -13.2s;
+      --meteor-start-x: -22vw;
+      --meteor-start-y: -20vh;
+      --meteor-end-x: 38vw;
+      --meteor-end-y: 38vh;
+      --meteor-depth: 2;
+      left: 10%;
+      top: 72%;
+    }
+
+    .meteor--24 {
+      --meteor-width: 240px;
+      --meteor-height: 3px;
+      --meteor-blur: 1px;
+      --meteor-opacity: 0.92;
+      --meteor-angle: 50deg;
+      --meteor-duration: 6.8s;
+      --meteor-delay: -3.8s;
+      --meteor-start-x: -52vw;
+      --meteor-start-y: -36vh;
+      --meteor-end-x: 76vw;
+      --meteor-end-y: 64vh;
+      --meteor-depth: 4;
+      left: 48%;
+      top: 76%;
+    }
+
+    .meteor--25 {
+      --meteor-width: 132px;
+      --meteor-height: 1px;
+      --meteor-opacity: 0.40;
+      --meteor-angle: 42deg;
+      --meteor-duration: 18s;
+      --meteor-delay: -6.6s;
+      --meteor-start-x: -22vw;
+      --meteor-start-y: -18vh;
+      --meteor-end-x: 40vw;
+      --meteor-end-y: 36vh;
+      --meteor-depth: 2;
+      left: 88%;
+      top: 78%;
+    }
+
+    .meteor--26 {
+      --meteor-width: 174px;
+      --meteor-height: 2px;
+      --meteor-opacity: 0.54;
+      --meteor-angle: 54deg;
+      --meteor-duration: 13.8s;
+      --meteor-delay: -10.8s;
+      --meteor-start-x: -28vw;
+      --meteor-start-y: -30vh;
+      --meteor-end-x: 48vw;
+      --meteor-end-y: 58vh;
+      --meteor-depth: 3;
+      left: 36%;
+      top: 88%;
+    }
+
+    .meteor--27 {
+      --meteor-width: 88px;
+      --meteor-height: 1px;
+      --meteor-opacity: 0.28;
+      --meteor-angle: 38deg;
+      --meteor-duration: 25s;
+      --meteor-delay: -20s;
+      --meteor-start-x: -18vw;
+      --meteor-start-y: -16vh;
+      --meteor-end-x: 30vw;
+      --meteor-end-y: 32vh;
+      --meteor-depth: 2;
+      left: 62%;
+      top: 91%;
+    }
+
+    .meteor--28 {
+      --meteor-width: 205px;
+      --meteor-height: 2px;
+      --meteor-opacity: 0.70;
+      --meteor-angle: 45deg;
+      --meteor-duration: 8.4s;
+      --meteor-delay: -12.6s;
+      --meteor-start-x: -40vw;
+      --meteor-start-y: -26vh;
+      --meteor-end-x: 64vw;
+      --meteor-end-y: 52vh;
+      --meteor-depth: 3;
+      left: 20%;
+      top: 47%;
+    }
+
+    @keyframes arareMeteorDrift {
+      0% {
+        opacity: 0;
+        filter: blur(calc(var(--meteor-blur, 0px) + 1px)) brightness(0.88) saturate(1.04);
+        box-shadow:
+          0 0 10px rgba(0, 212, 255, 0.30),
+          0 0 24px rgba(126, 96, 255, 0.18),
+          0 0 38px rgba(255, 43, 214, 0.08);
+        transform: translate3d(var(--meteor-start-x, -24vw), var(--meteor-start-y, -18vh), 0) rotate(var(--meteor-angle, 43deg)) scale(0.98);
+      }
+
+      12% {
+        opacity: var(--meteor-soft-opacity, 0.42);
+      }
+
+      44% {
+        opacity: var(--meteor-opacity, 0.72);
+        filter: blur(var(--meteor-blur, 0px)) brightness(1.12) saturate(1.12);
+        box-shadow:
+          0 0 20px rgba(0, 212, 255, 0.60),
+          0 0 44px rgba(126, 96, 255, 0.34),
+          0 0 62px rgba(255, 43, 214, 0.12);
+      }
+
+      72% {
+        opacity: var(--meteor-fade-opacity, 0.52);
+      }
+
+      100% {
+        opacity: 0;
+        filter: blur(calc(var(--meteor-blur, 0px) + 2px)) brightness(1.02) saturate(1.08);
+        box-shadow:
+          0 0 14px rgba(0, 212, 255, 0.38),
+          0 0 30px rgba(126, 96, 255, 0.22),
+          0 0 42px rgba(255, 43, 214, 0.08);
+        transform: translate3d(var(--meteor-end-x, 54vw), var(--meteor-end-y, 46vh), 0) rotate(var(--meteor-angle, 43deg)) scale(1.08);
+      }
+    }
+
+    @keyframes arareMeteorGlowDrift {
+      0% {
+        opacity: 0.45;
+        filter: blur(20px) saturate(1.08);
+        transform: translate3d(-4vw, -2vh, 0) rotate(-5deg) scale(1.04);
+      }
+
+      46% {
+        opacity: 0.62;
+        filter: blur(22px) saturate(1.16);
+        transform: translate3d(4vw, 3vh, 0) rotate(-1deg) scale(1.12);
+      }
+
+      100% {
+        opacity: 0.50;
+        filter: blur(18px) saturate(1.08);
+        transform: translate3d(8vw, 1vh, 0) rotate(-3deg) scale(1.08);
+      }
+    }
+
+    @keyframes arareMeteorNebula {
+      0% {
+        opacity: 0.74;
+        transform: translate3d(-2vw, -1vh, 0) scale(1.04);
+      }
+
+      52% {
+        opacity: 0.82;
+        transform: translate3d(2vw, 2vh, 0) scale(1.07);
+      }
+
+      100% {
+        opacity: 0.80;
+        transform: translate3d(4vw, -1vh, 0) scale(1.06);
+      }
     }
 
     .arare-hero-wave__glow {
@@ -2357,7 +2993,7 @@
       height: min(500px, 52vw);
       border-radius: 999px;
       filter: blur(42px);
-      opacity: 0.52;
+      opacity: 0.44;
       animation: arareWaveGlow 4.8s ease-in-out infinite alternate;
       will-change: transform, opacity;
     }
@@ -2365,13 +3001,13 @@
     .arare-hero-wave__glow--cyan {
       left: -12%;
       bottom: 10%;
-      background: rgba(0, 212, 255, 0.38);
+      background: rgba(0, 212, 255, 0.32);
     }
 
     .arare-hero-wave__glow--magenta {
       right: -10%;
       bottom: 6%;
-      background: rgba(255, 43, 214, 0.34);
+      background: rgba(255, 43, 214, 0.22);
       animation-delay: -2.5s;
     }
 
@@ -2380,7 +3016,7 @@
       bottom: -18%;
       width: min(880px, 86vw);
       height: min(340px, 40vw);
-      background: rgba(108, 99, 255, 0.24);
+      background: rgba(108, 99, 255, 0.22);
       animation-duration: 7.5s;
       animation-delay: -5s;
     }
@@ -2394,7 +3030,7 @@
       min-width: 960px;
       transform: translateX(-50%);
       overflow: visible;
-      filter: saturate(1.22) contrast(1.08);
+      filter: saturate(1.06) contrast(1.06);
       will-change: transform;
     }
 
@@ -2438,19 +3074,19 @@
     .arare-wave-glow {
       stroke: url(#arareWaveGradientSub);
       stroke-width: 128;
-      opacity: 0.34;
+      opacity: 0.26;
     }
 
     .arare-wave-main-glow {
       stroke: url(#arareWaveGradientMain);
       stroke-width: 150;
-      opacity: 0.50;
+      opacity: 0.38;
     }
 
     .arare-wave-front-glow {
       stroke: url(#arareWaveGradientMain);
       stroke-width: 68;
-      opacity: 0.28;
+      opacity: 0.22;
     }
 
     .arare-wave-back,
@@ -2473,21 +3109,21 @@
     .arare-wave-main {
       stroke: url(#arareWaveGradientMain);
       stroke-width: 76;
-      opacity: 0.95;
+      opacity: 0.82;
       animation: arareWaveBreath 6.6s ease-in-out infinite alternate;
     }
 
     .arare-wave-front {
       stroke: url(#arareWaveGradientSub);
       stroke-width: 36;
-      opacity: 0.66;
+      opacity: 0.54;
     }
 
     .arare-wave-highlight,
     .arare-wave-line {
       stroke: url(#arareWaveGradientLine);
       stroke-width: 5;
-      opacity: 0.72;
+      opacity: 0.58;
       stroke-dasharray: 340 980;
       animation: arareWaveDash 4.8s linear infinite;
       will-change: stroke-dashoffset, opacity;
@@ -2513,19 +3149,19 @@
     .arare-wave-magenta-glow {
       stroke: rgba(255, 43, 214, 0.72);
       stroke-width: 82;
-      opacity: 0.30;
+      opacity: 0.18;
     }
 
     .arare-wave-magenta {
       stroke: url(#arareWaveGradientMain);
       stroke-width: 30;
-      opacity: 0.82;
+      opacity: 0.62;
     }
 
     .arare-wave-cyan-stream {
       stroke: rgba(0, 212, 255, 0.70);
       stroke-width: 10;
-      opacity: 0.56;
+      opacity: 0.46;
       stroke-dasharray: 180 620;
       animation: arareWaveDash 4.5s linear infinite;
     }
@@ -2549,6 +3185,13 @@
       isolation: isolate;
     }
 
+    .arare-hero-inner,
+    .arare-hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+
     .arare-hero__content::before {
       content: "";
       position: absolute;
@@ -2556,29 +3199,29 @@
       z-index: -1;
       border-radius: 34px;
       background:
-        radial-gradient(ellipse at 50% 42%, rgba(0, 0, 0, 0.82) 0%, rgba(0, 0, 0, 0.56) 48%, rgba(0, 0, 0, 0.16) 74%, transparent 100%);
+        radial-gradient(ellipse at 50% 42%, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.64) 50%, rgba(0, 0, 0, 0.22) 76%, transparent 100%);
       pointer-events: none;
     }
 
     .arare-hero__title {
-      max-width: 1100px;
+      max-width: 1040px;
       margin-inline: auto;
-      font-size: clamp(3.4rem, 7.4vw, 7rem);
-      line-height: 1.04;
+      font-size: clamp(3.25rem, 7vw, 6.65rem);
+      line-height: 1.06;
       letter-spacing: 0;
       font-weight: 900;
-      background: linear-gradient(100deg, #eaf4ff 0%, #61b8ff 20%, #1a7cff 39%, #6c63ff 55%, #ff2bd6 76%, #ff4aa8 100%);
+      background: linear-gradient(100deg, #ffffff 0%, #dff5ff 18%, #6fd6ff 34%, #7e89ff 58%, #d08cff 82%, #ffffff 100%);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      text-shadow: 0 0 34px rgba(0, 135, 255, 0.12);
+      text-shadow: 0 0 30px rgba(0, 135, 255, 0.10);
       text-wrap: balance;
     }
 
     .arare-hero__lead {
       max-width: 760px;
-      margin: 26px auto 0;
-      color: rgba(255, 255, 255, 0.78);
+      margin: 28px auto 0;
+      color: rgba(255, 255, 255, 0.82);
       font-size: clamp(1rem, 1.55vw, 1.18rem);
       line-height: 1.95;
       text-align: center;
@@ -2590,13 +3233,21 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 16px;
-      margin-top: 36px;
+      margin-top: 40px;
+    }
+
+    .arare-hero .arare-btn-primary {
+      box-shadow:
+        0 18px 42px rgba(245, 199, 122, 0.18),
+        0 0 34px rgba(255, 255, 255, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.48);
     }
 
     .arare-hero .arare-btn-secondary {
-      border-color: rgba(255, 255, 255, 0.56);
-      color: rgba(255, 255, 255, 0.90);
-      background: rgba(255, 255, 255, 0.035);
+      border-color: rgba(255, 255, 255, 0.44);
+      color: rgba(255, 255, 255, 0.92);
+      background: rgba(255, 255, 255, 0.028);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
     }
 
     .arare-hero__visual {
@@ -2654,6 +3305,8 @@
       .arare-hero {
         min-height: auto;
         padding-block: 94px 126px;
+        max-width: 100%;
+        overflow-x: hidden;
       }
 
       .arare-hero-wave__svg {
@@ -2670,20 +3323,247 @@
         opacity: 0.40;
       }
 
+      .arare-meteor-bg,
+      .arare-meteor-glow {
+        inset: -12%;
+      }
+
+      .arare-meteor-bg {
+        filter: blur(10px) saturate(1.16);
+        opacity: 0.76;
+      }
+
+      .arare-meteor-glow {
+        filter: blur(16px);
+        opacity: 0.52;
+      }
+
+      .arare-meteor-layer::before {
+        background-size: 170px 150px, 210px 180px, 190px 170px, 240px 210px;
+        opacity: 0.26;
+      }
+
+      .arare-meteor-layer::after {
+        opacity: 0.42;
+      }
+
+      .meteor {
+        max-width: 54vw;
+        --meteor-duration: 15s;
+        --meteor-start-x: -26vw;
+        --meteor-start-y: -18vh;
+        --meteor-end-x: 40vw;
+        --meteor-end-y: 40vh;
+        box-shadow:
+          0 0 14px rgba(0, 212, 255, 0.44),
+          0 0 26px rgba(126, 96, 255, 0.26),
+          0 0 38px rgba(255, 43, 214, 0.12);
+      }
+
+      .meteor::before {
+        min-width: 28px;
+        filter: blur(6px);
+      }
+
+      .meteor::after {
+        width: 62%;
+        height: 760%;
+        filter: blur(16px);
+      }
+
+      .meteor--19,
+      .meteor--20,
+      .meteor--21,
+      .meteor--22,
+      .meteor--23,
+      .meteor--24,
+      .meteor--25,
+      .meteor--26,
+      .meteor--27,
+      .meteor--28 {
+        display: none;
+      }
+
+      .meteor--1 {
+        --meteor-width: 152px;
+        --meteor-opacity: 0.70;
+        --meteor-duration: 11s;
+        --meteor-start-x: -32vw;
+        --meteor-start-y: -20vh;
+        --meteor-end-x: 44vw;
+        --meteor-end-y: 42vh;
+        left: -8%;
+        top: 10%;
+      }
+
+      .meteor--2 {
+        --meteor-width: 92px;
+        --meteor-opacity: 0.34;
+        --meteor-duration: 21s;
+        left: 48%;
+        top: 7%;
+      }
+
+      .meteor--3 {
+        --meteor-width: 126px;
+        --meteor-opacity: 0.48;
+        --meteor-duration: 16s;
+        left: 18%;
+        top: 24%;
+      }
+
+      .meteor--4 {
+        --meteor-width: 170px;
+        --meteor-height: 2px;
+        --meteor-opacity: 0.62;
+        --meteor-duration: 12.5s;
+        --meteor-start-x: -34vw;
+        --meteor-end-x: 46vw;
+        left: 54%;
+        top: 18%;
+      }
+
+      .meteor--5 {
+        --meteor-width: 96px;
+        --meteor-opacity: 0.30;
+        --meteor-duration: 22s;
+        left: 4%;
+        top: 40%;
+      }
+
+      .meteor--6 {
+        --meteor-width: 145px;
+        --meteor-opacity: 0.52;
+        --meteor-duration: 15s;
+        left: 28%;
+        top: 48%;
+      }
+
+      .meteor--7 {
+        --meteor-width: 108px;
+        --meteor-opacity: 0.38;
+        --meteor-duration: 19s;
+        left: 72%;
+        top: 44%;
+      }
+
+      .meteor--8 {
+        --meteor-width: 172px;
+        --meteor-height: 2px;
+        --meteor-opacity: 0.60;
+        --meteor-duration: 13s;
+        --meteor-start-x: -36vw;
+        --meteor-end-x: 46vw;
+        left: -10%;
+        top: 62%;
+      }
+
+      .meteor--9 {
+        --meteor-width: 118px;
+        --meteor-opacity: 0.40;
+        --meteor-duration: 17s;
+        left: 42%;
+        top: 69%;
+      }
+
+      .meteor--10 {
+        --meteor-width: 82px;
+        --meteor-opacity: 0.28;
+        --meteor-duration: 24s;
+        left: 10%;
+        top: 84%;
+      }
+
+      .meteor--11 {
+        --meteor-width: 138px;
+        --meteor-opacity: 0.46;
+        --meteor-duration: 18s;
+        left: 66%;
+        top: 82%;
+      }
+
+      .meteor--12 {
+        --meteor-width: 90px;
+        --meteor-opacity: 0.30;
+        --meteor-duration: 22s;
+        left: 78%;
+        top: 10%;
+      }
+
+      .meteor--13 {
+        --meteor-width: 76px;
+        --meteor-opacity: 0.28;
+        --meteor-duration: 25s;
+        left: 14%;
+        top: 14%;
+      }
+
+      .meteor--14 {
+        --meteor-width: 106px;
+        --meteor-opacity: 0.34;
+        --meteor-duration: 21s;
+        left: 62%;
+        top: 28%;
+      }
+
+      .meteor--15 {
+        --meteor-width: 150px;
+        --meteor-opacity: 0.56;
+        --meteor-duration: 14s;
+        left: 2%;
+        top: 34%;
+      }
+
+      .meteor--16 {
+        --meteor-width: 86px;
+        --meteor-opacity: 0.28;
+        --meteor-duration: 24s;
+        left: 44%;
+        top: 38%;
+      }
+
+      .meteor--17 {
+        --meteor-width: 168px;
+        --meteor-height: 2px;
+        --meteor-opacity: 0.64;
+        --meteor-duration: 13.5s;
+        --meteor-start-x: -34vw;
+        --meteor-end-x: 46vw;
+        left: 22%;
+        top: 57%;
+      }
+
+      .meteor--18 {
+        --meteor-width: 118px;
+        --meteor-opacity: 0.42;
+        --meteor-duration: 18s;
+        left: 74%;
+        top: 72%;
+      }
+
       .arare-hero__content::before {
-        inset: -28px -18px;
+        inset: -30px -14px;
         border-radius: 26px;
-        background: radial-gradient(ellipse at 50% 40%, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.66) 52%, rgba(0, 0, 0, 0.22) 78%, transparent 100%);
+        background:
+          radial-gradient(ellipse at 50% 42%, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.72) 54%, rgba(0, 0, 0, 0.30) 80%, transparent 100%);
       }
 
       .arare-hero__title {
         font-size: clamp(2.25rem, 12vw, 3.5rem);
         line-height: 1.13;
+        line-break: strict;
+        word-break: keep-all;
+        overflow-wrap: break-word;
+        text-wrap: balance;
       }
 
       .arare-hero__lead {
         font-size: clamp(0.92rem, 3.8vw, 1rem);
         line-height: 1.85;
+        line-break: strict;
+        word-break: keep-all;
+        overflow-wrap: break-word;
+        text-wrap: balance;
       }
 
       .arare-hero__actions {
@@ -2695,6 +3575,67 @@
       }
     }
 
+    @media (max-width: 480px) {
+      .arare-hero {
+        padding-block: 88px 120px;
+      }
+
+      .arare-meteor-bg {
+        opacity: 0.68;
+      }
+
+      .arare-meteor-glow {
+        opacity: 0.46;
+      }
+
+      .arare-meteor-layer::after {
+        background:
+          radial-gradient(ellipse at 50% 40%, rgba(0, 0, 0, 0.34), transparent 40%),
+          radial-gradient(ellipse at 50% 100%, rgba(0, 212, 255, 0.16), transparent 34%),
+          radial-gradient(ellipse at 82% 78%, rgba(255, 43, 214, 0.09), transparent 30%);
+      }
+
+      .meteor {
+        max-width: 48vw;
+        --meteor-start-x: -22vw;
+        --meteor-start-y: -16vh;
+        --meteor-end-x: 34vw;
+        --meteor-end-y: 36vh;
+      }
+
+      .meteor::after {
+        width: 56%;
+        height: 660%;
+      }
+
+      .meteor--16,
+      .meteor--18 {
+        display: none;
+      }
+
+      .meteor--4,
+      .meteor--8,
+      .meteor--17 {
+        --meteor-width: 146px;
+        --meteor-opacity: 0.54;
+        --meteor-duration: 15s;
+      }
+
+      .meteor--1,
+      .meteor--6,
+      .meteor--15 {
+        --meteor-width: 128px;
+        --meteor-opacity: 0.48;
+        --meteor-duration: 16.5s;
+      }
+
+      .arare-hero__content::before {
+        inset: -28px -10px;
+        background:
+          radial-gradient(ellipse at 50% 42%, rgba(0, 0, 0, 0.94) 0%, rgba(0, 0, 0, 0.76) 56%, rgba(0, 0, 0, 0.34) 82%, transparent 100%);
+      }
+    }
+
     @media (max-width: 380px) {
       .arare-hero {
         padding-block: 86px 116px;
@@ -2702,6 +3643,35 @@
 
       .arare-hero__title {
         font-size: clamp(2.05rem, 11.4vw, 2.85rem);
+      }
+
+      .meteor {
+        max-width: 44vw;
+      }
+
+      .meteor--13,
+      .meteor--14 {
+        display: none;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .arare-hero {
+        padding-block: 82px 110px;
+      }
+
+      .arare-hero__title {
+        font-size: clamp(1.95rem, 10.8vw, 2.62rem);
+        line-height: 1.16;
+      }
+
+      .arare-hero__lead {
+        font-size: 0.9rem;
+        line-height: 1.82;
+      }
+
+      .arare-hero__actions {
+        max-width: 312px;
       }
     }
 
@@ -2711,7 +3681,10 @@
       .arare-wave-highlight,
       .arare-wave-line,
       .arare-wave-cyan-stream,
-      .arare-hero-wave__glow {
+      .arare-hero-wave__glow,
+      .arare-meteor-bg,
+      .arare-meteor-glow,
+      .meteor {
         animation: none !important;
       }
     }
@@ -2878,6 +3851,38 @@
 
     <main>
       <section class="arare-hero" id="home">
+        <div class="arare-meteor-layer" aria-hidden="true">
+          <div class="arare-meteor-bg"></div>
+          <div class="arare-meteor-glow"></div>
+          <span class="meteor meteor--1"></span>
+          <span class="meteor meteor--2"></span>
+          <span class="meteor meteor--3"></span>
+          <span class="meteor meteor--4"></span>
+          <span class="meteor meteor--5"></span>
+          <span class="meteor meteor--6"></span>
+          <span class="meteor meteor--7"></span>
+          <span class="meteor meteor--8"></span>
+          <span class="meteor meteor--9"></span>
+          <span class="meteor meteor--10"></span>
+          <span class="meteor meteor--11"></span>
+          <span class="meteor meteor--12"></span>
+          <span class="meteor meteor--13"></span>
+          <span class="meteor meteor--14"></span>
+          <span class="meteor meteor--15"></span>
+          <span class="meteor meteor--16"></span>
+          <span class="meteor meteor--17"></span>
+          <span class="meteor meteor--18"></span>
+          <span class="meteor meteor--19"></span>
+          <span class="meteor meteor--20"></span>
+          <span class="meteor meteor--21"></span>
+          <span class="meteor meteor--22"></span>
+          <span class="meteor meteor--23"></span>
+          <span class="meteor meteor--24"></span>
+          <span class="meteor meteor--25"></span>
+          <span class="meteor meteor--26"></span>
+          <span class="meteor meteor--27"></span>
+          <span class="meteor meteor--28"></span>
+        </div>
         <div class="arare-hero-wave" aria-hidden="true">
           <div class="arare-hero-wave__glow arare-hero-wave__glow--cyan"></div>
           <div class="arare-hero-wave__glow arare-hero-wave__glow--magenta"></div>
