@@ -1051,35 +1051,42 @@
     .arare-support-flow {
       display: grid;
       grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 16px;
-      counter-reset: support-flow;
+      gap: 20px;
     }
 
     .arare-support-flow__step {
       position: relative;
       min-width: 0;
-      padding: 28px 18px;
-      text-align: center;
+      padding: 28px 22px;
+      text-align: left;
     }
 
-    .arare-support-flow__step::before {
-      counter-increment: support-flow;
-      content: "0" counter(support-flow);
+    .flow-head {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .flow-number {
+      flex: 0 0 52px;
       display: grid;
       place-items: center;
-      width: 54px;
-      height: 54px;
-      margin: 0 auto 18px;
+      width: 52px;
+      height: 52px;
+      position: static;
       border: 1px solid rgba(245, 199, 122, 0.42);
       border-radius: 50%;
       background: rgba(245, 199, 122, 0.09);
       color: var(--color-gold-light);
       font-family: "Inter", sans-serif;
+      font-size: 0.88rem;
       font-weight: 800;
     }
 
     .arare-support-flow__step h3 {
-      margin: 0 0 8px;
+      min-width: 0;
+      margin: 0;
       color: #fff;
       font-size: 1rem;
       line-height: 1.5;
@@ -1744,6 +1751,123 @@
         flex-basis: 100%;
       }
     }
+  
+    /* ===== Final mobile visual polish ===== */
+    .jp-nowrap {
+      display: inline-block;
+      white-space: nowrap;
+      word-break: keep-all;
+      overflow-wrap: normal;
+    }
+
+    @media (max-width: 768px) {
+      .arare-section {
+        padding-block: clamp(62px, 16vw, 82px);
+      }
+
+      .arare-section--soft {
+        padding-block: clamp(68px, 17vw, 88px);
+      }
+
+      .arare-service-grid,
+      .arare-support-grid,
+      .arare-contact-grid,
+      .arare-support-flow,
+      .arare-contact-flow {
+        gap: 24px !important;
+      }
+
+      .arare-service-card,
+      .arare-support-service,
+      .arare-contact-service,
+      .arare-support-flow__step,
+      .arare-contact-flow__step {
+        padding: 26px 24px;
+      }
+
+      .flow-head {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 18px;
+      }
+
+      .flow-number {
+        position: static;
+        flex: 0 0 52px;
+        width: 52px;
+        height: 52px;
+      }
+
+      .flow-head h3,
+      .step-title {
+        min-width: 0;
+        margin: 0;
+        line-height: 1.45;
+      }
+
+      .arare-title,
+      .arare-section-title,
+      .arare-cta-box h2,
+      .arare-cta-panel h2 {
+        line-height: 1.32;
+      }
+
+      .arare-lead,
+      .arare-card__text,
+      .arare-support-service p,
+      .arare-contact-service p,
+      .arare-support-flow__step p,
+      .arare-contact-flow__step p {
+        line-height: 1.95;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .arare-service-grid,
+      .arare-support-grid,
+      .arare-contact-grid,
+      .arare-support-flow,
+      .arare-contact-flow {
+        gap: 22px !important;
+      }
+
+      .arare-service-card,
+      .arare-support-service,
+      .arare-contact-service,
+      .arare-support-flow__step,
+      .arare-contact-flow__step {
+        padding: 24px 20px;
+      }
+
+      .flow-head {
+        gap: 14px;
+        margin-bottom: 16px;
+      }
+
+      .flow-number {
+        flex-basis: 46px;
+        width: 46px;
+        height: 46px;
+        font-size: 0.8rem;
+      }
+    }
+
+    @media (max-width: 340px) {
+      .arare-service-card,
+      .arare-support-service,
+      .arare-contact-service,
+      .arare-support-flow__step,
+      .arare-contact-flow__step {
+        padding: 22px 18px;
+      }
+
+      .flow-number {
+        flex-basis: 44px;
+        width: 44px;
+        height: 44px;
+      }
+    }
   </style>
 </head>
 
@@ -1794,7 +1918,7 @@
         <div class="arare-container">
           <div class="arare-sub-hero__content" data-aos="fade-up">
             <p class="arare-eyebrow">WEB &amp; AI SUPPORT</p>
-            <h1 class="arare-title" id="support-hero-title">Web制作からAI自動化まで、<br>成長に必要な仕組みを<br>一気通貫で。</h1>
+            <h1 class="arare-title" id="support-hero-title">Web制作からAI自動化まで、<br>成長に必要な仕組みを<br><span class="jp-nowrap">一気通貫で。</span></h1>
             <p class="arare-lead">ホームページ制作、LP制作、SNS運用、AI導入、業務自動化まで。<br>成果につながるWeb戦略をARAREが伴走します。</p>
             <div class="arare-hero__actions">
               <a class="arare-btn arare-btn-primary" href="contact.html">無料で相談する</a>
@@ -1894,11 +2018,41 @@
             <h2 class="arare-section-title">支援の流れ</h2>
           </div>
           <div class="arare-support-flow">
-            <article class="arare-card arare-support-flow__step" data-aos="fade-up"><h3>無料相談</h3><p>現状や目的をヒアリングします。</p></article>
-            <article class="arare-card arare-support-flow__step" data-aos="fade-up" data-aos-delay="40"><h3>課題整理</h3><p>優先すべき課題と必要な支援を整理します。</p></article>
-            <article class="arare-card arare-support-flow__step" data-aos="fade-up" data-aos-delay="80"><h3>戦略設計</h3><p>導線、訴求、AI活用範囲を設計します。</p></article>
-            <article class="arare-card arare-support-flow__step" data-aos="fade-up" data-aos-delay="120"><h3>制作・導入</h3><p>Web制作やAI導入を具体化します。</p></article>
-            <article class="arare-card arare-support-flow__step" data-aos="fade-up" data-aos-delay="160"><h3>改善運用</h3><p>公開後も改善と運用を継続します。</p></article>
+            <article class="arare-card arare-support-flow__step" data-aos="fade-up">
+              <div class="flow-head">
+                <div class="flow-number">01</div>
+                <h3>無料相談</h3>
+              </div>
+              <p>現状や目的をヒアリングします。</p>
+            </article>
+            <article class="arare-card arare-support-flow__step" data-aos="fade-up" data-aos-delay="40">
+              <div class="flow-head">
+                <div class="flow-number">02</div>
+                <h3>課題整理</h3>
+              </div>
+              <p>優先すべき課題と必要な支援を整理します。</p>
+            </article>
+            <article class="arare-card arare-support-flow__step" data-aos="fade-up" data-aos-delay="80">
+              <div class="flow-head">
+                <div class="flow-number">03</div>
+                <h3>戦略設計</h3>
+              </div>
+              <p>導線、訴求、AI活用範囲を設計します。</p>
+            </article>
+            <article class="arare-card arare-support-flow__step" data-aos="fade-up" data-aos-delay="120">
+              <div class="flow-head">
+                <div class="flow-number">04</div>
+                <h3>制作・導入</h3>
+              </div>
+              <p>Web制作やAI導入を具体化します。</p>
+            </article>
+            <article class="arare-card arare-support-flow__step" data-aos="fade-up" data-aos-delay="160">
+              <div class="flow-head">
+                <div class="flow-number">05</div>
+                <h3>改善運用</h3>
+              </div>
+              <p>公開後も改善と運用を継続します。</p>
+            </article>
           </div>
         </div>
       </section>
@@ -1987,7 +2141,7 @@
         <div class="arare-container">
           <div class="arare-cta-panel" data-aos="fade-up">
             <p class="arare-eyebrow">Contact</p>
-            <h2>WebとAIの課題を、<br>まずは一緒に整理しましょう。</h2>
+            <h2>WebとAIの課題を、<br><span class="jp-nowrap">まずは一緒に整理しましょう。</span></h2>
             <p>まだ内容が固まっていなくても大丈夫です。<br>現状や目標をヒアリングし、最適な支援内容をご提案します。</p>
             <a class="arare-btn arare-btn-primary" href="contact.html">無料相談する</a>
           </div>

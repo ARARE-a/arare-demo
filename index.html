@@ -2299,6 +2299,123 @@
         flex-basis: 100%;
       }
     }
+  
+    /* ===== Final mobile visual polish ===== */
+    .jp-nowrap {
+      display: inline-block;
+      white-space: nowrap;
+      word-break: keep-all;
+      overflow-wrap: normal;
+    }
+
+    @media (max-width: 768px) {
+      .arare-section {
+        padding-block: clamp(62px, 16vw, 82px);
+      }
+
+      .arare-section--soft {
+        padding-block: clamp(68px, 17vw, 88px);
+      }
+
+      .arare-service-grid,
+      .arare-support-grid,
+      .arare-contact-grid,
+      .arare-support-flow,
+      .arare-contact-flow {
+        gap: 24px !important;
+      }
+
+      .arare-service-card,
+      .arare-support-service,
+      .arare-contact-service,
+      .arare-support-flow__step,
+      .arare-contact-flow__step {
+        padding: 26px 24px;
+      }
+
+      .flow-head {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 18px;
+      }
+
+      .flow-number {
+        position: static;
+        flex: 0 0 52px;
+        width: 52px;
+        height: 52px;
+      }
+
+      .flow-head h3,
+      .step-title {
+        min-width: 0;
+        margin: 0;
+        line-height: 1.45;
+      }
+
+      .arare-title,
+      .arare-section-title,
+      .arare-cta-box h2,
+      .arare-cta-panel h2 {
+        line-height: 1.32;
+      }
+
+      .arare-lead,
+      .arare-card__text,
+      .arare-support-service p,
+      .arare-contact-service p,
+      .arare-support-flow__step p,
+      .arare-contact-flow__step p {
+        line-height: 1.95;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .arare-service-grid,
+      .arare-support-grid,
+      .arare-contact-grid,
+      .arare-support-flow,
+      .arare-contact-flow {
+        gap: 22px !important;
+      }
+
+      .arare-service-card,
+      .arare-support-service,
+      .arare-contact-service,
+      .arare-support-flow__step,
+      .arare-contact-flow__step {
+        padding: 24px 20px;
+      }
+
+      .flow-head {
+        gap: 14px;
+        margin-bottom: 16px;
+      }
+
+      .flow-number {
+        flex-basis: 46px;
+        width: 46px;
+        height: 46px;
+        font-size: 0.8rem;
+      }
+    }
+
+    @media (max-width: 340px) {
+      .arare-service-card,
+      .arare-support-service,
+      .arare-contact-service,
+      .arare-support-flow__step,
+      .arare-contact-flow__step {
+        padding: 22px 18px;
+      }
+
+      .flow-number {
+        flex-basis: 44px;
+        width: 44px;
+        height: 44px;
+      }
+    }
   </style>
 </head>
 
@@ -2473,7 +2590,7 @@
         <div class="arare-container">
           <div class="arare-section-header" data-aos="fade-up">
             <p class="arare-eyebrow">Support</p>
-            <h2 class="arare-title">まずは現状整理から。</h2>
+            <h2 class="arare-title"><span class="jp-nowrap">まずは現状整理から。</span></h2>
             <p class="arare-lead">WebとAIの課題を整理し、必要な施策と優先順位をご提案します。</p>
           </div>
           <div class="arare-hero__actions" data-aos="fade-up">

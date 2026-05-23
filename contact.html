@@ -1013,14 +1013,14 @@
       padding-top: 28px;
     }
 
-    .step-head {
+    .flow-head {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 16px;
       margin-bottom: 18px;
     }
 
-    .step-number {
+    .flow-number {
       position: static;
       flex: 0 0 52px;
       display: grid;
@@ -1267,7 +1267,7 @@
         padding: 26px;
       }
 
-      .step-number {
+      .flow-number {
         flex-basis: 44px;
         width: 44px;
         height: 44px;
@@ -1776,6 +1776,123 @@
         flex-basis: 100%;
       }
     }
+  
+    /* ===== Final mobile visual polish ===== */
+    .jp-nowrap {
+      display: inline-block;
+      white-space: nowrap;
+      word-break: keep-all;
+      overflow-wrap: normal;
+    }
+
+    @media (max-width: 768px) {
+      .arare-section {
+        padding-block: clamp(62px, 16vw, 82px);
+      }
+
+      .arare-section--soft {
+        padding-block: clamp(68px, 17vw, 88px);
+      }
+
+      .arare-service-grid,
+      .arare-support-grid,
+      .arare-contact-grid,
+      .arare-support-flow,
+      .arare-contact-flow {
+        gap: 24px !important;
+      }
+
+      .arare-service-card,
+      .arare-support-service,
+      .arare-contact-service,
+      .arare-support-flow__step,
+      .arare-contact-flow__step {
+        padding: 26px 24px;
+      }
+
+      .flow-head {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 18px;
+      }
+
+      .flow-number {
+        position: static;
+        flex: 0 0 52px;
+        width: 52px;
+        height: 52px;
+      }
+
+      .flow-head h3,
+      .step-title {
+        min-width: 0;
+        margin: 0;
+        line-height: 1.45;
+      }
+
+      .arare-title,
+      .arare-section-title,
+      .arare-cta-box h2,
+      .arare-cta-panel h2 {
+        line-height: 1.32;
+      }
+
+      .arare-lead,
+      .arare-card__text,
+      .arare-support-service p,
+      .arare-contact-service p,
+      .arare-support-flow__step p,
+      .arare-contact-flow__step p {
+        line-height: 1.95;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .arare-service-grid,
+      .arare-support-grid,
+      .arare-contact-grid,
+      .arare-support-flow,
+      .arare-contact-flow {
+        gap: 22px !important;
+      }
+
+      .arare-service-card,
+      .arare-support-service,
+      .arare-contact-service,
+      .arare-support-flow__step,
+      .arare-contact-flow__step {
+        padding: 24px 20px;
+      }
+
+      .flow-head {
+        gap: 14px;
+        margin-bottom: 16px;
+      }
+
+      .flow-number {
+        flex-basis: 46px;
+        width: 46px;
+        height: 46px;
+        font-size: 0.8rem;
+      }
+    }
+
+    @media (max-width: 340px) {
+      .arare-service-card,
+      .arare-support-service,
+      .arare-contact-service,
+      .arare-support-flow__step,
+      .arare-contact-flow__step {
+        padding: 22px 18px;
+      }
+
+      .flow-number {
+        flex-basis: 44px;
+        width: 44px;
+        height: 44px;
+      }
+    }
   </style>
 </head>
 
@@ -1826,7 +1943,7 @@
         <div class="arare-container">
           <div class="arare-sub-hero__content" data-aos="fade-up">
             <p class="arare-eyebrow">CONTACT</p>
-            <h1 class="arare-title" id="contact-hero-title">まずは無料相談から。</h1>
+            <h1 class="arare-title" id="contact-hero-title"><span class="jp-nowrap">まずは無料相談から。</span></h1>
             <p class="arare-lead">Web制作やAI導入の内容がまだ固まっていなくても大丈夫です。<br>現状や課題を整理し、最適な進め方をご提案します。</p>
             <div class="arare-hero__actions">
               <a class="arare-btn arare-btn-primary" href="contact.html">無料相談する</a>
@@ -1884,29 +2001,29 @@
           </div>
           <div class="arare-contact-flow">
             <article class="arare-card arare-contact-flow__step" data-aos="fade-up">
-              <div class="step-head">
-                <span class="step-number">01</span>
+              <div class="flow-head">
+                <div class="flow-number">01</div>
                 <h3 class="step-title">フォーム送信</h3>
               </div>
               <p>相談内容がまとまっていない段階でも、わかる範囲で送信してください。</p>
             </article>
             <article class="arare-card arare-contact-flow__step" data-aos="fade-up" data-aos-delay="40">
-              <div class="step-head">
-                <span class="step-number">02</span>
+              <div class="flow-head">
+                <div class="flow-number">02</div>
                 <h3 class="step-title">ヒアリング</h3>
               </div>
               <p>現状の課題、目標、予算感、希望スケジュールを丁寧に伺います。</p>
             </article>
             <article class="arare-card arare-contact-flow__step" data-aos="fade-up" data-aos-delay="80">
-              <div class="step-head">
-                <span class="step-number">03</span>
+              <div class="flow-head">
+                <div class="flow-number">03</div>
                 <h3 class="step-title">課題整理</h3>
               </div>
               <p>Web、SNS、AI活用のどこから着手すべきかを整理します。</p>
             </article>
             <article class="arare-card arare-contact-flow__step" data-aos="fade-up" data-aos-delay="120">
-              <div class="step-head">
-                <span class="step-number">04</span>
+              <div class="flow-head">
+                <div class="flow-number">04</div>
                 <h3 class="step-title">ご提案</h3>
               </div>
               <p>必要な支援内容、進め方、費用目安を具体的にご提案します。</p>
